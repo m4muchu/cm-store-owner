@@ -1,0 +1,79 @@
+a{
+    transition: all .4s;
+}
+.hr{
+    margin:20px 0 40px 0;
+}
+.hr-small {
+    margin: 7px 0 22px 0;
+}
+.hr-small2 {
+    margin: 0px 0 32px 0;
+}
+.color--white{
+    color: $cm-white !important;
+}
+.color--orange{
+    color: $cm-orange !important;
+}
+.outline-red{
+    outline: solid 1px red;
+}
+.hr-dashed{
+    border: dashed 1px #D8D8D8;
+}
+.hr-solid {
+    border: solid 1px #D8D8D8;
+    opacity: 0.3;
+}
+.mt-10{
+    margin-top:26px;
+}
+.hr-dotted{
+    border: dashed 1px #ccc;
+    margin:29px 0 6px 0;
+}
+.hr-sidebar{
+    margin:29px 0
+}
+.border-0{
+    border: none !important;
+}
+.no-bg{
+    background: transparent !important;
+}
+.no-shadow{
+    box-shadow: unset !important;
+}
+.rounded-img{
+    border-radius: 50%;
+}
+/***Extended ***/
+%position-relative {
+    position: relative;
+    width: 100%;
+    float: left;
+}
+
+%common-flex {
+    display: flex;
+    align-items: center;
+}
+
+%common-flex-j {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.color--red{
+    color: $cm-red;
+}
+.color--green {
+    color: $cm-light-green;
+}
+body .height-50{
+    .react-select-container .react-select__control{
+        height: 50px !important;
+    }
+
+}
