@@ -1,0 +1,96 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans:300,400,500,600,700&display=swap');
+
+@font-face {
+    font-family: 'DIN Alternate Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('DIN Alternate Bold'), 
+    url('/fonts/DINAlternate-Bold.woff') format('woff'),
+    url('/fonts/DINAlternate-Bold.ttf') format('ttf'),
+    ;
+
+}
+
+
+body {
+    font-family: 'Open Sans', sans-serif !important;
+    font-size: 16px !important;
+    font-weight: 400 !important;
+    -webkit-font-smoothing: antialiased;
+}
+.header1{
+    font-family: 'DIN Alternate Bold', sans-serif;
+    font-weight: bold;
+    font-size: 50px;
+    line-height: 1.2;
+    font-display: swap;
+    letter-spacing: 0.909091px;
+    @media( max-width:991.98px){
+        font-size: 40px;
+    }
+    @media( max-width:575.98px){
+        font-size: 31px;
+    }
+}
+.header2{
+    font-family: 'DIN Alternate Bold', sans-serif;
+    font-weight: bold;
+    font-size: 48px;
+    line-height: 1.2;
+    font-display: swap;
+    letter-spacing: 0.909091px;
+}
+.header3{
+    font-family: 'DIN Alternate Bold', sans-serif;
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 1.2;
+    font-display: swap;
+    @media( max-width:767.98px){
+        font-size: 22px;
+    }
+}
+.header4{
+    font-family: 'DIN Alternate Bold', sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 1.2;
+    font-display: swap;
+    @media( max-width:991.98px){
+        font-size: 22px;
+    }
+}
+.header5{
+    font-family: 'DIN Alternate Bold', sans-serif;
+    font-weight: bold;
+    font-size: 22px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    font-display: swap;
+    @media( max-width:991.98px){
+        font-size: 20px;
+    }
+}
+.header6{
+    font-family: 'DIN Alternate Bold', sans-serif;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 1.2;
+    text-transform: uppercase;
+    font-display: swap;
+    @media( max-width:991.98px){
+        font-size: 16px;
+    }
+}
+.p{
+    font-style: normal;
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 2.2;
+    margin-bottom: 15px;
+    color: $cm-black;
+    @media( max-width:767.98px){
+        font-size: 16px;
+        line-height: 1.4;
+    }
+}
