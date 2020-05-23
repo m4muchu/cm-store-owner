@@ -39,34 +39,14 @@
 
 /* Handle */
 .admin-sidebar::-webkit-scrollbar-thumb {
-    background: $cm-orange;
+    background: $cm-primary;
 }
 
 /* Handle on hover */
 .admin-sidebar::-webkit-scrollbar-thumb:hover {
-    background: $cm-orange;
+    background: $cm-primary;
 }
 
-
-.sidebar__portal-text {
-    position: relative;
-    text-align: center;
-    color: blue; //550
-    margin-bottom: 0;
-    padding: 6px 0 14px 0;
-    font-size: 14px;
-}
-
-.sidebar__portal-text:after {
-    content: "";
-    height: 2px;
-    width: 100%;
-    left: 0;
-    bottom: -15px;
-    background-color: #919293;
-    opacity: .6;
-    position: absolute;
-}
 
 .sidebar__list--logo {
     padding: 19px 4px 19px 25px;
@@ -80,7 +60,7 @@
 
 .sidebar__list {
     position: relative;
-    margin-top: 12px;
+    margin-top: 28px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -88,10 +68,8 @@
 
 }
 
-
-
 .sidebar__list--text {
-    font-size: 12px;
+    font-size: 14px;
     text-transform: uppercase;
     color: $cm-light-grey-10 !important;
     cursor: pointer;
@@ -104,14 +82,16 @@
     }
 
 }
+
 body .sidebar__list .active{
-    color: #fff !important;
+    color: $cm-primary !important;
     i svg{
         path, rect{
-            fill: $cm-orange;
+            fill: $cm-primary;
         }
     }
 }
+
 .sidebar__list--text:hover,
 .sidebar__list--text:focus,
 .sidebar__list--text:active,
@@ -124,9 +104,11 @@ body .sidebar__list .active{
 .sidebar .active rect {
     text-decoration: none;
     color: $cm-white !important;
-    fill: $cm-orange !important; //800
+    //fill: $cm-primary !important; //800
+
 
 }
+
 .sidebar .active path,
 .sidebar .active rect,
 .sidebar__list--text:hover path,
@@ -160,64 +142,5 @@ body .sidebar__list .active{
     color: $cm-white !important;
 }
 
-.sidebar__footer {
-    text-align: center;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: auto;
-    margin-bottom: 15px;
-}
 
-.sidebar__footer-text {
-    font-size: 15px;
-    color: $cm-light-grey-10;
-    padding-top: 10px;
-    margin-bottom: 0;
-    display: flex;
-    align-items: center;
-}
 
-.sidebar__footer-logo {
-    padding-right: 8px;
-
-    img {
-        position: relative;
-        top: 4px;
-    }
-}
-
-.sidebar-wrapper:last-child {
-    padding: 0;
-}
-.sidebar__sub-menu {
-    padding: 0 25px;
-    padding-top: 8px;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    list-style: none;
-
-    .sidebar__sub-list {
-        margin: 6px 0;
-        padding-left:8px;
-    }
-
-    .sidebar__sub-list--text{
-        font-size: 12px;
-        text-transform: uppercase;
-        color: $cm-light-grey-10 !important;
-        cursor: pointer;
-        width: 100%;
-        padding: 11px 23px 11px 24px;
-        transition: .4s all;
-        &:hover{
-            color: $cm-white;
-        }
-
-        i {
-            margin-right: 15px;
-        }
-    }
-
-}

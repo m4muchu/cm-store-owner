@@ -28,7 +28,7 @@
 
     .navbar__notification-badge {
         padding: 3px;
-        background-color: $cm-orange;
+        background-color: $cm-primary;
         border-radius: 50%;
         border: 2px solid $cm-white;
         position: absolute;
@@ -93,7 +93,7 @@
 
         &:hover {
             text-decoration: none;
-            color: $cm-orange; //700
+            color: $cm-primary; //700
         }
     }
 
@@ -103,7 +103,7 @@
 
     .navbar__notification-dropdown-link--text {
         font-size: 12px;
-        color: $cm-orange; //700
+        color: $cm-primary; //700
         margin: 0 auto;
 
         &:hover {

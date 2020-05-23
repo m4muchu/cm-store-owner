@@ -14,7 +14,7 @@ a{
     color: $cm-white !important;
 }
 .color--orange{
-    color: $cm-orange !important;
+    color: $cm-primary !important;
 }
 .outline-red{
     outline: solid 1px red;
@@ -39,9 +39,6 @@ a{
 .border-0{
     border: none !important;
 }
-.no-bg{
-    background: transparent !important;
-}
 .no-shadow{
     box-shadow: unset !important;
 }
@@ -65,15 +62,4 @@ a{
     align-items: center;
     justify-content: center;
 }
-.color--red{
-    color: $cm-red;
-}
-.color--green {
-    color: $cm-light-green;
-}
-body .height-50{
-    .react-select-container .react-select__control{
-        height: 50px !important;
-    }
 
-}
