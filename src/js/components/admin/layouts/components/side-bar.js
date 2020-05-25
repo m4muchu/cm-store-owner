@@ -13,6 +13,7 @@ export const Sidebar = () => {
         membership_plan_collapse: false,
 
     })
+  
     const [order, setOrder] = useState(false);
     const handleClick = () => {
         return setOrder(!order);
@@ -86,13 +87,14 @@ export const Sidebar = () => {
                                     </svg>
                                     <span>Catalog</span>
                                     <svg
-                                        className="MuiSvgIcon-root"
-                                        focusable="false"
-                                        viewBox="0 0 24 24"
-                                        aria-hidden="true"
-                                    >
-                                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
-                                    </svg>
+            className= {catalog?"MuiSvgIcon-root-2":"MuiSvgIcon-root-3"}
+            focusable="false"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+          </svg>
+          <svg className= {catalog?"MuiSvgIcon-root-3":"MuiSvgIcon-root-2"} focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"></path></svg>
                                 </button>
                                 <div className={catalog ? "allStyle" : "noneStyle"}>
                                     <a href="/">Product</a>
@@ -119,13 +121,14 @@ export const Sidebar = () => {
                                     </svg>
                                     <span>Orders</span>
                                     <svg
-                                        className="MuiSvgIcon-root"
-                                        focusable="false"
-                                        viewBox="0 0 24 24"
-                                        aria-hidden="true"
-                                    >
-                                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
-                                    </svg>
+            className= {order?"MuiSvgIcon-root-2":"MuiSvgIcon-root-3"}
+            focusable="false"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+          </svg>
+          <svg className= {order?"MuiSvgIcon-root-3":"MuiSvgIcon-root-2"} focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"></path></svg>
                                 </button>
                                 <div className={order ? "allStyle" : "noneStyle"}>
                                     <a href="/">Orders</a>
@@ -183,13 +186,14 @@ export const Sidebar = () => {
                                     </svg>
                                     <span>Discounts</span>
                                     <svg
-                                        className="MuiSvgIcon-root"
-                                        focusable="false"
-                                        viewBox="0 0 24 24"
-                                        aria-hidden="true"
-                                    >
-                                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
-                                    </svg>
+            className= {discount?"MuiSvgIcon-root-2":"MuiSvgIcon-root-3"}
+            focusable="false"
+            viewBox="0 0 24 24"
+            aria-hidden="true"
+          >
+            <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+          </svg>
+          <svg className= {discount?"MuiSvgIcon-root-3":"MuiSvgIcon-root-2"} focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"></path></svg>
                                 </button>
                                 <div className={discount ? "allStyle" : "noneStyle"}>
                                     <a href="/">Sales</a>
