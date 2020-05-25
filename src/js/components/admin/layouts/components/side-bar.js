@@ -8,24 +8,10 @@ import { AuthProvider } from 'js/contexts';
 
 export const Sidebar = () => {
     const [state, menuToggle] = useState({
-        static_content_collapse: false,
-        reports_collapse: false,
-        membership_plan_collapse: false,
-
+        order: false,
+        catalog: false,
+        discount: false,
     })
-
-    const [order, setOrder] = useState(false);
-    const handleClick = () => {
-        return setOrder(!order);
-    };
-    const [catalog, setCatalog] = useState(false);
-    const handleClickCatalog = () => {
-        return setCatalog(!catalog);
-    };
-    const [discount, setDiscount] = useState(false);
-    const handleClickDiscount = () => {
-        return setDiscount(!discount);
-    };
 
     const { auth } = useContext(AuthProvider)
     const secondLevelMenuToggle = (key) => {
@@ -52,7 +38,7 @@ export const Sidebar = () => {
                             <div class="sidenav">
                                 <button className="dropdown-btn">
                                     <img src='/images/sidebar/home.svg' className="sidebar-button-icons" alt="" />
-                                    <span>Home</span>
+                                    <span className="text-uppercase">Dashboard</span>
                                 </button>
                             </div>
                         </NavLink>
@@ -61,23 +47,23 @@ export const Sidebar = () => {
                     <li className="sidebar__list">
                         <NavLink to='/admin/trip-management' className="sidebar__list--text">
                             <div className="sidenav">
-                                <button onClick={handleClickCatalog} className="dropdown-btn">
+                                <button onClick={() => secondLevelMenuToggle('catalog')} className="dropdown-btn">
                                     <img src='/images/sidebar/catalog.svg' className="sidebar-button-icons " alt="" />
-                                    <span>Catalog</span>
+                                    <span className="text-uppercase">Catalog</span>
                                     <svg
-                                        className={catalog ? "MuiSvgIcon_root_2" : "MuiSvgIcon_root_3"}
+                                        className={state.catalog ? "MuiSvgIcon_root_2" : "MuiSvgIcon_root_3"}
                                         focusable="false"
                                         viewBox="0 0 24 24"
                                         aria-hidden="true"
                                     >
                                         <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
                                     </svg>
-                                    <svg className={catalog ? "MuiSvgIcon_root_3" : "MuiSvgIcon_root_2"} focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"></path></svg>
+                                    <svg className={state.catalog ? "MuiSvgIcon_root_3" : "MuiSvgIcon_root_2"} focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"></path></svg>
                                 </button>
-                                <div className={catalog ? "all_style" : "none_style"}>
-                                    <a href="/">Product</a>
-                                    <a href="/">Category</a>
-                                    <a href="/">Collection</a>
+                                <div className={state.catalog ? "all_style" : "none_style"}>
+                                    <NavLink to="/admin/products">Products</NavLink>
+                                    <NavLink to="!#">Category</NavLink>
+                                    <NavLink to="!#">Collection</NavLink>
                                 </div>
                             </div>
                         </NavLink>
@@ -85,20 +71,20 @@ export const Sidebar = () => {
                     <li className="sidebar__list">
                         <NavLink to='/admin/user-management' className="sidebar__list--text">
                             <div className="sidenav">
-                                <button onClick={handleClick} className="dropdown-btn">
+                                <button onClick={() => secondLevelMenuToggle('order')} className="dropdown-btn">
                                     <img src='/images/sidebar/order.svg' className="sidebar-button-icons"alt=""  />
-                                    <span>Orders</span>
+                                    <span className="text-uppercase">Orders</span>
                                     <svg
-                                        className={order ? "MuiSvgIcon_root_2" : "MuiSvgIcon_root_3"}
+                                        className={state.order ? "MuiSvgIcon_root_2" : "MuiSvgIcon_root_3"}
                                         focusable="false"
                                         viewBox="0 0 24 24"
                                         aria-hidden="true"
                                     >
                                         <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
                                     </svg>
-                                    <svg className={order ? "MuiSvgIcon_root_3" : "MuiSvgIcon_root_2"} focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"></path></svg>
+                                    <svg className={state.order ? "MuiSvgIcon_root_3" : "MuiSvgIcon_root_2"} focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"></path></svg>
                                 </button>
-                                <div className={order ? "all_style" : "none_style"}>
+                                <div className={state.order ? "all_style" : "none_style"}>
                                     <a href="/">Orders</a>
                                     <a href="/">Drafts</a>
                                 </div>
@@ -111,7 +97,7 @@ export const Sidebar = () => {
                                 <button className="dropdown-btn">
                                     <img src='/images/sidebar/customer.svg' className="sidebar-button-icons"alt=""  />
 
-                                    <span>Customers</span>
+                                    <span className="text-uppercase">Customers</span>
                                 </button>
                             </div>
                         </NavLink>
@@ -119,20 +105,20 @@ export const Sidebar = () => {
                     <li className="sidebar__list">
                         <NavLink to='/admin/user-management' className="sidebar__list--text">
                             <div className="sidenav">
-                                <button onClick={handleClickDiscount} className="dropdown-btn">
+                                <button onClick={() => secondLevelMenuToggle('discount')} className="dropdown-btn">
                                     <img src='/images/sidebar/discount.svg' className="sidebar-button-icons "alt=""  />
-                                    <span>Discounts</span>
+                                    <span className="text-uppercase">Discounts</span>
                                     <svg
-                                        className={discount ? "MuiSvgIcon_root_2" : "MuiSvgIcon_root_3"}
+                                        className={state.discount ? "MuiSvgIcon_root_2" : "MuiSvgIcon_root_3"}
                                         focusable="false"
                                         viewBox="0 0 24 24"
                                         aria-hidden="true"
                                     >
                                         <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
                                     </svg>
-                                    <svg className={discount ? "MuiSvgIcon_root_3" : "MuiSvgIcon_root_2"} focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"></path></svg>
+                                    <svg className={state.discount ? "MuiSvgIcon_root_3" : "MuiSvgIcon_root_2"} focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"></path></svg>
                                 </button>
-                                <div className={discount ? "all_style" : "none_style"}>
+                                <div className={state.discount ? "all_style" : "none_style"}>
                                     <a href="/">Sales</a>
                                     <a href="/">Vouchers</a>
                                 </div>
@@ -144,7 +130,7 @@ export const Sidebar = () => {
                             <div className="sidenav">
                                 <button className="dropdown-btn">
                                     <img src='/images/sidebar/language.svg' className="sidebar-button-icons "alt=""  />
-                                    <span>Translations</span>
+                                    <span className="text-uppercase">Translations</span>
                                 </button>
                             </div>
                         </NavLink>
@@ -154,7 +140,7 @@ export const Sidebar = () => {
                             <div className="sidenav">
                                 <button className="dropdown-btn">
                                     <img src='/images/sidebar/config.svg ' className="sidebar-button-icons " alt="" />
-                                    <span>Configuration</span>
+                                    <span className="text-uppercase">Configuration</span>
                                 </button>
                             </div>
                         </NavLink>
