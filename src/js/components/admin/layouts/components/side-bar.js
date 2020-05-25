@@ -25,7 +25,7 @@ export const Sidebar = () => {
     const handleClickDiscount = () => {
         return setDiscount(!discount);
     };
-    
+
     const { auth } = useContext(AuthProvider)
     const secondLevelMenuToggle = (key) => {
         menuToggle({ ...state, [key]: !state[key] })
@@ -48,15 +48,13 @@ export const Sidebar = () => {
 
                     <li className="sidebar__list">
                         <NavLink to='/admin/dashboard' className="sidebar__list--text" activeClassName="active">
-
-
                             <div class="sidenav">
-                                <button  className="dropdown-btn">
+                                <button className="dropdown-btn">
                                     <svg xmlns="http://www.w3.org/2000/svg"
                                         width="20" height="20" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2"
                                         stroke-linecap="round" stroke-linejoin="round"
-                                        class="jss525"><path d="M21.21 15.89A10 10 0 1 1 8 2.83">
+                                        className="jss525"><path d="M21.21 15.89A10 10 0 1 1 8 2.83">
                                         </path><path d="M22 12A10 10 0 0 0 12 2v10z"></path>
                                     </svg>
                                     <span>Home</span>
@@ -67,9 +65,7 @@ export const Sidebar = () => {
 
                     <li className="sidebar__list">
                         <NavLink to='/admin/trip-management' className="sidebar__list--text">
-
-
-                            <div class="sidenav">
+                            <div className="sidenav">
                                 <button onClick={handleClickCatalog} className="dropdown-btn">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -81,7 +77,7 @@ export const Sidebar = () => {
                                         stroke-width="2"
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
-                                        class="jss266"
+                                        className="jss266"
                                     >
                                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                                         <circle cx="9" cy="7" r="4" />
@@ -90,27 +86,25 @@ export const Sidebar = () => {
                                     </svg>
                                     <span>Catalog</span>
                                     <svg
-                                        class="MuiSvgIcon-root"
+                                        className="MuiSvgIcon-root"
                                         focusable="false"
                                         viewBox="0 0 24 24"
                                         aria-hidden="true"
                                     >
                                         <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
                                     </svg>
-
-                                    <div className={catalog ? "allStyle" : "noneStyle"}>
-                                        <a href="/">Product</a>
-                                        <a href="/">Category</a>
-                                        <a href="/">Collection</a>
-                                    </div>
                                 </button>
-
+                                <div className={catalog ? "allStyle" : "noneStyle"}>
+                                    <a href="/">Product</a>
+                                    <a href="/">Category</a>
+                                    <a href="/">Collection</a>
+                                </div>
                             </div>
                         </NavLink>
                     </li>
                     <li className="sidebar__list">
                         <NavLink to='/admin/user-management' className="sidebar__list--text">
-                            <div class="sidenav">
+                            <div className="sidenav">
                                 <button onClick={handleClick} className="dropdown-btn">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -120,31 +114,30 @@ export const Sidebar = () => {
                                         stroke="currentColor"
                                         stroke-width="2"
                                         stroke-linecap="round" stroke-linejoin="round"
-                                        class="jss525">
+                                        className="jss525">
                                         <path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"></path>
                                     </svg>
                                     <span>Orders</span>
                                     <svg
-                                        class="MuiSvgIcon-root"
+                                        className="MuiSvgIcon-root"
                                         focusable="false"
                                         viewBox="0 0 24 24"
                                         aria-hidden="true"
                                     >
                                         <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
                                     </svg>
-                                    <div className={order ? "allStyle" : "noneStyle"}>
-                                        <a href="/">Orders</a>
-                                        <a href="/">Drafts</a>
-                                    </div>
                                 </button>
-
+                                <div className={order ? "allStyle" : "noneStyle"}>
+                                    <a href="/">Orders</a>
+                                    <a href="/">Drafts</a>
+                                </div>
                             </div>
                         </NavLink>
                     </li>
                     <li className="sidebar__list">
                         <NavLink to='/admin/leads' onClick={toogleNavBar} className="sidebar__list--text">
-                            <div class="sidenav">
-                                <button  className="dropdown-btn">
+                            <div className="sidenav">
+                                <button className="dropdown-btn">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="20"
@@ -155,7 +148,7 @@ export const Sidebar = () => {
                                         stroke-width="2"
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
-                                        class="jss266"
+                                        className="jss266"
                                     >
                                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                                         <circle cx="9" cy="7" r="4" />
@@ -169,7 +162,7 @@ export const Sidebar = () => {
                     </li>
                     <li className="sidebar__list">
                         <NavLink to='/admin/user-management' className="sidebar__list--text">
-                            <div class="sidenav">
+                            <div className="sidenav">
                                 <button onClick={handleClickDiscount} className="dropdown-btn">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -181,7 +174,7 @@ export const Sidebar = () => {
                                         stroke-width="2"
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
-                                        class="jss266"
+                                        className="jss266"
                                     >
                                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                                         <circle cx="9" cy="7" r="4" />
@@ -190,27 +183,25 @@ export const Sidebar = () => {
                                     </svg>
                                     <span>Discounts</span>
                                     <svg
-                                        class="MuiSvgIcon-root"
+                                        className="MuiSvgIcon-root"
                                         focusable="false"
                                         viewBox="0 0 24 24"
                                         aria-hidden="true"
                                     >
                                         <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
                                     </svg>
-
-                                    <div className={discount ? "allStyle" : "noneStyle"}>
-                                        <a href="/">Sales</a>
-                                        <a href="/">Vouchers</a>
-                                    </div>
                                 </button>
-
+                                <div className={discount ? "allStyle" : "noneStyle"}>
+                                    <a href="/">Sales</a>
+                                    <a href="/">Vouchers</a>
+                                </div>
                             </div>
                         </NavLink>
                     </li>
                     <li className="sidebar__list">
                         <NavLink to='/admin/exchanges' onClick={toogleNavBar} className="sidebar__list--text" >
-                            <div class="sidenav">
-                                <button  className="dropdown-btn">
+                            <div className="sidenav">
+                                <button className="dropdown-btn">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="20"
@@ -221,7 +212,7 @@ export const Sidebar = () => {
                                         stroke-width="2"
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
-                                        class="jss266"
+                                        className="jss266"
                                     >
                                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                                         <circle cx="9" cy="7" r="4" />
@@ -235,8 +226,8 @@ export const Sidebar = () => {
                     </li>
                     <li className="sidebar__list">
                         <NavLink to='/admin/advertising' className="sidebar__list--text" >
-                            <div class="sidenav">
-                                <button onClick={handleClick} className="dropdown-btn">
+                            <div className="sidenav">
+                                <button className="dropdown-btn">
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
                                         width="20"
@@ -247,7 +238,7 @@ export const Sidebar = () => {
                                         stroke-width="2"
                                         stroke-linecap="round"
                                         stroke-linejoin="round"
-                                        class="jss266"
+                                        className="jss266"
                                     >
                                         <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
                                         <circle cx="9" cy="7" r="4" />
