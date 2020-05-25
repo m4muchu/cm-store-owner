@@ -5,21 +5,40 @@ import { useState } from 'react';
 import { useContext } from 'react';
 import { AuthProvider } from 'js/contexts';
 
+
 export const Sidebar = () => {
-    const [ state, menuToggle ] = useState({
+    const [state, menuToggle] = useState({
         static_content_collapse: false,
         reports_collapse: false,
-        membership_plan_collapse: false
+        membership_plan_collapse: false,
+
     })
+
+    const [order, setOrder] = useState(false);
+    const handleClick = () => {
+        return setOrder(!order);
+    };
+    const [catalog, setCatalog] = useState(false);
+    const handleClickCatalog = () => {
+        return setCatalog(!catalog);
+    };
+    const [discount, setDiscount] = useState(false);
+    const handleClickDiscount = () => {
+        return setDiscount(!discount);
+    };
+
     const { auth } = useContext(AuthProvider)
     const secondLevelMenuToggle = (key) => {
-        menuToggle({...state, [key]: !state[key]})
+        menuToggle({ ...state, [key]: !state[key] })
     }
 
 
     const toogleNavBar = () => {
         document.getElementById("sidebarNav").classList.toggle("open");
     }
+
+
+
     return (
         <div className="global-sidebar offcanvas-collapse" id="sidebarNav">
             <aside className="sidebar-wrapper sidebar-collapse shadow" >
@@ -30,67 +49,114 @@ export const Sidebar = () => {
 
                     <li className="sidebar__list">
                         <NavLink to='/admin/dashboard' className="sidebar__list--text" activeClassName="active">
-                            <i>
-                                <svg width="27" height="27" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fillRule="evenodd" clipRule="evenodd" d="M16.7823 15.545C14.6258 14.1356 12.1067 13.3822 9.53046 13.3762C6.95424 13.3822 4.43509 14.1356 2.27858 15.545C2.10214 15.664 1.86316 15.6224 1.73738 15.4507C-0.333648 12.4887 -0.545511 8.60834 1.19072 5.43845C2.92695 2.26855 6.31078 0.357691 9.9219 0.507924C14.96 0.75901 18.9437 4.86769 19.0391 9.91113C19.0613 11.8917 18.4612 13.8293 17.3235 15.4507C17.1978 15.6224 16.9588 15.664 16.7823 15.545ZM9.53046 2.67905C9.20225 2.67905 8.93618 2.94512 8.93618 3.27334V4.46191C8.93618 4.79013 9.20225 5.0562 9.53046 5.0562C9.85868 5.0562 10.1247 4.79013 10.1247 4.46191V3.27334C10.1247 2.94512 9.85868 2.67905 9.53046 2.67905ZM3.98378 10.6029H2.79521C2.467 10.6029 2.20092 10.3368 2.20092 10.0086C2.20092 9.68038 2.467 9.4143 2.79521 9.4143H3.98378C4.312 9.4143 4.57807 9.68038 4.57807 10.0086C4.57807 10.3368 4.312 10.6029 3.98378 10.6029ZM5.60777 6.68046C5.76545 6.68046 5.91667 6.61779 6.02813 6.50626C6.13962 6.39493 6.20226 6.24385 6.20226 6.0863C6.20226 5.92875 6.13962 5.77766 6.02813 5.66633L5.18821 4.82641C4.95605 4.59425 4.57965 4.59425 4.34749 4.82641C4.11533 5.05857 4.11533 5.43497 4.34749 5.66713L5.18741 6.50626C5.29887 6.61779 5.45009 6.68046 5.60777 6.68046ZM9.46628 11.9468C8.70316 11.9544 8.01166 11.4984 7.71796 10.7941C7.42427 10.0897 7.58705 9.27755 8.12953 8.74078C8.72857 8.14174 13.7095 5.07125 14.2752 4.72261C14.4315 4.62628 14.6335 4.64992 14.7633 4.77972C14.8931 4.90953 14.9167 5.1115 14.8204 5.26777C14.4718 5.83432 11.4013 10.8144 10.8022 11.4135C10.4449 11.7608 9.96458 11.9526 9.46628 11.9468ZM14.4829 10.0086C14.4829 10.3368 14.7489 10.6029 15.0771 10.6029H16.2657C16.5939 10.6029 16.86 10.3368 16.86 10.0086C16.86 9.68038 16.5939 9.4143 16.2657 9.4143H15.0771C14.7489 9.4143 14.4829 9.68038 14.4829 10.0086Z" fill="#758599" />
-                                    <path d="M9.53046 14.5648C7.27978 14.5596 5.07357 15.1914 3.16684 16.3873C3.06328 16.4539 2.99599 16.5643 2.98424 16.6868C2.9725 16.8094 3.0176 16.9306 3.10662 17.0156C6.73803 20.3554 12.3229 20.3554 15.9543 17.0156C16.0433 16.9306 16.0884 16.8094 16.0767 16.6868C16.0649 16.5643 15.9976 16.4539 15.8941 16.3873C13.9875 15.1912 11.7812 14.5593 9.53046 14.5648Z" fill="#758599" />
-                                </svg>
-                            </i>
-                            Dashboard
+                            <div class="sidenav">
+                                <button className="dropdown-btn">
+                                    <img src='/images/sidebar/home.svg' className="sidebar-button-icons" alt="" />
+                                    <span>Home</span>
+                                </button>
+                            </div>
                         </NavLink>
                     </li>
+
                     <li className="sidebar__list">
                         <NavLink to='/admin/trip-management' className="sidebar__list--text">
-                            <i>
-                                <svg width="27" height="27" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fillRule="evenodd" clipRule="evenodd" d="M11.6408 1.58559C15.4379 2.0863 18.4421 5.09056 18.9428 8.88761V8.84589H20.3198V11.1408H18.9428C18.4421 14.9379 15.4379 17.9421 11.6825 18.4428V19.8198H9.38761V18.4428C5.59056 17.9421 2.5863 14.9379 2.08559 11.1825H0.708633V8.88761H2.08559C2.5863 5.09056 5.59056 2.0863 9.34589 1.58559V0.208633H11.6408V1.58559ZM11.6825 16.1062C14.1861 15.6472 16.1889 13.6444 16.6479 11.1408H12.3919V8.84588H16.6062C16.1472 6.34233 14.1444 4.33949 11.6408 3.88051V8.09482H9.34588V3.88051C6.84233 4.33949 4.83949 6.34233 4.38051 8.84588H8.63655V11.1408H4.42223C4.88122 13.6444 6.88406 15.6472 9.38761 16.1062V11.8919H11.6825V16.1062Z" fill="#758599" />
-                                </svg>
-                            </i>
-                            Catalogs
+                            <div className="sidenav">
+                                <button onClick={handleClickCatalog} className="dropdown-btn">
+                                    <img src='/images/sidebar/catalog.svg' className="sidebar-button-icons " alt="" />
+                                    <span>Catalog</span>
+                                    <svg
+                                        className={catalog ? "MuiSvgIcon_root_2" : "MuiSvgIcon_root_3"}
+                                        focusable="false"
+                                        viewBox="0 0 24 24"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                                    </svg>
+                                    <svg className={catalog ? "MuiSvgIcon_root_3" : "MuiSvgIcon_root_2"} focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"></path></svg>
+                                </button>
+                                <div className={catalog ? "all_style" : "none_style"}>
+                                    <a href="/">Product</a>
+                                    <a href="/">Category</a>
+                                    <a href="/">Collection</a>
+                                </div>
+                            </div>
                         </NavLink>
                     </li>
                     <li className="sidebar__list">
                         <NavLink to='/admin/user-management' className="sidebar__list--text">
-                            <i>
-                                <svg width="17" height="17" viewBox="0 0 17 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M5.53907 6.43542C7.25975 6.43542 8.6564 5.03902 8.6564 3.31758C8.6564 1.59614 7.26001 0.199997 5.53907 0.199997C3.81864 0.199997 2.42174 1.59639 2.42174 3.31783C2.42174 5.03928 3.81864 6.43542 5.53907 6.43542Z" fill="#758599" />
-                                    <path d="M12.1756 8.37305C11.1946 8.37305 10.291 8.77815 9.5689 9.45728C8.63595 7.98739 7.17818 7.03954 5.53933 7.03954C2.72456 7.03954 0.440674 9.83258 0.440674 13.275C0.440674 14.4238 1.20113 15.3533 2.14039 15.3533H8.93852C9.00671 15.3533 9.07338 15.347 9.13955 15.3376C9.19916 15.3472 9.25977 15.3535 9.32165 15.3535H15.0295C15.8182 15.3535 16.4567 14.5731 16.4567 13.6083C16.4567 10.7181 14.539 8.37305 12.1756 8.37305Z" fill="#758599" />
-                                    <path d="M12.1756 7.86616C13.6205 7.86616 14.7928 6.69353 14.7928 5.24839C14.7928 3.80325 13.6202 2.63062 12.1756 2.63062C10.7309 2.63062 9.55855 3.80325 9.55855 5.24839C9.55855 6.69353 10.7307 7.86616 12.1756 7.86616Z" fill="#758599" />
-                                </svg>
-                            </i>
-                            Orders
+                            <div className="sidenav">
+                                <button onClick={handleClick} className="dropdown-btn">
+                                    <img src='/images/sidebar/order.svg' className="sidebar-button-icons"alt=""  />
+                                    <span>Orders</span>
+                                    <svg
+                                        className={order ? "MuiSvgIcon_root_2" : "MuiSvgIcon_root_3"}
+                                        focusable="false"
+                                        viewBox="0 0 24 24"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                                    </svg>
+                                    <svg className={order ? "MuiSvgIcon_root_3" : "MuiSvgIcon_root_2"} focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"></path></svg>
+                                </button>
+                                <div className={order ? "all_style" : "none_style"}>
+                                    <a href="/">Orders</a>
+                                    <a href="/">Drafts</a>
+                                </div>
+                            </div>
                         </NavLink>
                     </li>
                     <li className="sidebar__list">
                         <NavLink to='/admin/leads' onClick={toogleNavBar} className="sidebar__list--text">
-                            <i>
-                                <svg width="17" height="17" viewBox="0 0 16 15" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M5.27647 8.56079C6.37586 8.56079 7.37096 8.11499 8.09141 7.39454C8.81106 6.67488 9.25687 5.67978 9.25687 4.5804C9.25687 3.48101 8.81106 2.48592 8.09141 1.76626C7.37096 1.04581 6.37586 0.600006 5.27647 0.600006C4.17709 0.600006 3.18199 1.04581 2.46154 1.76626C1.74189 2.48592 1.29608 3.48101 1.29608 4.5804C1.29608 5.67978 1.74189 6.67488 2.46154 7.39454C3.18199 8.11499 4.17709 8.56079 5.27647 8.56079Z" fill="#758599" />
-                                    <path d="M5.27647 14.1333C8.07707 14.1333 10.0529 13.3373 10.0529 12.5412C10.0529 10.949 8.17897 9.35687 5.27647 9.35687C2.29118 9.35687 0.5 10.949 0.5 12.5412C0.5 13.3373 2.29118 14.1333 5.27647 14.1333Z" fill="#758599" />
-                                    <path d="M14.8294 6.96863H13.2373V5.37648C13.2373 4.93625 12.8814 4.5804 12.4412 4.5804C12.0009 4.5804 11.6451 4.93625 11.6451 5.37648V6.96863H10.0529C9.61271 6.96863 9.25687 7.32448 9.25687 7.76471C9.25687 8.20494 9.61271 8.56079 10.0529 8.56079H11.6451V10.1529C11.6451 10.5932 12.0009 10.949 12.4412 10.949C12.8814 10.949 13.2373 10.5932 13.2373 10.1529V8.56079H14.8294C15.2696 8.56079 15.6255 8.20494 15.6255 7.76471C15.6255 7.32448 15.2696 6.96863 14.8294 6.96863Z" fill="#758599" />
-                                </svg>
-                            </i>
-                            Customers
+                            <div className="sidenav">
+                                <button className="dropdown-btn">
+                                    <img src='/images/sidebar/customer.svg' className="sidebar-button-icons"alt=""  />
+
+                                    <span>Customers</span>
+                                </button>
+                            </div>
+                        </NavLink>
+                    </li>
+                    <li className="sidebar__list">
+                        <NavLink to='/admin/user-management' className="sidebar__list--text">
+                            <div className="sidenav">
+                                <button onClick={handleClickDiscount} className="dropdown-btn">
+                                    <img src='/images/sidebar/discount.svg' className="sidebar-button-icons "alt=""  />
+                                    <span>Discounts</span>
+                                    <svg
+                                        className={discount ? "MuiSvgIcon_root_2" : "MuiSvgIcon_root_3"}
+                                        focusable="false"
+                                        viewBox="0 0 24 24"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                                    </svg>
+                                    <svg className={discount ? "MuiSvgIcon_root_3" : "MuiSvgIcon_root_2"} focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"></path></svg>
+                                </button>
+                                <div className={discount ? "all_style" : "none_style"}>
+                                    <a href="/">Sales</a>
+                                    <a href="/">Vouchers</a>
+                                </div>
+                            </div>
                         </NavLink>
                     </li>
                     <li className="sidebar__list">
                         <NavLink to='/admin/exchanges' onClick={toogleNavBar} className="sidebar__list--text" >
-                            <i>
-                                <svg width="17" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fillRule="evenodd" clipRule="evenodd" d="M0.034668 15.1378C0.034668 15.8713 0.628787 16.4653 1.36216 16.4653H14.6378C15.3713 16.4653 15.9653 15.8713 15.9653 15.1378V3.52166C15.9653 2.78818 15.3713 2.19407 14.6378 2.19407H13.3101V1.36437C13.3101 0.906431 12.9384 0.534668 12.4805 0.534668C12.0225 0.534668 11.6507 0.906431 11.6507 1.36437V2.19407H10.3232V1.36437C10.3232 0.906431 9.95134 0.534668 9.49341 0.534668C9.03547 0.534668 8.66375 0.906431 8.66375 1.36437V2.19407H7.33626V1.36437C7.33626 0.906431 6.96449 0.534668 6.50656 0.534668C6.04851 0.534668 5.67675 0.906431 5.67675 1.36437V2.19407H4.34926V1.36437C4.34926 0.906431 3.9775 0.534668 3.51949 0.534668C3.06155 0.534668 2.68979 0.906431 2.68979 1.36437V2.19407H1.36219C0.628787 2.19407 0.0347045 2.78818 0.0347045 3.52166V15.1378H0.034668ZM2.42437 3.8535H2.68979V5.01511C2.68979 5.47312 3.06155 5.84488 3.51949 5.84488C3.97754 5.84488 4.34926 5.47312 4.34926 5.01511V3.8535H5.67675V5.01511C5.67675 5.47312 6.04851 5.84488 6.50656 5.84488C6.96449 5.84488 7.33626 5.47312 7.33626 5.01511V3.8535H8.66382V5.01511C8.66382 5.47312 9.03554 5.84488 9.49348 5.84488C9.95142 5.84488 10.3233 5.47312 10.3233 5.01511V3.8535H11.6507V5.01511C11.6507 5.47312 12.0226 5.84488 12.4806 5.84488C12.9385 5.84488 13.3102 5.47312 13.3102 5.01511V3.8535H13.5757C13.9806 3.8535 14.3059 4.17894 14.3059 4.58376V8.10164C14.3059 8.50647 13.9806 8.83191 13.5757 8.83191H2.42437C2.0194 8.83191 1.6941 8.50647 1.6941 8.10164V4.58376C1.69407 4.17894 2.01936 3.8535 2.42437 3.8535Z" fill="#758599" />
-                                </svg>
-                            </i>
-                            Discount
+                            <div className="sidenav">
+                                <button className="dropdown-btn">
+                                    <img src='/images/sidebar/language.svg' className="sidebar-button-icons "alt=""  />
+                                    <span>Translations</span>
+                                </button>
+                            </div>
                         </NavLink>
                     </li>
                     <li className="sidebar__list">
-                        <NavLink to='/admin/advertising' onClick={toogleNavBar} className="sidebar__list--text" >
-                            <i>
-                                <svg width="27" height="27" viewBox="0 0 17 17" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fillRule="evenodd" clipRule="evenodd" d="M11.4352 1.21031C12.5415 0.582298 12.8606 0.401201 13.33 0.682854C13.5924 0.834242 13.757 1.11142 13.7643 1.41428V12.8429C13.7529 13.1341 13.5963 13.4002 13.3471 13.5514C12.8866 13.8232 12.5633 13.642 11.5068 13.0499C11.2525 12.9073 10.9557 12.741 10.6043 12.5514C9.24478 11.8192 7.7766 11.3099 6.25571 11.0429L7.61571 13.4314C9.20428 16.2314 4.29 17.9343 3.82714 14.7229L3.25571 10.7857C1.34164 10.5043 -0.0358645 8.80072 0.089556 6.87014C0.214977 4.93956 1.80132 3.42856 3.73571 3.39714C6.12809 3.40211 8.48427 2.81306 10.5929 1.68285C10.9172 1.50434 11.1948 1.34677 11.4352 1.21031ZM14.9071 9.07143V5.15714C15.9106 5.23334 16.6708 6.09488 16.6214 7.1C16.6869 8.11593 15.9223 8.99522 14.9071 9.07143Z" fill="#758599" />
-                                </svg>
-                            </i>
-                            Cofiguration
+                        <NavLink to='/admin/advertising' className="sidebar__list--text" >
+                            <div className="sidenav">
+                                <button className="dropdown-btn">
+                                    <img src='/images/sidebar/config.svg ' className="sidebar-button-icons " alt="" />
+                                    <span>Configuration</span>
+                                </button>
+                            </div>
                         </NavLink>
                     </li>
                 </ul>

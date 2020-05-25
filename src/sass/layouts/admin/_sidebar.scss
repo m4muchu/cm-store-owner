@@ -144,3 +144,68 @@ body .sidebar__list .active{
 
 
 
+//sidebar-button overwriting styles
+
+
+.sidenav a,
+.dropdown-btn {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #f8f8f8;
+  display: block;
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  outline: none;
+  font-weight: 500;
+  line-height: 1.75;
+  font-size: 0.875rem;
+//   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+}
+
+.dropdown-btn span {
+  margin-left: 1rem;
+  margin-top: -1rem;
+}
+.dropdown-btn span:hover {
+  background-color: rgb(91, 96, 105);
+}
+//style for up and down arrow in drop down menu
+.MuiSvgIcon_root_2 ,.MuiSvgIcon_root_3 {
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+  font-size: 1.5rem;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  flex-shrink: 0;
+  float: right;
+}
+.MuiSvgIcon_root_2 {
+    display: none;
+  }
+  .MuiSvgIcon_root_3 {
+    display: block;
+  }
+
+.all_style {
+ height: 110px;
+
+  transition: height 550ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.none_style {
+  height: 0px;
+  transition: height 550ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  overflow:hidden;
+
+}
+.none_style a,.all_style a {//remove .noneStyle a to see intresting animation
+    margin-top: .5rem;
+    margin-left: 1.75rem;
+    
+  }
+  .sidebar-button-icons{
+      width: 1.2rem;
+      filter: brightness(0) invert(1);  }
