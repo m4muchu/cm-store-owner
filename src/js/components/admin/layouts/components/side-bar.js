@@ -4,22 +4,31 @@ import { Navbar } from 'react-bootstrap';
 import { useState } from 'react';
 import { useContext } from 'react';
 import { AuthProvider } from 'js/contexts';
+import Dropdown from 'react-bootstrap/Dropdown';
 
 export const Sidebar = () => {
-    const [ state, menuToggle ] = useState({
+    const [state, menuToggle] = useState({
         static_content_collapse: false,
         reports_collapse: false,
-        membership_plan_collapse: false
+        membership_plan_collapse: false,
+        
     })
+    const [buttonstate, setButton] = useState(false);
+    const handleClick = () => {
+        return setButton(!buttonstate);
+    };
     const { auth } = useContext(AuthProvider)
     const secondLevelMenuToggle = (key) => {
-        menuToggle({...state, [key]: !state[key]})
+        menuToggle({ ...state, [key]: !state[key] })
     }
 
 
     const toogleNavBar = () => {
         document.getElementById("sidebarNav").classList.toggle("open");
     }
+
+
+
     return (
         <div className="global-sidebar offcanvas-collapse" id="sidebarNav">
             <aside className="sidebar-wrapper sidebar-collapse shadow" >
@@ -30,23 +39,90 @@ export const Sidebar = () => {
 
                     <li className="sidebar__list">
                         <NavLink to='/admin/dashboard' className="sidebar__list--text" activeClassName="active">
-                            <i>
-                                <svg width="27" height="27" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fillRule="evenodd" clipRule="evenodd" d="M16.7823 15.545C14.6258 14.1356 12.1067 13.3822 9.53046 13.3762C6.95424 13.3822 4.43509 14.1356 2.27858 15.545C2.10214 15.664 1.86316 15.6224 1.73738 15.4507C-0.333648 12.4887 -0.545511 8.60834 1.19072 5.43845C2.92695 2.26855 6.31078 0.357691 9.9219 0.507924C14.96 0.75901 18.9437 4.86769 19.0391 9.91113C19.0613 11.8917 18.4612 13.8293 17.3235 15.4507C17.1978 15.6224 16.9588 15.664 16.7823 15.545ZM9.53046 2.67905C9.20225 2.67905 8.93618 2.94512 8.93618 3.27334V4.46191C8.93618 4.79013 9.20225 5.0562 9.53046 5.0562C9.85868 5.0562 10.1247 4.79013 10.1247 4.46191V3.27334C10.1247 2.94512 9.85868 2.67905 9.53046 2.67905ZM3.98378 10.6029H2.79521C2.467 10.6029 2.20092 10.3368 2.20092 10.0086C2.20092 9.68038 2.467 9.4143 2.79521 9.4143H3.98378C4.312 9.4143 4.57807 9.68038 4.57807 10.0086C4.57807 10.3368 4.312 10.6029 3.98378 10.6029ZM5.60777 6.68046C5.76545 6.68046 5.91667 6.61779 6.02813 6.50626C6.13962 6.39493 6.20226 6.24385 6.20226 6.0863C6.20226 5.92875 6.13962 5.77766 6.02813 5.66633L5.18821 4.82641C4.95605 4.59425 4.57965 4.59425 4.34749 4.82641C4.11533 5.05857 4.11533 5.43497 4.34749 5.66713L5.18741 6.50626C5.29887 6.61779 5.45009 6.68046 5.60777 6.68046ZM9.46628 11.9468C8.70316 11.9544 8.01166 11.4984 7.71796 10.7941C7.42427 10.0897 7.58705 9.27755 8.12953 8.74078C8.72857 8.14174 13.7095 5.07125 14.2752 4.72261C14.4315 4.62628 14.6335 4.64992 14.7633 4.77972C14.8931 4.90953 14.9167 5.1115 14.8204 5.26777C14.4718 5.83432 11.4013 10.8144 10.8022 11.4135C10.4449 11.7608 9.96458 11.9526 9.46628 11.9468ZM14.4829 10.0086C14.4829 10.3368 14.7489 10.6029 15.0771 10.6029H16.2657C16.5939 10.6029 16.86 10.3368 16.86 10.0086C16.86 9.68038 16.5939 9.4143 16.2657 9.4143H15.0771C14.7489 9.4143 14.4829 9.68038 14.4829 10.0086Z" fill="#758599" />
-                                    <path d="M9.53046 14.5648C7.27978 14.5596 5.07357 15.1914 3.16684 16.3873C3.06328 16.4539 2.99599 16.5643 2.98424 16.6868C2.9725 16.8094 3.0176 16.9306 3.10662 17.0156C6.73803 20.3554 12.3229 20.3554 15.9543 17.0156C16.0433 16.9306 16.0884 16.8094 16.0767 16.6868C16.0649 16.5643 15.9976 16.4539 15.8941 16.3873C13.9875 15.1912 11.7812 14.5593 9.53046 14.5648Z" fill="#758599" />
-                                </svg>
-                            </i>
-                            Dashboard
+                           
+
+                            <div class="sidenav">
+                                <button onClick={handleClick} className="dropdown-btn">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="20"
+                                        height="20"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="jss266"
+                                    >
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                        <circle cx="9" cy="7" r="4" />
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                    </svg>
+                                    <span>Customer</span>
+                                    <svg
+                                        class="MuiSvgIcon-root"
+                                        focusable="false"
+                                        viewBox="0 0 24 24"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                                    </svg>
+
+                                    <div className={buttonstate ? "allStyle" : "noneStyle"}>
+                                        <a href="/">List Customer</a>
+                                        <a href="/">View Customer</a>
+                                        <a href="/">EditCustomer</a>
+                                    </div>
+                                </button>
+
+                            </div>
+
                         </NavLink>
                     </li>
+
                     <li className="sidebar__list">
                         <NavLink to='/admin/trip-management' className="sidebar__list--text">
-                            <i>
-                                <svg width="27" height="27" viewBox="0 0 21 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                    <path fillRule="evenodd" clipRule="evenodd" d="M11.6408 1.58559C15.4379 2.0863 18.4421 5.09056 18.9428 8.88761V8.84589H20.3198V11.1408H18.9428C18.4421 14.9379 15.4379 17.9421 11.6825 18.4428V19.8198H9.38761V18.4428C5.59056 17.9421 2.5863 14.9379 2.08559 11.1825H0.708633V8.88761H2.08559C2.5863 5.09056 5.59056 2.0863 9.34589 1.58559V0.208633H11.6408V1.58559ZM11.6825 16.1062C14.1861 15.6472 16.1889 13.6444 16.6479 11.1408H12.3919V8.84588H16.6062C16.1472 6.34233 14.1444 4.33949 11.6408 3.88051V8.09482H9.34588V3.88051C6.84233 4.33949 4.83949 6.34233 4.38051 8.84588H8.63655V11.1408H4.42223C4.88122 13.6444 6.88406 15.6472 9.38761 16.1062V11.8919H11.6825V16.1062Z" fill="#758599" />
-                                </svg>
-                            </i>
-                            Catalogs
+                            
+                               
+                            <div class="sidenav">
+                                <button onClick={handleClick} className="dropdown-btn">
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="20"
+                                        height="20"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        class="jss266"
+                                    >
+                                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                                        <circle cx="9" cy="7" r="4" />
+                                        <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                                        <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                                    </svg>
+                                    <span>Customer</span>
+                                    <svg
+                                        class="MuiSvgIcon-root"
+                                        focusable="false"
+                                        viewBox="0 0 24 24"
+                                        aria-hidden="true"
+                                    >
+                                        <path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z" />
+                                    </svg>
+
+                                    <div className={buttonstate ? "allStyle" : "noneStyle"}>
+                                        <a href="/">List Customer</a>
+                                        <a href="/">View Customer</a>
+                                        <a href="/">EditCustomer</a>
+                                    </div>
+                                </button>
+
+                            </div>
                         </NavLink>
                     </li>
                     <li className="sidebar__list">
