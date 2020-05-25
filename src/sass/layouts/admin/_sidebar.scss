@@ -173,8 +173,8 @@ body .sidebar__list .active{
 .dropdown-btn span:hover {
   background-color: rgb(91, 96, 105);
 }
-
-.MuiSvgIcon-root,.MuiSvgIcon-root-2,.MuiSvgIcon-root-3 {
+//style for up and down arrow in drop down menu
+.MuiSvgIcon_root_2 ,.MuiSvgIcon_root_3 {
   fill: currentColor;
   width: 1em;
   height: 1em;
@@ -183,28 +183,29 @@ body .sidebar__list .active{
   flex-shrink: 0;
   float: right;
 }
+.MuiSvgIcon_root_2 {
+    display: none;
+  }
+  .MuiSvgIcon_root_3 {
+    display: block;
+  }
 
-.allStyle {
+.all_style {
  height: 110px;
 
   transition: height 550ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
-.noneStyle {
+.none_style {
   height: 0px;
   transition: height 550ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
   overflow:hidden;
 
 }
-.noneStyle a,.allStyle a {//remove .noneStyle a to see intresting animation
+.none_style a,.all_style a {//remove .noneStyle a to see intresting animation
     margin-top: .5rem;
     margin-left: 1.75rem;
     
   }
-  .MuiSvgIcon-root-2 {
-    display: none;
-  }
-  .MuiSvgIcon-root-3 {
-    display: block;
-  
-    
-  }
+  .sidebar-button-icons{
+      width: 1.2rem;
+      filter: brightness(0) invert(1);  }
