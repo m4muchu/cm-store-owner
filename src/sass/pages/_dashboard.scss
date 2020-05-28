@@ -1,9 +1,9 @@
 
     .dash_card{
         box-shadow: 0 0 1px 0 rgba(0,0,0,0.70), 0 3px 4px -2px rgba(0,0,0,0.50);  
-        color: #e6e5e8;
+        color: $cm-black;
         transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-        background-color: #282C34;
+        background-color: $cm-white;
         margin-bottom: 1.5rem;
         height: 6.688rem;
   }
@@ -60,7 +60,6 @@ right: 2rem;
 font-size: 1.25rem;
 align-items: center;
 flex-shrink: 0;
-font-family: "Roboto", "Helvetica", "Arial", sans-serif;
 line-height: 1;
 border-radius: 50%;
 justify-content: center;
@@ -83,22 +82,41 @@ background-color: #8a85ff;
 
 
 //   ACTIVITY CARD STYLES START------------------------------------------------------->
-.dash_activity_card {
+.dash_activity_card,  .dash_topproduct_card ,.minireport_container_main  {
     box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.7), 0 3px 4px -2px rgba(0, 0, 0, 0.5);
-    color: #e6e5e8;
+    color: $cm-black;
     transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    background-color: #282c34;
+    background-color:#EAEAEA;
     margin-bottom: 1.5rem;
     height: auto;
     border-radius: 4px;
     letter-spacing: 0.01rem;
-    background-color: #282c34;
+    background-color: $cm-white;
     font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    padding-bottom: 1rem;
   }
-  .card-text {
+  .dash_activity_card .card-body{
+      padding: 0rem!important;
+
+  }
+ .dash_activity_card-text{
+      margin-bottom: 0;
+  }
+  .dash_activity_card-text_time
+  {
+color:#616161;
+  }
+  .dash_activity_card-text{
     padding-left: 1rem;
-    padding-bottom: 0.1rem;
+    padding-top: 1rem;
+    padding-right: .3rem;
+
   }
+  .dash_activity_card-text_time
+  {
+    font-size: 0.875rem;
+    padding-left: 1rem;
+}
   
   .card-title {
     font-size: 16px;
@@ -108,35 +126,24 @@ background-color: #8a85ff;
     padding-left: 1rem;
     padding-top: 1rem;
   }
+//   COMMON DIVIDER LINE FOR ALL CARDS------->
   .MuiDivider-root {
     border: none;
     height: 1px;
     margin: 0;
-    background-color: rgba(255, 255, 255, 0.12);
+    background-color:$cm-light-grey2!important;
   }
   
 
 //   ACTIVITY CARD STYLES END------------------------------------------------------->
 
 
+//  TOP PRODUCT  STYLES START------------------------------------------------------->
 
-  //TOP PRODUCT STYLES
-
-  .dash_topproduct_card {
-    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.7), 0 3px 4px -2px rgba(0, 0, 0, 0.5);
-    color: #e6e5e8;
-    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    background-color: #282c34;
-    margin-bottom: 1.5rem;
-    height: auto;
-    border-radius: 4px;
-    letter-spacing: 0.01rem;
-    background-color: #282c34;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  }
   .topproduct_cardcard-text {
     padding-left: 1rem;
-    padding-bottom: 0rem;
+    margin-bottom: 0rem !important;
+    line-height: 1.5;
   }
   
   .card-title {
@@ -146,15 +153,15 @@ background-color: #8a85ff;
     letter-spacing: 0.08rem;
     padding: 1rem;
   }
-  .MuiDivider-root {
-    border: none;
-    height: 1px;
-    margin: 0;
-    background-color: rgba(255, 255, 255, 0.12);
-  }
+ 
   .topproduct_data_container {
     display: flex;
+    position: relative;
   }
+  .topproduct_data p:first-child {
+      padding-top: 1rem;
+  }
+
   .topproduct_img_container {
     width: 64px;
     height: 64px;
@@ -176,6 +183,7 @@ background-color: #8a85ff;
   .topproduct_data_price {
     position: absolute;
     right: 3rem;
+    top: 1.5rem;
   }
   
 // TOP PRODUCT STYLE END---------------------------->  
@@ -184,17 +192,6 @@ background-color: #8a85ff;
 
   // MINI_REPORT STYLE START->  
 
-.minireport_container_main {
-    box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.7), 0 3px 4px -2px rgba(0, 0, 0, 0.5);
-    color: #e6e5e8;
-    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    background-color: #282c34;
-    margin-bottom: 1.5rem;
-    height: auto;
-    border-radius: 4px;
-    letter-spacing: 0.01rem;
-    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  }
   .minireport_text {
     padding-left: 1rem;
     padding-top: 1rem;
@@ -202,12 +199,7 @@ background-color: #8a85ff;
     padding-bottom: 0rem;
   }
   
-  .MuiDivider-root {
-    border: none;
-    height: 1px;
-    margin: 0;
-    background-color: rgba(255, 255, 255, 0.12);
-  }
+
   .minireport_inner_container {
     display: flex;
   }
@@ -216,12 +208,7 @@ background-color: #8a85ff;
     right: 3rem;
   }
   
-  .MuiDivider-root {
-    border: none;
-    height: 1px;
-    margin: 0;
-    background-color: rgba(255, 255, 255, 0.12);
-  }
+
   
   .MuiTableCell-root {
     font-size: 0.875rem;
@@ -247,24 +234,58 @@ background-color: #8a85ff;
   
   // MINI_REPORT STYLE END---------------------------->  
 
-  @media only screen and (min-width: 768px) {
-  .dashboard_main{
+
+
+//   MEDIA QUERY START_____________________________________---->
+@media only screen and (max-width: 400px) and (min-width: 300px)  {
+    .topproduct_data_price {
+        right: 1rem;
+       
+      }
+}
+
+
+
+  @media only screen and (min-width: 992px) {
+  .dash_layout_main,.dashboard_main{
       display: flex;
       flex-direction: row;
+      width: 100%;
+      justify-content: space-between;
   }
   .dash_card{
     box-shadow: 0 0 1px 0 rgba(0,0,0,0.70), 0 3px 4px -2px rgba(0,0,0,0.50);  
-    color: #e6e5e8;
+    color: $cm-black;
     transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    background-color: #282C34;
-    width: 20%;
+    background-color: $cm-white;
+   
 }
-
-//tp
 .topproduct_data_price {
     position: absolute;
     right: 5rem;
     padding: 1rem;
   }
+
+
+.dash_layout_inner_container  {
+    width: 47.563vw;
+    position: relative;
+
+     }
+
+     .dash_activity_card
+    {
+        width: 19.625vw;
+        }
+     .dash_card{
+        width:21.625vw; 
+    }
+    .dash_card_layout{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;   
+
+    }
+
 
 }
