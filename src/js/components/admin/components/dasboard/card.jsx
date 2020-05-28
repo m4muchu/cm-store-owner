@@ -2,7 +2,6 @@ import React from 'react'
 
 function Card(props) {
     return (
-
         <div className="card dash_card">
             <div className="card-body dash_body">
                 <div className=" dash_body_left">

@@ -1,7 +1,6 @@
 import React from 'react';
- const MiniReport = () => {
+const MiniReport = () => {
     return (
-        
         <div className="minireport_container_main">
             <div className="minireport_inner_container">
                 <div className="minireport_data">
@@ -37,7 +36,6 @@ import React from 'react';
                 </div>
             </div>
             <hr className="MuiDivider-root" />
-
             <div className="minireport_inner_container">
                 <div className="minireport_data">
                     <p className="minireport_text">No products out of stock</p>
