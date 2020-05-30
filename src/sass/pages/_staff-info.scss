@@ -29,7 +29,6 @@
     margin: 0;
     background-color: rgba(255, 255, 255, 0.12);
   }
-  
   .input_name {
     margin-top: 2rem;
     margin: 0 auto;
@@ -45,10 +44,6 @@
     height: 100vw;
     margin: 0 auto;
     margin-left: 1rem;
-
-    // position: absolute;
-    // left: 50vw;
-    // top: 10vw;
   }
   .password_instructions {
     color: #282c34;
@@ -75,13 +70,12 @@
     object-fit: cover;
     text-align: center;
   }
-  
   .form_password_cotainer p {
     position: absolute;
     right: 1rem;
     top: 0.9rem;
   }
-  footer {
+  .staff_setting_action_buttons {
     display: flex;
     justify-content: flex-end;
   }
@@ -100,8 +94,6 @@
     line-height: 1.75;
     border-radius: 4px;
     text-transform: uppercase;
-    /* position: absolute; */
-    /* right: 0; */
     margin-left: 2rem;
   }
   .back-button {
@@ -117,16 +109,10 @@
     line-height: 1.75;
     border-radius: 4px;
     text-transform: uppercase;
-    /* position: absolute; */
-    /* right :6rem; */
   }
+
 //   preference_CARD SETTINGS
 
-// .preference_card{
-//     width: 20rem !important;
-//     min-width: 2vw!important;
-
-// }
   @media only screen and (min-width: 992px) {
       .section_left_container{
           display: flex;
@@ -144,13 +130,11 @@
       display: flex;
       flex-direction: column;
     }
-  
-    .input_name {
+  .input_name {
       margin-left: 2rem;
       margin-top: .4rem;
       width: 18.188vw;
-      
-    }
+      }
     .admin_settings_card {
       width: 52.063vw;
       min-width: 40vw;
@@ -160,9 +144,7 @@
         width: 25rem !important;
          min-width: 2vw!important;
          height: 20rem;
-        
-    
-    }
+        }
   
   }
   @media only screen and (max-width: 374px) {

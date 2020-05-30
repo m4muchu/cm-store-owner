@@ -38,7 +38,7 @@ export function StaffInfo() {
                     <div className="admin_settings_card password_card common">
                         <div className="form_password_cotainer">
                             <h5 className="card-title password-title">password</h5>
-                            <p className="change_password"onClick={handleShow}>change your password</p>
+                            <p className="change_password" onClick={handleShow}>change your password</p>
                         </div>
                         <hr className="MuiDivider-root" />
                         <div className="password_warning">
@@ -128,9 +128,7 @@ export function StaffInfo() {
                 <div className="admin_settings_card preference_card common">
                     <div className="preference_heading_cotainer">
                         <p className="card-title">preferences</p>
-
                     </div>
-
                     <hr className="MuiDivider-root" />
                     <div className="preference_warn">
                         <p>
@@ -139,14 +137,11 @@ export function StaffInfo() {
                          </p>
                     </div>
                 </div>
-
-
-              
             </div >
-            <footer>
-                    <button className="back-button">BACK</button>
-                    <button className="save-button">SAVE</button>
-                </footer>
+            <div  className="staff_setting_action_buttons">
+                <button className="back-button">BACK</button>
+                <button className="save-button">SAVE</button>
+            </div>
         </div>
     );
 }
