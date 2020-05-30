@@ -27,9 +27,8 @@ export const Header = () => {
                                     {/* <li >  <svg class="MuiSvgIcon_root_3" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path></svg> </li> */}
                                 </Dropdown.Toggle>
                                 <Dropdown.Menu alignRight>
-                                    <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-                                    <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-1">Account setting</Dropdown.Item>
+                                    <Dropdown.Item href="#/action-2">Logout</Dropdown.Item>
                                 </Dropdown.Menu>
                             </Dropdown>
                         </li>
