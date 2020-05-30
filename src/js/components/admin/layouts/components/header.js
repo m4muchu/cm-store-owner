@@ -1,21 +1,44 @@
 import React from 'react';
+import { useState } from 'react';
 
 import {
     Navbar,
     Nav,
     NavItem,
+    Dropdown
 } from 'react-bootstrap';
 
 export const Header = () => {
-
-    const sidemenuToggle = () => {
+const sidemenuToggle = () => {
         document.getElementById("sidebarNav").classList.toggle("open");
     }
-
     return (
         <Navbar color="white" light expand="lg" className="admin-navbar-head">
-            <div className="d-flex ml-auto hide-lg">
-                <Nav>
+            <div className=" hide-lg">
+                
+            <div className="header_top_icons_container">
+                <ul className="header_top_icons">
+                <li  className="header_menu bell ">    <svg className="MuiSvgIcon-root" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg></svg> </li>
+
+                    <li className=" MuiAvatar-circle header_menu profile_pic  "><img alt="User" src="" className="MuiAvatar-img" /> </li>
+
+                    <li  className="header_menu storename  ">   STORE NAME </li>
+                    <li>
+                    <Dropdown >
+                        <Dropdown.Toggle className="header_down_arrow header_menu"    >
+                            {/* <li >  <svg class="MuiSvgIcon_root_3" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path></svg> </li> */}
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu  alignRight>
+                            <Dropdown.Item href="#/action-1">Action</Dropdown.Item>
+                            <Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
+                            <Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
+                        </Dropdown.Menu>
+                        </Dropdown>
+                        </li>    
+                </ul>
+                </div>
+            </div>
+            <Nav>
                     <NavItem>
                         <Navbar.Toggle
                             className="ml-2"
@@ -25,10 +48,7 @@ export const Header = () => {
                         />
                     </NavItem>
                 </Nav>
-                <p>test
-                    
-                </p>
-            </div>
+
             {/* <Navbar.Collapse navbar className="main-header">
                 <Nav className="ml-auto main-header-right" navbar>
                     <NavItem>

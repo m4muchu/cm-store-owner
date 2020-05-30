@@ -222,8 +222,71 @@
     }
 }
 
-/* Bootstrap breakpoints Media Query Starts*/
+.header_top_icons_container{
+    padding-bottom:0rem;
 
+
+}
+//TOP ICONS STYLES______________________________________________________------------->
+.header_top_icons{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 40vw;
+    list-style: none;
+    align-items: center;
+}
+.header_top_icons li
+{
+    display:inline-block;
+    padding-left:.2rem;
+}
+.header_top_icons li:first-child{
+    margin-left: -2.5rem;
+    
+}
+// REMOVING BOOTSTRAP DrOPDOWN STYLE------------>
+.btn-primary, {
+    color: #000000;
+    background-color: #ffffff;
+    border-color: #ffffff;
+}
+.btn-primary:hover{
+    background-color: #8a85ff;
+    border-color: #ffffff;
+}
+//END+______________________
+.profile_pic 
+
+{
+    width: 40px;
+    height: 40px;
+    display: flex;
+    overflow: hidden;
+    font-size: 1.25rem;
+    align-items: center;
+    flex-shrink: 0;
+    border-radius: 50%;
+    justify-content: center;
+    color: #fff;
+    width: 48px;
+    height: 48px;
+    background-color: #8a85ff;
+  }
+.MuiAvatar-img {
+    color: transparent;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    text-align: center;
+    // text-indent: 10000px;
+
+}
+
+/* Bootstrap breakpoints Media Query Starts*/
+.navbar-toggler-icon {
+    margin-top: -1.5rem;
+}
 @media (max-width: 991.98px) {
     .navbar-light .navbar-toggler {
         border-color: transparent;
@@ -308,4 +371,56 @@
              fill: $cm-light-grey-10;
          }
      }
+}
+
+
+
+@media only screen and (min-width: 992px) 
+{
+.header_top_icons_container{
+    padding-bottom:3rem;
+    padding-top:-1rem;
+
+}
+//TOP ICONS STYLES______________________________________________________------------->
+.header_top_icons{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    width: 25vw;
+    list-style: none;
+    position:absolute;
+    align-items: center;
+
+    
+    right:1rem;
+    
+}
+.header_top_icons li{
+display:inline-block;
+padding-left:1rem;
+}
+.header_top_icons li:first-child{
+    margin-right: 1rem;
+}
+}
+
+@media only screen and (max-width: 475px) 
+{
+    .profile_pic{
+    display: none !important;
+
+}
+.header_top_icons
+{
+     width: 70vw;
+   }
+}
+@media only screen and (max-width: 768px)and (min-width: 475px)
+  {
+   
+    .header_top_icons
+{
+     width: 50vw;
+   }
 }
