@@ -222,12 +222,13 @@
     }
 }
 
-.header_top_icons_container{
-    padding-bottom:0rem;
 
 
 }
 //TOP ICONS STYLES______________________________________________________------------->
+.header_top_icons_container{
+    padding-bottom:0rem;
+
 .header_top_icons{
     display: flex;
     justify-content: space-between;
@@ -257,8 +258,7 @@
 }
 //END+______________________
 .profile_pic 
-
-{
+{   
     width: 40px;
     height: 40px;
     display: flex;
@@ -279,8 +279,6 @@
     height: 100%;
     object-fit: cover;
     text-align: center;
-    // text-indent: 10000px;
-
 }
 
 /* Bootstrap breakpoints Media Query Starts*/
@@ -373,14 +371,11 @@
      }
 }
 
-
-
 @media only screen and (min-width: 992px) 
 {
 .header_top_icons_container{
     padding-bottom:3rem;
     padding-top:-1rem;
-
 }
 //TOP ICONS STYLES______________________________________________________------------->
 .header_top_icons{
@@ -391,10 +386,7 @@
     list-style: none;
     position:absolute;
     align-items: center;
-
-    
     right:1rem;
-    
 }
 .header_top_icons li{
 display:inline-block;
@@ -402,14 +394,13 @@ padding-left:1rem;
 }
 .header_top_icons li:first-child{
     margin-right: 1rem;
-}
+    }
 }
 
 @media only screen and (max-width: 475px) 
 {
     .profile_pic{
     display: none !important;
-
 }
 .header_top_icons
 {
@@ -418,9 +409,8 @@ padding-left:1rem;
 }
 @media only screen and (max-width: 768px)and (min-width: 475px)
   {
-   
-    .header_top_icons
-{
-     width: 50vw;
-   }
+      .header_top_icons
+        {
+            width: 50vw;
+        }
 }
