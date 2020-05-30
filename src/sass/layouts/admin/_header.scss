@@ -224,11 +224,11 @@
 
 
 
-}
+
 //TOP ICONS STYLES______________________________________________________------------->
 .header_top_icons_container{
     padding-bottom:0rem;
-
+}
 .header_top_icons{
     display: flex;
     justify-content: space-between;
@@ -399,11 +399,12 @@ padding-left:1rem;
 
 @media only screen and (max-width: 475px) 
 {
-    .profile_pic{
+    .profile_pic
+    {
     display: none !important;
-}
+    }
 .header_top_icons
-{
+    {
      width: 70vw;
    }
 }
@@ -413,4 +414,4 @@ padding-left:1rem;
         {
             width: 50vw;
         }
-}
+    }
