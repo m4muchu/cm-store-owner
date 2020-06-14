@@ -31,7 +31,7 @@ const Notification = (props) => {
               </svg>
             </div>
             <div>
-              <p className="card-text">Your order was placed.</p>
+              <p className="notification-card-text">Your order was placed.</p>
               <p className="card-subtext">dummy text</p>
             </div>
           </div>
@@ -60,7 +60,7 @@ const Notification = (props) => {
               </svg>
             </div>
             <div>
-              <p className="card-text">Your order was placed.</p>
+              <p className="notification-card-text">Your order was placed.</p>
               <p className="card-subtext">dummy text</p>
             </div>
           </div>
@@ -89,7 +89,7 @@ const Notification = (props) => {
               </svg>
             </div>
             <div>
-              <p className="card-text">Your order was placed.</p>
+              <p className="notification-card-text">Your order was placed.</p>
               <p className="card-subtext">dummy text</p>
             </div>
           </div>
@@ -118,7 +118,7 @@ const Notification = (props) => {
               </svg>
             </div>
             <div>
-              <p className="card-text">Your order was placed.</p>
+              <p className="notification-card-text">Your order was placed.</p>
               <p className="card-subtext">dummy text</p>
             </div>
           </div>
@@ -147,7 +147,7 @@ const Notification = (props) => {
               </svg>
             </div>
             <div>
-              <p className="card-text">Your order was placed.</p>
+              <p className="notification-card-text">Your order was placed.</p>
               <p className="card-subtext">dummy text</p>
             </div>
           </div>
@@ -176,7 +176,7 @@ const Notification = (props) => {
               </svg>
             </div>
             <div>
-              <p className="card-text">Your order was placed.</p>
+              <p className="notification-card-text">Your order was placed.</p>
               <p className="card-subtext">dummy text</p>
             </div>
           </div>
