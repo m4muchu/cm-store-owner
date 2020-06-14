@@ -1,159 +1,164 @@
 .admin_settings_card {
-    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-    color: $cm-black;
-    background-color: $cm-white;
-    margin-bottom: 1.5rem;
-    height: auto;
-    border-radius: 4px;
-    letter-spacing: 0.01rem;
-    padding-bottom: 2rem;
-    width: 80vw;
-    min-width: 40vw;
-    margin:0 auto;
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  color: $cm-black;
+  background-color: $cm-white;
+  margin-bottom: 1.5rem;
+  height: auto;
+  border-radius: 4px;
+  letter-spacing: 0.01rem;
+  padding-bottom: 2rem;
+  width: 80vw;
+  min-width: 40vw;
+  margin: 0 auto;
+}
+.common {
+  margin-top: 2rem;
+}
+.password_warning,
+.preference_warn {
+  padding: 1rem;
+  p {
+    font-size: 14px;
   }
-  .common{
-      margin-top: 2rem;
-  }
-  .password_warning {
-    padding: 1rem;
-  }
-  .card-title {
-    font-size: 16px;
-    font-weight: 500;
-    letter-spacing: 0.08rem;
-    padding: 1rem;
-  }
-  .MuiDivider-root {
-    border: none;
-    height: 1px;
-    margin: 0;
-    background-color: rgba(255, 255, 255, 0.12);
-  }
-  .input_name {
-    margin-top: 2rem;
-    margin: 0 auto;
-    width: 90%;
-    padding: 0.5rem;
-  }
-  
-  .form_password_cotainer {
-    position: relative;
-  }
-  .moda {
-    width: 90vw;
-    height: 100vw;
-    margin: 0 auto;
-    margin-left: 1rem;
-  }
-  .password_instructions {
-    color: #282c34;
-    font-size: 0.7rem;
-    // margin-left: 1rem;
-  }
-  .admin_settings_img_container {
-    width: 64px;
-    height: 64px;
-    border-radius: 50%;
-    border: 1 px solid white;
-    background-color: #e6e5e8;
-    padding: 4px;
-    overflow: hidden;
-    position: relative;
-    align-items: center;
-    flex-shrink: 0;
-    margin: 1rem;
-    margin-top: 2rem;
-  }
-  .admin_settings_img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    text-align: center;
-  }
-  .form_password_cotainer p {
-    position: absolute;
-    right: 1rem;
-    top: 0.9rem;
-  }
-  .staff_setting_action_buttons {
-    display: flex;
-    justify-content: flex-end;
-  }
-  .save-button {
-    background-color: #06847b;
-    text-align: center;
-    color: white;
-    padding: 6px 16px;
-    font-size: 0.875rem;
-    min-width: 64px;
-    box-sizing: border-box;
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+}
+::placeholder {
+  font-size: 14px;
+}
+.card-title {
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.08rem;
+  padding: 1rem;
+}
+.MuiDivider-root {
+  border: none;
+  height: 1px;
+  margin: 0;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+.input_name {
+  margin-top: 2rem;
+  margin: 0 auto;
+  width: 90%;
+  padding: 0.5rem;
+}
+
+.form_password_cotainer {
+  position: relative;
+}
+.moda {
+  width: 90vw;
+  height: 100vw;
+  margin: 0 auto;
+  margin-left: 1rem;
+}
+.password_instructions {
+  color: #282c34;
+  font-size: 0.7rem;
+  // margin-left: 1rem;
+}
+.admin_settings_img_container {
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  border: 1 px solid white;
+  background-color: #e6e5e8;
+  padding: 4px;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+  flex-shrink: 0;
+  margin: 1rem;
+  margin-top: 2rem;
+}
+.admin_settings_img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  text-align: center;
+}
+.form_password_cotainer p {
+  position: absolute;
+  right: 1rem;
+  top: 0.9rem;
+}
+.staff_setting_action_buttons {
+  display: flex;
+  justify-content: flex-end;
+}
+.save-button {
+  background-color: #06847b;
+  text-align: center;
+  color: white;
+  padding: 6px 16px;
+  font-size: 0.875rem;
+  min-width: 64px;
+  box-sizing: border-box;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
     border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    font-weight: 500;
-    line-height: 1.75;
-    border-radius: 4px;
-    text-transform: uppercase;
-    margin-left: 2rem;
-  }
-  .back-button {
-    color: #3d3d3d;
-    padding: 6px 16px;
-    font-size: 0.875rem;
-    min-width: 64px;
-    box-sizing: border-box;
-    transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-      box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
-      border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-    font-weight: 500;
-    line-height: 1.75;
-    border-radius: 4px;
-    text-transform: uppercase;
-  }
+  font-weight: 500;
+  line-height: 1.75;
+  border-radius: 4px;
+  text-transform: uppercase;
+  margin-left: 2rem;
+}
+.back-button {
+  color: #3d3d3d;
+  padding: 6px 16px;
+  font-size: 0.875rem;
+  min-width: 64px;
+  box-sizing: border-box;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-weight: 500;
+  line-height: 1.75;
+  border-radius: 4px;
+  text-transform: uppercase;
+}
 
 //   preference_CARD SETTINGS
 
-  @media only screen and (min-width: 992px) {
-      .section_left_container{
-          display: flex;
-          flex-direction: row;
-      }
-    .form_password_cotainer {
-      display: flex;
-      position: relative;
-    }
-    .admin_settings_data_container,
-    .staff_info_name {
-      display: flex;
-    }
-    .staff_info_name_container {
-      display: flex;
-      flex-direction: column;
-    }
+@media only screen and (min-width: 992px) {
+  .section_left_container {
+    display: flex;
+    flex-direction: row;
+  }
+  .form_password_cotainer {
+    display: flex;
+    position: relative;
+  }
+  .admin_settings_data_container,
+  .staff_info_name {
+    display: flex;
+  }
+  .staff_info_name_container {
+    display: flex;
+    flex-direction: column;
+  }
   .input_name {
-      margin-left: 2rem;
-      margin-top: .4rem;
-      width: 18.188vw;
-      }
-    .admin_settings_card {
-      width: 52.063vw;
-      min-width: 40vw;
-    }
-    .preference_card{
-        margin-left: 2rem;
-        width: 25rem !important;
-         min-width: 2vw!important;
-         height: 20rem;
-        }
-  
+    margin-left: 2rem;
+    margin-top: 0.4rem;
+    width: 18.188vw;
   }
-  @media only screen and (max-width: 374px) {
-    .form_password_cotainer p {
-      left: 1rem;
-      top: 3rem;
-    }
-    .password-title{
-        margin-bottom: 2rem;
-    }
+  .admin_settings_card {
+    width: 52.063vw;
+    min-width: 40vw;
   }
-  
+  .preference_card {
+    margin-left: 2rem;
+    width: 25rem !important;
+    min-width: 2vw !important;
+    height: 20rem;
+  }
+}
+@media only screen and (max-width: 374px) {
+  .form_password_cotainer p {
+    left: 1rem;
+    top: 3rem;
+  }
+  .password-title {
+    margin-bottom: 2rem;
+  }
+}

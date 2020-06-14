@@ -232,16 +232,20 @@
   list-style: none;
   position: absolute;
   align-items: center;
-  right: 10rem;
+  right: 8rem;
   top: 0.6rem;
   margin-right: 1rem;
 }
 .header_top_icons li {
   display: inline-block;
-  margin-left: 0.5rem;
+  margin-left: 0.8rem;
 }
 .storename {
-  font-size: 1rem;
+  display: none !important;
+  font-size: 14px;
+}
+.header-drop-link {
+  font-size: 14px;
 }
 .header_top_icons li:first-child {
   margin-left: -2.5rem;
@@ -286,6 +290,7 @@
 }
 
 /* Bootstrap breakpoints Media Query Starts*/
+
 .navbar-toggler-icon {
   margin-top: -1.5rem;
 }
@@ -376,27 +381,50 @@
   }
 }
 
+// ----------------------------------------------------------------------------------------------------------->
+@media only screen and (min-width: 1201px) {
+  .header_top_icons {
+    width: 21vw !important;
+    right: 0rem !important;
+  }
+}
+@media only screen and (max-width: 1200px) and (min-width: 1005px) {
+  .header_top_icons {
+    width: 25vw !important;
+    right: 0rem !important;
+  }
+}
+@media only screen and (max-width: 1004px) and (min-width: 993px) {
+  .header_top_icons {
+    width: 27vw !important;
+    right: 0rem !important;
+  }
+}
 @media only screen and (min-width: 992px) {
   .header_top_icons_container {
     padding-bottom: 3rem;
     padding-top: -1rem;
   }
+
   //TOP ICONS STYLES______________________________________________________------------->
   .header_top_icons {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    width: 8vw;
+    width: 16vw;
     list-style: none;
     position: absolute;
     align-items: center;
-    right: 5rem;
+    right: 3rem;
     margin-right: 1rem;
+  }
+  .storename {
+    display: block !important;
   }
 
   .header_top_icons li {
     display: inline-block;
-    margin-right: 0.8rem;
+    margin-right: 0.1rem;
   }
   .profile_pic {
     margin-right: 1rem;
@@ -405,6 +433,126 @@
   //     margin-right: 1rem;
   //     }
 }
+
+// NOTIFICATION STYLE START----------------------------------->
+.notification_container{
+    position: relative;
+}
+.MuiSvgIcon-root-2,
+.MuiSvgIcon-root-3 {
+  fill: currentColor;
+  width: 1em;
+  height: 1em;
+  display: inline-block;
+  font-size: 1.5rem;
+  transition: fill 200ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  flex-shrink: 0;
+}
+
+.allStyle {
+  height: 0px;
+  transition: height 350ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  background-color: #4d4d4d;
+  width: 20rem;
+}
+.noneStyle {
+  height: 0px;
+  overflow: hidden;
+  width: 20rem;
+  background-color: #4b4b4b;
+
+  transition: height 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+}
+.MuiSvgIcon-root-2 {
+  display: none;
+}
+.MuiSvgIcon-root-3 {
+  display: block;
+}
+.dash_notification_card {
+  box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.7), 0 3px 4px -2px rgba(0, 0, 0, 0.5);
+  color: #e6e5e8;
+  transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  background-color: #4e4e4e;
+  height: auto;
+  border-radius: 4px;
+  letter-spacing: 0.01rem;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  width: 20rem;
+  
+}
+.card-text {
+  padding-left: 1rem;
+  font-size: 14px;
+}
+
+.notifiaction_image {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1 px solid white;
+  background-color: #8a85ff;
+  padding: 4px;
+  overflow: hidden;
+  position: relative;
+  align-items: center;
+  flex-shrink: 0;
+  margin: 1rem;
+}
+.notification-card-title {
+  font-size: 16px;
+  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.1rem;
+  padding-left: 1rem;
+  padding-top: 1rem;
+ 
+}
+.MuiDivider-root {
+  border: none;
+  height: 1px;
+  margin: 0;
+  background-color: #8a85ff;
+}
+.message-svg {
+  width: 2rem;
+  margin-left: 0.27rem;
+  margin-top: 0.2rem;
+}
+.notification-content {
+  display: flex;
+  justify-content: flex-start;
+}
+.card-subtext {
+  padding-left: 1rem;
+  margin-top: -0.5rem;
+  font-size: 14px;
+}
+.notification-content-footer p {
+  text-transform: uppercase;
+  text-align: center;
+  margin: 0 auto;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  font-size: 14px;
+}
+.dash_notification_card {
+  height: 25rem;
+  overflow: hidden;
+  overflow-y: scroll;
+  z-index: 1000;
+  position: relative;
+  margin-top: 2rem;
+  display: inline-block;
+}
+.notification_container {
+  width: 1rem;
+}
+.navigation-drop-link {
+  font-size: 14px;
+}
+
+//NOTIFICATION STYLE END------------------------------------------------------------>
 
 @media only screen and (max-width: 475px) {
 }

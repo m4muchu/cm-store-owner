@@ -35,7 +35,7 @@ export const Sidebar = () => {
 
                     <li className="sidebar__list">
                         <NavLink to='/admin/dashboard' className="sidebar__list--text" activeClassName="active">
-                            <div class="sidenav">
+                            <div className="sidenav">
                                 <button className="dropdown-btn">
                                     <img src='/images/sidebar/home.svg' className="sidebar-button-icons" alt="" />
                                     <span className="text-uppercase">Dashboard</span>
@@ -85,8 +85,8 @@ export const Sidebar = () => {
                                     <svg className={state.order ? "MuiSvgIcon_root_3" : "MuiSvgIcon_root_2"} focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"></path></svg>
                                 </button>
                                 <div className={state.order ? "all_style" : "none_style"}>
-                                    <a href="/">Orders</a>
-                                    <a href="/">Drafts</a>
+                                    <a href="#/">Orders</a>
+                                    <a href="#/">Drafts</a>
                                 </div>
                             </div>
                         </NavLink>
