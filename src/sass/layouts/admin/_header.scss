@@ -228,13 +228,16 @@
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  width: 8vw;
+  width: 7vw;
   list-style: none;
   position: absolute;
   align-items: center;
-  right: 8rem;
+  right: 9rem;
   top: 0.6rem;
   margin-right: 1rem;
+}
+.header_down_arrow {
+  margin-right: 2rem !important;
 }
 .header_top_icons li {
   display: inline-block;
@@ -381,25 +384,8 @@
   }
 }
 
-// ----------------------------------------------------------------------------------------------------------->
-@media only screen and (min-width: 1201px) {
-  .header_top_icons {
-    width: 21vw !important;
-    right: 0rem !important;
-  }
-}
-@media only screen and (max-width: 1200px) and (min-width: 1005px) {
-  .header_top_icons {
-    width: 25vw !important;
-    right: 0rem !important;
-  }
-}
-@media only screen and (max-width: 1004px) and (min-width: 993px) {
-  .header_top_icons {
-    width: 27vw !important;
-    right: 0rem !important;
-  }
-}
+//CSS MEDIA QUERY FOR HEADER ICONS  ----------------------------------------------------------------------------------------------------------->
+
 @media only screen and (min-width: 992px) {
   .header_top_icons_container {
     padding-bottom: 3rem;
@@ -411,12 +397,11 @@
     display: flex;
     justify-content: space-between;
     flex-direction: row;
-    width: 16vw;
+    width: 20vw !important;
     list-style: none;
     position: absolute;
     align-items: center;
-    right: 3rem;
-    margin-right: 1rem;
+    right: -2rem !important;
   }
   .storename {
     display: block !important;
@@ -429,14 +414,33 @@
   .profile_pic {
     margin-right: 1rem;
   }
-  // .header_top_icons li:first-child{
-  //     margin-right: 1rem;
-  //     }
 }
+@media only screen and (max-width: 1355px) and (min-width: 1005px) {
+    .header_top_icons {
+      width: 22vw !important;
+    }
+  }
+  @media only screen and (max-width: 1232px) and (min-width: 1080px) {
+    .header_top_icons {
+      width: 26vw !important;
+    }
+}
+    @media only screen and (max-width: 1080px) and (min-width: 993px) {
+        .header_top_icons {
+          width: 28vw !important;
+        }
+  }
+  //CSS MEDIA QUERY FOR HEADER ICONS ENDDDDDDDDDDD  ----------------------------------------------------------------------------------------------------------->
+
 
 // NOTIFICATION STYLE START----------------------------------->
-.notification_container{
-    position: relative;
+
+.notification_container {
+  position: relative;
+  display: flex;
+  justify-content: start;
+  align-items: flex-start;
+  
 }
 .MuiSvgIcon-root-2,
 .MuiSvgIcon-root-3 {
@@ -478,8 +482,9 @@
   border-radius: 4px;
   letter-spacing: 0.01rem;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  width: 20rem;
-  
+  width: 21rem;
+  position: absolute;
+  right: 6rem;
 }
 .notification-card-text {
   padding-left: 1rem;
@@ -507,7 +512,6 @@
   letter-spacing: 0.1rem;
   padding-left: 1rem;
   padding-top: 1rem;
- 
 }
 .MuiDivider-root {
   border: none;
