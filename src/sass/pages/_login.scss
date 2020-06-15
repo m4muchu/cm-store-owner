@@ -3,10 +3,11 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    background-color: $cm-back-ground-light;
 }
 
 .login-input-section{
-    padding: 22px 35px;
+    padding: 36px 35px 27px 35px;
     background-color: #282c34;
     color: $cm-white;
 
@@ -16,7 +17,7 @@
 
     input {
         margin: 40px 0;
-        height: 55px;
+        height: 50px;
     }
 
     .input-area{
@@ -26,7 +27,7 @@
     button {
         width: 100%;
         background-color: $cm-primary;
-        height: 50px;
+        height: 45px;
         font-weight: 600;
     }
 }

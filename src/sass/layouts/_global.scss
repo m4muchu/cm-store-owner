@@ -8,7 +8,7 @@
     float: left;
     z-index: 99;
     left: 260px;
-    background-color: #ECEFF3;
+    background-color: $cm-back-ground-light;
     @media (max-width: 991.98px) {
         width: calc(100% - 0px);
         left: 0;
@@ -32,7 +32,7 @@
 }
 
 .admin-footer{
-    background-color: #ECEFF3;
+    background-color: $cm-back-ground-light;
     padding:27px 0;
     text-align: center;
 

@@ -17,7 +17,7 @@ export const Login = () => {
                     </div>
                     <p className="forgot-password">Forgot Password ?</p>
                 </Col>
-                <Col lg="6" className="auth-image-section">
+                <Col lg="6" className="auth-image-section border">
                 </Col>
             </Row>
         </div>
