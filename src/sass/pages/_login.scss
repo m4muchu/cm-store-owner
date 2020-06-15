@@ -1,0 +1,50 @@
+.auth-wrap{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: $cm-back-ground-light;
+}
+
+.login-input-section{
+    padding: 36px 35px 27px 35px;
+    background-color: #282c34;
+    color: $cm-white;
+
+    h3{
+        font-weight: 600;
+    }
+
+    input {
+        margin: 40px 0;
+        height: 50px;
+    }
+
+    .input-area{
+        margin: 36px 0px;
+    }
+
+    button {
+        width: 100%;
+        background-color: $cm-primary;
+        height: 45px;
+        font-weight: 600;
+    }
+}
+
+.auth-submit-button{
+    &:hover {
+        background-color: #7977a8 !important;
+        color: $cm-white !important;
+    }
+    margin-top: 10px;
+    border-color: $cm-primary;
+}
+
+.auth-image-section{
+    background-image: url('/images/auth/auth-image.svg');
+    height: auto;
+    width: auto;
+    background-size: cover;
+    background-position: center;
+}
