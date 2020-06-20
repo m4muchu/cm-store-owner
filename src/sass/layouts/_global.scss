@@ -58,7 +58,18 @@
     width: 100%;
     float: left;
 }
-
+/* Hide scrollbar for Chrome, Safari and Opera */
+.base-container::-webkit-scrollbar {
+    display: none;
+  }
+  body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE and Edge */
+  .example {
+    -ms-overflow-style: none;
+  }
 .generic-page-header {
     white-space: nowrap;
 }

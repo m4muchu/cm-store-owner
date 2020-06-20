@@ -549,7 +549,17 @@
   position: relative;
   margin-top: 2rem;
   display: inline-block;
+
 }
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .dash_notification_card::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE and Edge */
+  .dash_notification_card {
+    -ms-overflow-style: none;
+  }
 .notification_container {
   width: 1rem;
 }
