@@ -1,0 +1,153 @@
+.common_settings_card {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  color: $cm-black;
+  background-color: $cm-white;
+  margin-bottom: 1.5rem;
+  height: auto;
+  border-radius: 4px;
+  letter-spacing: 0.01rem;
+  padding-bottom: 2rem;
+  width: 80vw;
+  min-width: 40vw;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+
+
+
+.MuiDivider-root {
+  border: none;
+  height: 1px;
+  margin: 0;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+footer {
+  display: flex;
+  justify-content: flex-end;
+}
+.save-button {
+  background-color: #06847b;
+  text-align: center;
+  color: white;
+  padding: 6px 16px;
+  font-size: 0.875rem;
+  min-width: 64px;
+  box-sizing: border-box;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-weight: 500;
+  line-height: 1.75;
+  border-radius: 4px;
+  text-transform: uppercase;
+  /* position: absolute; */
+  /* right: 0; */
+  margin-left: 2rem;
+}
+.back-button {
+  color: #3d3d3d;
+  padding: 6px 16px;
+  font-size: 0.875rem;
+  min-width: 64px;
+  box-sizing: border-box;
+  transition: background-color 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms,
+    border 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+  font-weight: 500;
+  line-height: 1.75;
+  border-radius: 4px;
+  text-transform: uppercase;
+  /* position: absolute; */
+  /* right :6rem; */
+}
+.input_name {
+    margin-top: 2rem;
+    margin: 0 auto;
+    width: 90%;
+    padding: 0.5rem;
+  }
+@media only screen and (min-width: 992px) {
+    .common_settings_card {
+         width: 60vw !important;
+         min-width: 50vw;
+ 
+     }
+     .common_details_container{
+         display: flex;
+         justify-content: flex-start;
+         flex-direction: column;
+         position: absolute;
+         left: 2rem;
+     }
+   
+   }
+
+//   //ADDITIONAL STYLES FOR SALES PAGE_ABOVE STYLES ARE FROM PREVIOUS PAGES
+
+.common_settings_card_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.common_settings_card_header p,
+.common_card_title {
+  margin-top: 1rem;
+  padding: 0.5rem;
+}
+
+.common_info_name_container input {
+  margin-left: 1rem;
+}
+.common_info_name_container input:first-child {
+  margin-top: 1rem;
+}
+.common_info_name_container label {
+  margin-left: 1rem;
+}
+.common_date_checkbox_data ul li p {
+  margin-left: 1rem;
+}
+.common_date_checkbox_data ul li {
+}
+.common_date_checkbox_data ul li {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  align-items: baseline;
+}
+.common_flex_row_data ul li {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  align-items: baseline;
+}
+.common_flex_row_data ul li p {
+  margin-left: 1rem;
+}
+.common_flex_row_data ul li span {
+  font-size: 0.7rem;
+}
+.usage_limit_container ul,
+.active_dates_data_container {
+  margin-top: 1rem;
+}
+.usage_limit_container ul li {
+  padding-right: 1rem;
+}
+.common_info_name_container label {
+  font-size: 14px !important;
+}
+input::placeholder {
+  font-size: 14px;
+}
+.common_date_checkbox_data ul li p {
+  font-size: 14px;
+}
+.common_card_title {
+  margin-left: 1rem;
+}
+.sales-global-header{
+    font-size: 20px;
+}
