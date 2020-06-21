@@ -23,8 +23,6 @@ export const Sidebar = () => {
         document.getElementById("sidebarNav").classList.toggle("open");
     }
 
-
-
     return (
         <div className="global-sidebar offcanvas-collapse" id="sidebarNav">
             <aside className="sidebar-wrapper sidebar-collapse shadow" >
@@ -32,9 +30,8 @@ export const Sidebar = () => {
                     <img src="/images/admin/global/logo.svg" className="sidebar__portal-logo" width="131px" alt="" />
                 </div>
                 <ul className="admin-sidebar text-left">
-
                     <li className="sidebar__list">
-                        <NavLink to='/admin/dashboard' className="sidebar__list--text" activeClassName="active">
+                        <NavLink to='/admin/dashboard' className="sidebar__list--text">
                             <div className="sidenav">
                                 <button className="dropdown-btn">
                                     <img src='/images/sidebar/home.svg' className="sidebar-button-icons" alt="" />
@@ -43,9 +40,8 @@ export const Sidebar = () => {
                             </div>
                         </NavLink>
                     </li>
-
                     <li className="sidebar__list">
-                        <NavLink to='/admin/trip-management' className="sidebar__list--text">
+                        <NavLink to='!#' className="sidebar__list--text">
                             <div className="sidenav">
                                 <button onClick={() => secondLevelMenuToggle('catalog')} className="dropdown-btn">
                                     <img src='/images/sidebar/catalog.svg' className="sidebar-button-icons " alt="" />

@@ -1,9 +1,11 @@
 import React from "react";
 import { useState } from "react";
-import imga from "./profile.png";
 
+import imga from "./profile.png";
 import { Navbar, Nav, NavItem, Dropdown } from "react-bootstrap";
 import Notification from "./notificarion";
+import { history } from 'js/helpers/history';
+
 export const Header = (props) => {
   const sidemenuToggle = () => {
     document.getElementById("sidebarNav").classList.toggle("open");
@@ -17,7 +19,7 @@ export const Header = (props) => {
       <div className=" hide-lg">
         <div className="header_top_icons_container">
           <ul className="header_top_icons">
-            <li className="header_menu bell  " onClick={handleClick}>
+            <li className="header_menu bell" onClick={handleClick}>
               <svg
                 className="MuiSvgIcon-root"
                 focusable="false"
@@ -43,7 +45,7 @@ export const Header = (props) => {
             </li>
 
             <li className=" MuiAvatar-circle header_menu profile_pic  ">
-              <img alt="User" src={imga} className="MuiAvatar-img" />{" "}
+              <img alt="User" src={'/images/sidebar/profile.jpeg'} className="MuiAvatar-img" />{" "}
             </li>
             <li className="header_menu storename  "> STORE NAME </li>
             <li>
@@ -53,7 +55,7 @@ export const Header = (props) => {
                 </Dropdown.Toggle>
                 <Dropdown.Menu alignRight>
                   <Dropdown.Item
-                    href="#/action-1"
+                    onClick={() => history.push('/admin/account-settings')}
                     className="navigation-drop-link"
                   >
                     Account setting

@@ -13,11 +13,11 @@ export function StaffInfo() {
             <div className="section_left_container">
                 <div className="admin_details_container">
                     <div className="admin_settings_card common">
-                        <h5 className="card-title">Staff member info</h5>
+                        <h5 className="card-title text-uppercase">Staff member info</h5>
                         <hr className="MuiDivider-root" />
                         <div className="admin_settings_data_container">
                             <div className="admin_settings_img_container">
-                                <img className="admin_settings_img" src={imga} alt="" />
+                                <img className="admin_settings_img" src={'/images/sidebar/profile.jpeg'} alt="" />
                             </div>
                             <div className="staff_info_name_container">
                                 <div className="staff_info_name">
@@ -37,7 +37,7 @@ export function StaffInfo() {
 
                     <div className="admin_settings_card password_card common">
                         <div className="form_password_cotainer">
-                            <h5 className="card-title password-title">password</h5>
+                            <h5 className="card-title password-title text-uppercase">password</h5>
                             <p className="change_password" onClick={handleShow}>change your password</p>
                         </div>
                         <hr className="MuiDivider-root" />
@@ -127,7 +127,7 @@ export function StaffInfo() {
 
                 <div className="admin_settings_card preference_card common">
                     <div className="preference_heading_cotainer">
-                        <p className="card-title">preferences</p>
+                        <p className="card-title text-uppercase">preferences</p>
                     </div>
                     <hr className="MuiDivider-root" />
                     <div className="preference_warn">
