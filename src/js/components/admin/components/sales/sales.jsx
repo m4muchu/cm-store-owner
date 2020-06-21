@@ -14,7 +14,10 @@ export const Sales = () => {
         <div className="common_settings_data_container">
           <div className="common_info_name_container">
             <div className="common_info_name">
-              <InputGroup className="mb-3 input_name input_pad" id="input_field_1">
+              <InputGroup
+                className="mb-3 input_name common_info_input_pad"
+                id="input_field_1"
+              >
                 <FormControl placeholder="Discount Code" />
               </InputGroup>
             </div>
@@ -49,14 +52,20 @@ export const Sales = () => {
         <div className="common_settings_data_container active_dates_data_container">
           <div className="common_date_container">
             <div>
-            <InputGroup className="mb-3 input_name input_pad" id="input_field_1">
-              <FormControl placeholder="start date" />
-            </InputGroup>
+              <InputGroup
+                className="mb-3 input_name input_pad"
+                id="input_field_1"
+              >
+                <FormControl placeholder="start date" />
+              </InputGroup>
             </div>
             <div>
-            <InputGroup className="mb-3 input_name input_pad" id="input_field_1">
-              <FormControl placeholder="start hour" />
-            </InputGroup>
+              <InputGroup
+                className="mb-3 input_name input_pad"
+                id="input_field_1"
+              >
+                <FormControl placeholder="start hour" />
+              </InputGroup>
             </div>
           </div>
           <div className="common_date_checkbox_data">
@@ -69,7 +78,6 @@ export const Sales = () => {
           </div>
         </div>
       </div>
-
     </div>
   );
 };

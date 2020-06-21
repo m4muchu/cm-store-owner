@@ -11,17 +11,15 @@
   min-width: 40vw;
   margin: 0 auto;
   margin-top: 2rem;
-
 }
-
+.common_info_input_pad {
+  margin-left: -0.5rem !important;
+}
 .MuiDivider-root {
-  border: none;
   height: 1px;
   margin: 0;
-  background-color: rgba(199, 197, 197, 0.98);
+  background-color: rgba(255, 255, 255, 0.12);
 }
-
-
 .input_name {
   margin-top: 2rem;
   margin: 0 auto;
@@ -33,14 +31,14 @@
     width: 60vw !important;
     min-width: 50vw;
   }
-  
+
   .common_date_container {
     display: flex;
     flex-direction: row;
-}
-.common_date_container div{
+  }
+  .common_date_container div {
     width: 90%;
-}
+  }
 }
 
 //   //ADDITIONAL STYLES FOR SALES PAGE_ABOVE STYLES ARE FROM PREVIOUS PAGES
@@ -53,9 +51,8 @@
 .common_settings_card_header p,
 .common_card_title {
   margin-top: 1rem;
-  margin-bottom: 0rem!important;
+  margin-bottom: 1rem !important;
 }
-
 .common_info_name_container input {
   margin-left: 1rem;
 }
@@ -67,8 +64,6 @@
 }
 .common_date_checkbox_data ul li p {
   margin-left: 1rem;
-}
-.common_date_checkbox_data ul li {
 }
 .common_date_checkbox_data ul li {
   list-style: none;
@@ -113,4 +108,3 @@ input::placeholder {
   font-size: 20px;
   font-weight: 600;
 }
-

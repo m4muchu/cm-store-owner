@@ -14,7 +14,7 @@ export const Voucher = () => {
         <div className="common_settings_data_container">
           <div className="common_info_name_container">
             <div className="common_info_name">
-              <InputGroup className="mb-3 input_name input_pad" id="input_field_1">
+              <InputGroup className="mb-3 input_name common_info_input_pad" id="input_field_1">
                 <FormControl placeholder="Discount Code" />
               </InputGroup>
             </div>
@@ -49,7 +49,7 @@ export const Voucher = () => {
         <div className="common_settings_data_container">
           <div className="common_info_name_container">
             <div className="common_info_name">
-              <InputGroup className="mb-3 input_name input_pad" id="input_field_1">
+              <InputGroup className="mb-3 input_name common_info_input_pad" id="input_field_1">
                 <FormControl placeholder="Discount Value" />
               </InputGroup>
             </div>
@@ -108,8 +108,8 @@ export const Voucher = () => {
               <FormControl placeholder="start hour" />
             </InputGroup>
           </div>
-          <div className="common_date_checkbox_data">
-            <ul>
+          <div className="general_info_input_pad">
+            <ul className="common_date_checkbox_data">
               <li>
                 <input type="checkbox" />
                 <p>set end date</p>

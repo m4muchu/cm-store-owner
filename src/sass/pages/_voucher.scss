@@ -13,15 +13,22 @@
 .common_flex_row_data p {
   font-size: 14px;
 }
-.value_checkbox{
-  margin-left: -2rem;
+.value_checkbox {
+  margin-left: -2.5rem;
 }
-.value_checkbox span{
-  margin-left: 0rem!important;
-
+.value_checkbox span {
+  margin-left: 0rem !important;
 }
-.common_date_checkbox_data ul li{
+.common_date_checkbox_data ul li {
   margin-left: -1.5rem;
-
-
+}
+.common_date_checkbox_data li {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  align-items: baseline;
+}
+.general_info_input_pad{
+  margin-left: -1.5rem;
 }

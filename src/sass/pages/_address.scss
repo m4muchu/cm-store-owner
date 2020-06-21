@@ -12,10 +12,11 @@
     margin: 0 auto;
     margin-top: 2rem;
   }
-  
+  .horizontal_line_pad{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
 
-  
-  
   /*  */
   .customer-checkbox-container {
     margin-top: 1rem;
@@ -26,7 +27,6 @@
     flex-direction: row;
     align-items: baseline;
   }
-  
   .customer_card_header p,
   .customer_card_header span {
     margin-left: 1rem;
@@ -39,11 +39,10 @@
     padding-top: -2rem;
   }
   
-
-  @media only screen and (min-width: 992px) {
+@media only screen and (min-width: 992px) {
     .customer_card {
-      width: 60vw !important;
-      min-width: 50vw;
+      width: 22vw !important;
+      min-width: 15vw;
     }
     .common_details_container {
       display: flex;
@@ -52,15 +51,22 @@
       position: absolute;
       left: 2rem;
     }
+    .address_block_flex_container{
+      display: flex;
+    }
+    .address_left_card{
+      width: 50vw !important; 
+      margin-right: 1.5rem;
+    }
   }
 
-  //SPECIFIC SIZES
+  //SPECIFIC SIZES ONLY START------------------------------------------------------------------>
 
   .customer_card_header p,.personal_info_card_title{
       font-size: 16px;
   }
   .common_card_title{
-      font-size: 20px;
+      font-size: 16px;
   }
   .common_settings_data_container {
       p{
@@ -107,11 +113,11 @@
     margin-left: 1rem;
 }
 .customer-checkbox-container{
-    margin-left: -1rem;
+    margin-left: -1.5rem;
 }
 
 .input_pad{
-    margin-left: 0rem;
+    margin-left: .5rem;
 }
 .admin_note{
     height: 5rem;
@@ -121,3 +127,4 @@
     margin-bottom: 0rem !important;
 
 }
+  //SPECIFIC SIZES END------------------------------------------------------------------>
