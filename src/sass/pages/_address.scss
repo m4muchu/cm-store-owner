@@ -16,7 +16,9 @@
     margin-top: 1rem;
     margin-bottom: 1rem;
   }
-
+.table{
+  margin-left: .1rem;
+}
   /*  */
   .customer-checkbox-container {
     margin-top: 1rem;
@@ -58,9 +60,12 @@
       width: 50vw !important; 
       margin-right: 1.5rem;
     }
+    .order_list_card{
+      margin-left: 0rem !important; 
+    }
   }
 
-  //SPECIFIC SIZES ONLY START------------------------------------------------------------------>
+  //SPECIFIC SIZES ONLY START
 
   .customer_card_header p,.personal_info_card_title{
       font-size: 16px;

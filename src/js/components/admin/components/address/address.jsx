@@ -94,6 +94,66 @@ export const Address = () => {
           </div>
         </div>
       </div>
+
+      <div className="customer_card address_left_card order_list_card">
+        <div className="customer_card_header ">
+          <p className="customer_card_title ">Recent Orders</p>
+        </div>
+        <table className="table table-hover">
+          <thead>
+            <tr>
+              <th scope="col">No. of Order</th>
+              <th scope="col">Date</th>
+              <th scope="col">Status</th>
+              <th scope="col">Total</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>3 month ago</td>
+              <td>fully paid</td>
+              <td>@mdo</td>
+            </tr>
+            <tr>
+              <th scope="row">2</th>
+              <td>Jacob</td>
+              <td>fully paid</td>
+              <td>@fat</td>
+            </tr>
+            <tr>
+              <th scope="row">3</th>
+              <td>4 month ago</td>
+
+              <td >fully paid</td>
+              <td>@twitter</td>
+            </tr>
+
+            <tr>
+              <th scope="row">4</th>
+              <td>6 month ago</td>
+
+              <td >Unpaid</td>
+              <td>@twitter</td>
+            </tr>
+
+            <tr>
+              <th scope="row">5</th>
+              <td>6 month ago</td>
+
+              <td >fully paid</td>
+              <td>@twitter</td>
+            </tr>
+            <tr>
+              <th scope="row">6</th>
+              <td>6 month ago</td>
+
+              <td >Upaid</td>
+              <td>@twitter</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 };
