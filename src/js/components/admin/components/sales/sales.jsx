@@ -5,7 +5,7 @@ import { Button, Modal, InputGroup, FormControl } from "react-bootstrap";
 export const Sales = () => {
   return (
     <div className="common_details_container">
-        <p className="sales-global-header">Create Sales</p>
+      <p className="sales-global-header">Create Sales</p>
       <div className="common_settings_card">
         <div className="common_settings_card_header">
           <p className="common_card_title">General Informations</p>
