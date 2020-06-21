@@ -14,7 +14,7 @@ export const Voucher = () => {
         <div className="common_settings_data_container">
           <div className="common_info_name_container">
             <div className="common_info_name">
-              <InputGroup className="mb-3 input_name" id="input_field_1">
+              <InputGroup className="mb-3 input_name input_pad" id="input_field_1">
                 <FormControl placeholder="Discount Code" />
               </InputGroup>
             </div>
@@ -49,13 +49,13 @@ export const Voucher = () => {
         <div className="common_settings_data_container">
           <div className="common_info_name_container">
             <div className="common_info_name">
-              <InputGroup className="mb-3 input_name" id="input_field_1">
+              <InputGroup className="mb-3 input_name input_pad" id="input_field_1">
                 <FormControl placeholder="Discount Value" />
               </InputGroup>
             </div>
             <hr className="MuiDivider-root" />
             <div className="common_flex_row_data">
-              <ul>
+              <ul className="value_checkbox">
                 <li>
                   <input type="checkbox" />
                   <p>
@@ -89,7 +89,7 @@ export const Voucher = () => {
             <label for="other">Minimum quantity of items</label>
           </div>
         </div>
-        <InputGroup className="mb-3 input_name" id="input_field_1">
+        <InputGroup className="mb-3 input_name input_pad" id="input_field_1">
           <FormControl placeholder="Minimum Quantity of items" />
         </InputGroup>
       </div>
@@ -101,10 +101,10 @@ export const Voucher = () => {
         <hr className="MuiDivider-root" />
         <div className="common_settings_data_container active_dates_data_container">
           <div className="common_date_container">
-            <InputGroup className="mb-3 input_name" id="input_field_1">
+            <InputGroup className="mb-3 input_name input_pad" id="input_field_1">
               <FormControl placeholder="start date" />
             </InputGroup>
-            <InputGroup className="mb-3 input_name" id="input_field_1">
+            <InputGroup className="mb-3 input_name input_pad" id="input_field_1">
               <FormControl placeholder="start hour" />
             </InputGroup>
           </div>
@@ -140,10 +140,7 @@ export const Voucher = () => {
         </div>
       </div>
 
-      <footer>
-        <button className="back-button">BACK</button>
-        <button className="save-button">SAVE</button>
-      </footer>
+     
     </div>
   );
 };

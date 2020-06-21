@@ -14,7 +14,7 @@ export const Sales = () => {
         <div className="common_settings_data_container">
           <div className="common_info_name_container">
             <div className="common_info_name">
-              <InputGroup className="mb-3 input_name" id="input_field_1">
+              <InputGroup className="mb-3 input_name input_pad" id="input_field_1">
                 <FormControl placeholder="Discount Code" />
               </InputGroup>
             </div>
@@ -48,12 +48,16 @@ export const Sales = () => {
         <hr className="MuiDivider-root" />
         <div className="common_settings_data_container active_dates_data_container">
           <div className="common_date_container">
-            <InputGroup className="mb-3 input_name" id="input_field_1">
+            <div>
+            <InputGroup className="mb-3 input_name input_pad" id="input_field_1">
               <FormControl placeholder="start date" />
             </InputGroup>
-            <InputGroup className="mb-3 input_name" id="input_field_1">
+            </div>
+            <div>
+            <InputGroup className="mb-3 input_name input_pad" id="input_field_1">
               <FormControl placeholder="start hour" />
             </InputGroup>
+            </div>
           </div>
           <div className="common_date_checkbox_data">
             <ul>
@@ -66,10 +70,6 @@ export const Sales = () => {
         </div>
       </div>
 
-      <footer>
-        <button className="back-button">BACK</button>
-        <button className="save-button">SAVE</button>
-      </footer>
     </div>
   );
 };
