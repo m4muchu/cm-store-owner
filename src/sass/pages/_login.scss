@@ -26,9 +26,13 @@
 
     button {
         width: 100%;
-        background-color: $cm-primary;
         height: 45px;
         font-weight: 600;
+    }
+
+    .btn-primary{
+        background-color: $cm-primary;
+        border-color: $cm-primary;
     }
 }
 

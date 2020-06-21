@@ -36,15 +36,15 @@
   background: $cm-dark-grey;
 }
 
-/* Handle */
-.admin-sidebar::-webkit-scrollbar-thumb {
-  background: $cm-primary;
-}
+/* Handle */  
+// .admin-sidebar::-webkit-scrollbar-thumb {
+//     background: $cm-primary;
+// }
 
-/* Handle on hover */
-.admin-sidebar::-webkit-scrollbar-thumb:hover {
-  background: $cm-primary;
-}
+// /* Handle on hover */
+// .admin-sidebar::-webkit-scrollbar-thumb:hover {
+//     background: $cm-primary;
+// }
 
 .sidebar__list--logo {
   padding: 19px 4px 19px 25px;
