@@ -41,13 +41,13 @@ export const FilterSelector = () => {
         <Form.Group>
             <div className="custom-react-select--no-border w-100">
                 <div>
-                    <div
+                    <button
                         onClick={handleClick}
                         onChange={() => handleChange}
                         className="filter-dropdown-btn"
                     >
                         FILTRE
-                    </div>
+                    </button>
                     <div
                         className={
                             buttonstate
