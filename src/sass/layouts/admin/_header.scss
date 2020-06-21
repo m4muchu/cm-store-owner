@@ -464,7 +464,6 @@
   overflow: hidden;
   width: 20rem;
   background-color: #4b4b4b;
-
   transition: height 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
 }
 .MuiSvgIcon-root-2 {
@@ -475,9 +474,9 @@
 }
 .dash_notification_card {
   box-shadow: 0 0 1px 0 rgba(0, 0, 0, 0.7), 0 3px 4px -2px rgba(0, 0, 0, 0.5);
-  color: #e6e5e8;
+  color: $cm-black;
   transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
-  background-color: #4e4e4e;
+  background-color: $cm-white;
   height: auto;
   border-radius: 4px;
   letter-spacing: 0.01rem;
@@ -565,6 +564,10 @@
 }
 .navigation-drop-link {
   font-size: 14px;
+}
+
+.header_menu {
+  cursor: pointer;
 }
 
 //NOTIFICATION STYLE END------------------------------------------------------------>
