@@ -4,6 +4,7 @@ import { Button, Modal, InputGroup, FormControl } from "react-bootstrap";
 export const Address = () => {
   return (
     <div className="common_details_container">
+      <p className="sales-global-header">Address</p>
       <div className="address_block_flex_container">
         <div className="customer_card address_left_card">
           <div className="customer_card_header ">
@@ -95,11 +96,11 @@ export const Address = () => {
         </div>
       </div>
 
-      <div className="customer_card address_left_card order_list_card">
+      <div className="customer_card address_left_card order_list_card address_table">
         <div className="customer_card_header ">
           <p className="customer_card_title ">Recent Orders</p>
         </div>
-        <table className="table table-hover">
+        <table className="table table-hover address_table">
           <thead>
             <tr>
               <th scope="col">No. of Order</th>
@@ -125,7 +126,7 @@ export const Address = () => {
               <th scope="row">3</th>
               <td>4 month ago</td>
 
-              <td >fully paid</td>
+              <td>fully paid</td>
               <td>@twitter</td>
             </tr>
 
@@ -133,7 +134,7 @@ export const Address = () => {
               <th scope="row">4</th>
               <td>6 month ago</td>
 
-              <td >Unpaid</td>
+              <td>Unpaid</td>
               <td>@twitter</td>
             </tr>
 
@@ -141,14 +142,14 @@ export const Address = () => {
               <th scope="row">5</th>
               <td>6 month ago</td>
 
-              <td >fully paid</td>
+              <td>fully paid</td>
               <td>@twitter</td>
             </tr>
             <tr>
               <th scope="row">6</th>
               <td>6 month ago</td>
 
-              <td >Upaid</td>
+              <td>Upaid</td>
               <td>@twitter</td>
             </tr>
           </tbody>
