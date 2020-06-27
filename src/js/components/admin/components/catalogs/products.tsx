@@ -3,6 +3,7 @@ import { Button, Table, Row, Col, Form } from "react-bootstrap";
 import Select from "react-select";
 import AsyncSelect from "react-select/async";
 import { FilterSelector } from 'js/components/common';
+import { history } from 'js/helpers';
 
 interface BulkActionItem {
     value: string,
@@ -41,11 +42,11 @@ export const Products = () => {
 							/>
 							</svg>
 						</i>
-						Columns
+						Export To Excel
           			</Button>
 					<Button
 						className="add-new-btn text-uppercase"
-					// onClick={() => history.push('/admin/leads/add-lead')}
+					    onClick={() => history.push('/admin/create-product')}
 					>
 						<i>
 							<svg
