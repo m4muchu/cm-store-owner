@@ -2,9 +2,8 @@
 
 .allStyle-filter {
     height: 130px;
-    transition: height 350ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
     width: 16rem;
-    color: #212529;
+    color: $cm-black;
     z-index: 10001;
     position: absolute;
 
@@ -12,11 +11,11 @@
   .filter-dropdown-btn{
       line-height: 20px;
       height: calc(1.5em + .75rem + 2px);
-      width: 4rem;
-      color: #212529;
+      width: 7rem;
+      color: #A4ADB9;
+      background-color: #F3F5F7;
       border: none;
       border-radius: 3px;
-      background-color: #F3F5F7;
 
 
   }
@@ -24,22 +23,23 @@
     height: 0px;
     overflow: hidden;
     width: 16rem;
-    background-color: #4b4b4b;
+    background-color: $cm-white;
     z-index: 10001;
     position: absolute;
-  
-    transition: height 250ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    color: $cm-black;
   }
   
   .filter_card {
-    color: #e6e5e8;
-    transition: box-shadow 300ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    color: $cm-black;
     background-color: #282c34;
     margin-bottom: 1.5rem;
     height: auto;
     border-radius: 4px;
     letter-spacing: 0.01rem;
-    background-color: #282c34;
+    background-color: $cm-white;
+    margin-top: 1.5rem;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+
   }
   .card-text {
     padding-bottom: 0.1rem;
@@ -54,7 +54,6 @@
     padding-top: 1rem;
   }
   .MuiDivider-root-filter {
-    border: none;
     height: 1px;
     margin: 0;
     background-color: rgba(255, 255, 255, 0.12);

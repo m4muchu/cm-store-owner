@@ -19,6 +19,7 @@ export const FilterSelector = () => {
 
 
     const handleClick = (e: any) => {
+        e.preventDefault();
 		return (
 			setButton(!buttonstate)
 		)
@@ -32,22 +33,18 @@ export const FilterSelector = () => {
 		return menuToggle({ ...state });
 	};
 
-	const handleChange = (e: any) => {
-		console.log("calslds")
-		e.preventDefault()
-	}
+
 
     return (
         <Form.Group>
             <div className="custom-react-select--no-border w-100">
                 <div>
-                    <div
+                    <button
                         onClick={handleClick}
-                        onChange={() => handleChange}
                         className="filter-dropdown-btn"
                     >
-                        FILTRE
-                    </div>
+                        FILTER
+                    </button>
                     <div
                         className={
                             buttonstate
