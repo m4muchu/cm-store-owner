@@ -19,9 +19,11 @@
     }
     span{
         color: $cm-primary;
+        cursor: pointer;
     }
     .upload-icon{
          @extend %position-relative;
+         cursor: pointer;
     }
    
 }
