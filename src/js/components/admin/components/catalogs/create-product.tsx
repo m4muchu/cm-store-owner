@@ -1,7 +1,7 @@
 import React from 'react';
 import { Button, Table, Row, Col, Form } from "react-bootstrap";
 import Select from "react-select";
-import { EditorComponent } from 'js/components/common';
+import { EditorComponent, FileUploadComponent, ImageSortable } from 'js/components/common';
 import classnames from 'classnames';
 
 
@@ -12,8 +12,14 @@ export const CreateProduct = () => {
         <section className="crearte-products-section">
             <div className="generic-page-header">
                 <h2 className="page-head my-0">Create Product</h2>
+                <Button
+                    className="add-new-btn"
+                //onClick={() => history.push('/admin/create-product')}
+                >
+                    Save Changes
+          		</Button>
             </div>
-            <Row>
+            <Row className="mt-5">
                 <Col md={8}>
                     <div className="dash_activity_card">
                         <h5 className="card-title">General Informations</h5>
@@ -31,6 +37,39 @@ export const CreateProduct = () => {
                                 // content={state.description}
                                 // onChange={(content) => handleChange(content, 'description')}
                                 />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="dash_activity_card mt-4">
+                        <div className="d-flex justify-content-between">
+                            <h5 className="card-title">Images</h5>
+                        </div>
+                        <hr className="MuiDivider-root" />
+                        <div className="card-data-wrapper">
+                            <div className="upload-photo-wrap">
+                                <div className="photo-uploader">
+                                    <FileUploadComponent
+                                        entity_type='TripMedia'
+                                        multiple={true}
+                                        max={10}
+                                        accepted={['image/*']}
+                                    // onSuccess={props.onAddNewFiles}
+                                    />
+                                </div>
+                                <ImageSortable files={[{attachment_url:'https://picsum.photos/200/300'},{attachment_url:'https://picsum.photos/200/200'},{attachment_url:'https://picsum.photos/200/204'}]}/>
+                                <div className="drag-drop-text">
+                                    <h4>
+                                        <img src="/images/admin/global/arrow.svg" alt="" />
+                                        Drag and drop photos to best represent your listing.
+                                    </h4>
+                                </div>
+                                <div className="drag-drop-text">
+                                    <h4>
+                                        <img src="/images/admin/global/info.svg" alt="" />
+                                        You can only add upto 10 files at a time, max Size of file should be less than 2mb
+                                    </h4>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -134,6 +173,15 @@ export const CreateProduct = () => {
                     </div>
                 </Col>
             </Row>
+            {/* 
+            <Row className="mt-5 d-flex justify-content-center">
+                <Button
+                    className="add-new-btn text-uppercase"
+                    //onClick={() => history.push('/admin/create-product')}
+                >
+                    Create Product
+          			</Button>
+            </Row> */}
         </section>
     )
 }
