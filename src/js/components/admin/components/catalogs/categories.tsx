@@ -16,7 +16,7 @@ const BulkActionItems: BulkActionItem[] = [
     { value: 'un_publish', label: 'Unpublish' }
 ]
 
-export const Products = () => {
+export const Categories = () => {
 
 	const [bulk_action, setBulkAction] = useState();
 	
@@ -75,22 +75,6 @@ export const Products = () => {
 									<Row>
 										<Col xs="12" lg="6">
 											<Form.Group>
-												<div className="custom-react-select w-100">
-													<Select
-														placeholder="Bulk Action"
-														className="react-select-container"
-														classNamePrefix="react-select"
-														options={BulkActionItems}
-														//styles={styles}
-														onChange={(e: any) => {
-															setBulkAction(e.value);
-														}}
-													/>
-												</div>
-											</Form.Group>
-										</Col>
-										<Col xs="12" lg="6">
-											<Form.Group>
 												<div className="filter-input--outer">
 													<Form.Control
 														type="text"
@@ -98,29 +82,6 @@ export const Products = () => {
 														id=""
 														placeholder="Search Products"
 													//onChange={(e) => onParamsChange('search', e.target.value)}
-													/>
-												</div>
-											</Form.Group>
-										</Col>
-									</Row>
-								</Col>
-								<Col xs="12" lg="5">
-									<Row>
-										<Col xs="12" md="6">
-											<FilterSelector />
-										</Col>
-										<Col xs="12" md="6">
-											<Form.Group>
-												<div className="custom-react-select w-100">
-													<Select
-														placeholder="Status"
-														className="react-select-container"
-														classNamePrefix="react-select"
-													// options={lookups.lead_status}
-													// styles={styles}
-													// onChange={(e) => {
-													//     onParamsChange('status', e.value);
-													// }}
 													/>
 												</div>
 											</Form.Group>
@@ -150,9 +111,9 @@ export const Products = () => {
 											/>
 										</div>
 									</th>
-									<th>Name</th>
-									<th>Type</th>
-									<th>ABV</th>
+									<th>Category Name</th>
+									<th>Subcategories</th>
+									<th>No. of Products</th>
 									<th>Size</th>
 									<th>Material</th>
 									<th>Color</th>
