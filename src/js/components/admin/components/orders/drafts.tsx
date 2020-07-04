@@ -44,7 +44,7 @@ export const Drafts = () => {
 						</i>
 						Export To Excel
           			</Button>
-					<Button
+					{/* <Button
 						className="add-new-btn text-uppercase"
 						onClick={() => history.push('/admin/create-product')}
 					>
@@ -63,7 +63,7 @@ export const Drafts = () => {
 							</svg>
 						</i>
 						Create Order
-          			</Button>
+          			</Button> */}
 				</div>
 			</div>
 			<div className="cm-admin-card">

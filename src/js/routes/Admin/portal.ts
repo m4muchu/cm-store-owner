@@ -12,7 +12,9 @@ import { Sales } from 'js/components/admin/components/discount/sales/sales';
 import { CreateSale } from 'js/components/admin/components/discount/sales/create-sale';
 import { Vouchers } from 'js/components/admin/components/discount/vouchers/vouchers';
 import { CreateVoucher } from 'js/components/admin/components/discount/vouchers/create-voucher';
-
+import { CreateVariant } from 'js/components/admin/components/catalogs/create-variant';
+import { CreateCategory } from 'js/components/admin/components/catalogs/categories/create-category';
+import { CreateCollection } from 'js/components/admin/components/catalogs/collections/create-collection';
 
 
 export const portalRoutes = [
@@ -21,12 +23,28 @@ export const portalRoutes = [
         component: Products
     },
     {
+        path: "/admin/create-product",
+        component: CreateProduct
+    },
+    {
+        path: "/admin/create-variant",
+        component: CreateVariant
+    },
+    {
         path: "/admin/categories",
         component: Categories
     },
     {
+        path: "/admin/create-category",
+        component: CreateCategory
+    },
+    {
         path: "/admin/collections",
         component: Collections
+    },
+    {
+        path: "/admin/create-collection",
+        component: CreateCollection
     },
     {
         path: "/admin/orders",
@@ -59,10 +77,6 @@ export const portalRoutes = [
     {
         path: "/admin/address",
         component: Address
-    },
-    {
-        path: "/admin/create-product",
-        component: CreateProduct
     },
     {
         path: "/admin/account-settings",

@@ -62,7 +62,7 @@ export const Products = () => {
 							/>
 							</svg>
 						</i>
-						Add Product
+						Create Product
           			</Button>
 				</div>
 			</div>

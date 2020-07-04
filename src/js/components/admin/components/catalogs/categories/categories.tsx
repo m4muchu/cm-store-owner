@@ -46,7 +46,7 @@ export const Categories = () => {
           			</Button>
 					<Button
 						className="add-new-btn text-uppercase"
-						onClick={() => history.push('/admin/create-product')}
+						onClick={() => history.push('/admin/create-category')}
 					>
 						<i>
 							<svg
@@ -62,7 +62,7 @@ export const Categories = () => {
 								/>
 							</svg>
 						</i>
-						Add Category
+						Create Category
           			</Button>
 				</div>
 			</div>
