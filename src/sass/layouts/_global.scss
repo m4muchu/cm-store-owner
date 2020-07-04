@@ -1,12 +1,69 @@
-.text-uppercase {
-  text-transform: uppercase;
+.base-container {
+    width: 100%;
+    float: left;
+}
+.global-content {
+    width: calc(100% - 260px);
+    position: relative;
+    float: left;
+    z-index: 99;
+    left: 260px;
+    background-color: $cm-back-ground-light;
+    @media (max-width: 991.98px) {
+        width: calc(100% - 0px);
+        left: 0;
+    }
+}
+
+.global-datawrap {
+    padding-top: 0px;
+    position: relative;
+    min-height: 100vh;
+    max-width: 100%;
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+}
+.global-datawrap__inner {
+    padding: 25px 33px;
+    @media (max-width: 991.98px) {
+       padding: 25px 15px;
+    }
+}
+
+.admin-footer{
+    background-color: $cm-back-ground-light;
+    padding:27px 0;
+    text-align: center;
+
+    p{
+        font-family: 'Open Sans', sans-serif;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 12px;
+        line-height: 30px;
+        color: #758599;
+        margin:0;
+        padding:0;
+    }
 }
 
 .global-data-wrap {
   width: 100%;
   float: left;
 }
-
+/* Hide scrollbar for Chrome, Safari and Opera */
+.base-container::-webkit-scrollbar {
+    display: none;
+  }
+  body::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE and Edge */
+  .example {
+    -ms-overflow-style: none;
+  }
 .generic-page-header {
   white-space: nowrap;
 }
@@ -161,3 +218,22 @@
 .cm-filter {
   width: 100%;
 }
+
+.card-data-wrapper{
+    padding: 1.3rem;
+}
+
+.reminder-text {
+    font-size: 0.8rem;
+    color: #616161;
+}
+
+.sweet-loading{
+    @extend %position-relative;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $cm-primary;
+}
+ 

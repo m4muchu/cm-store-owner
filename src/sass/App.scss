@@ -13,9 +13,16 @@
 @import "pages/sales";
 @import "pages/address";
 @import "pages/voucher";
+@import 'pages/login';
+@import 'pages/dashboard';
+@import 'pages/staff-info';
+@import 'pages/create-product';
 
-@import "components/button";
-@import "components/react-select";
-@import "components/input";
-@import "components/table";
-@import "components/form";
+
+@import 'components/button';
+@import 'components/react-select';
+@import 'components/input';
+@import 'components/table';
+@import 'components/form';
+@import 'components/editor';
+@import 'components/file-uploader';
