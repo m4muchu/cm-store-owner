@@ -115,8 +115,8 @@ export const Sidebar = () => {
                                     <svg className={state.discount ? "MuiSvgIcon_root_3" : "MuiSvgIcon_root_2"} focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"></path></svg>
                                 </button>
                                 <div className={state.discount ? "all_style" : "none_style"}>
-                                    <a href="/">Sales</a>
-                                    <a href="/">Vouchers</a>
+                                    <NavLink to="/admin/sales">Sales</NavLink>
+                                    <NavLink to="/admin/voucher">Vouchers</NavLink>
                                 </div>
                             </div>
                         </NavLink>
