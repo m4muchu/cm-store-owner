@@ -20,7 +20,7 @@ export const CreateProduct = () => {
           		</Button>
             </div>
             <Row className="mt-5">
-                <Col md={8}>
+                <Col xl={8}>
                     <div className="dash_activity_card">
                         <h5 className="card-title">General Informations</h5>
                         <hr className="MuiDivider-root" />
@@ -57,7 +57,7 @@ export const CreateProduct = () => {
                                     // onSuccess={props.onAddNewFiles}
                                     />
                                 </div>
-                                <ImageSortable files={[{attachment_url:'https://picsum.photos/200/300'},{attachment_url:'https://picsum.photos/200/200'},{attachment_url:'https://picsum.photos/200/204'}]}/>
+                                <ImageSortable files={[{ attachment_url: 'https://picsum.photos/200/300' }, { attachment_url: 'https://picsum.photos/200/200' }, { attachment_url: 'https://picsum.photos/200/204' }]} />
                                 <div className="drag-drop-text">
                                     <h4>
                                         <img src="/images/admin/global/arrow.svg" alt="" />
@@ -75,11 +75,106 @@ export const CreateProduct = () => {
                     </div>
 
                     <div className="dash_activity_card mt-4">
-                        <h5 className="card-title">Pricing</h5>
+                        <h5 className="card-title">Attributes</h5>
                         <hr className="MuiDivider-root" />
                         <div className="card-data-wrapper">
-                            <div className="input-area">
+                            <div className="attributes-wrapper d-flex justify-content-between align-items-center">
+                                <div className="text-area-attributes">
+                                    <span className="mb-3">Material</span>
+                                </div>
+                                <div className="custom-react-select w-50">
+                                    <Select
+                                        placeholder="Type"
+                                        className="react-select-container"
+                                        classNamePrefix="react-select"
+                                    //options={BulkActionItems}
+                                    //styles={styles}
+                                    // onChange={(e: any) => {
+                                    //     setBulkAction(e.value);
+                                    // }}
+                                    />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="dash_activity_card mt-4">
+                        <h5 className="card-title">Pricing</h5>
+                        <div className="cm-admin-checkbox card-sub-title">
+                            <Form.Check
+                                type="checkbox"
+                                id="tt-check-lead-select-all"
+                                className="cc-checkbox"
+                                // onChange={(e) => selectAll(e.target.checked)}
+                                // checked={state.select_all ? state.select_all : false}
+                                label="Charge taxes for this item"
+                            />
+                        </div>
+                        <hr className="MuiDivider-root" />
+                        <div className="card-data-wrapper">
+                            <div className="input-area w-50">
                                 <Form.Control type="number" placeholder="Price" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div className="dash_activity_card mt-4">
+                        <div className="d-flex justify-content-between">
+                            <h5 className="card-title">Variants</h5>
+                            <span className="card-title-right text-uppercase">Create Variants</span>
+                        </div>
+                        <hr className="MuiDivider-root" />
+                        <div className="card-data-wrapper">
+                            <div className="cm-admin-card--data">
+                                <div className="table-wrap">
+                                    <Table
+                                        responsive
+                                        className="cm-admin-table-compact cm-admin-table-compact--checkbox "
+                                    >
+                                        <thead>
+                                            <tr>
+                                                <th>
+                                                    <div className="cm-admin-checkbox">
+                                                        <Form.Check
+                                                            type="checkbox"
+                                                            id="tt-check-lead-select-all"
+                                                            className="cc-checkbox"
+                                                        // onChange={(e) => selectAll(e.target.checked)}
+                                                        // checked={state.select_all ? state.select_all : false}
+                                                        />
+                                                    </div>
+                                                </th>
+                                                <th>Variant</th>
+                                                <th>SKU</th>
+                                                <th>Price</th>
+                                                <th>Inventory</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr>
+                                                <td>
+                                                    <div className="tt-admin-checkbox">
+                                                        <Form.Check
+                                                            type="checkbox"
+                                                            // id={'tt-check' + lead.lead_id}
+                                                            className="tt-checkbox"
+                                                        // onChange={(e) => {
+                                                        //     setState({
+                                                        //         ...state, selected_lead: { ...state.selected_lead, [lead.lead_id]: e.target.checked }
+                                                        //     });
+                                                        // }}
+                                                        // checked={state.selected_lead[lead.lead_id] ? state.selected_lead[lead.lead_id] : false}
+                                                        />
+                                                    </div>
+                                                </td>
+                                                <td>test</td>
+                                                <td>test</td>
+                                                <td>test</td>
+                                                <td>test</td>
+                                            </tr>
+                                        </tbody>
+                                    </Table>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -101,7 +196,7 @@ export const CreateProduct = () => {
                         </div>
                     </div>
                 </Col>
-                <Col md={4}>
+                <Col xl={4}>
                     <div className="dash_activity_card">
                         <h5 className="card-title">Organize Product</h5>
                         <hr className="MuiDivider-root" />

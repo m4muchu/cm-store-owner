@@ -75,7 +75,7 @@ export const Products = () => {
 									<Row>
 										<Col xs="12" lg="6">
 											<Form.Group>
-												<div className="custom-react-select--no-border w-100">
+												<div className="custom-react-select w-100">
 													<Select
 														placeholder="Bulk Action"
 														className="react-select-container"
@@ -111,7 +111,7 @@ export const Products = () => {
 										</Col>
 										<Col xs="12" md="6">
 											<Form.Group>
-												<div className="custom-react-select--no-border w-100">
+												<div className="custom-react-select w-100">
 													<Select
 														placeholder="Status"
 														className="react-select-container"
