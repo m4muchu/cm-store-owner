@@ -91,12 +91,12 @@ export const Products = () => {
 										</Col>
 										<Col xs="12" lg="6">
 											<Form.Group>
-												<div className="filter-input--outer">
+												<div className="filter-input">
 													<Form.Control
 														type="text"
 														name=""
 														id=""
-														placeholder="Search Products"
+														placeholder="Search Product"
 													//onChange={(e) => onParamsChange('search', e.target.value)}
 													/>
 												</div>
