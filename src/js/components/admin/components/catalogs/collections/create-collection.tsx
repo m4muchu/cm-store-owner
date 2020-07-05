@@ -6,13 +6,12 @@ import classnames from 'classnames';
 import { history } from 'js/helpers';
 
 
-export const CreateProduct = () => {
-
+export const CreateCollection = () => {
 
     return (
         <section className="crearte-products-section">
             <div className="generic-page-header">
-                <h2 className="page-head my-0">Create Product</h2>
+                <h2 className="page-head my-0">Create Collection</h2>
                 <Button
                     className="add-new-btn"
                 //onClick={() => history.push('/admin/create-product')}
@@ -44,7 +43,7 @@ export const CreateProduct = () => {
 
                     <div className="dash_activity_card mt-4">
                         <div className="d-flex justify-content-between">
-                            <h5 className="card-title">Images</h5>
+                            <h5 className="card-title">Background Images (Optional)</h5>
                         </div>
                         <hr className="MuiDivider-root" />
                         <div className="card-data-wrapper">
@@ -75,54 +74,11 @@ export const CreateProduct = () => {
                         </div>
                     </div>
 
-                    <div className="dash_activity_card mt-4">
-                        <h5 className="card-title">Attributes</h5>
-                        <hr className="MuiDivider-root" />
-                        <div className="card-data-wrapper">
-                            <div className="attributes-wrapper d-flex justify-content-between align-items-center">
-                                <div className="text-area-attributes">
-                                    <span className="mb-3">Material</span>
-                                </div>
-                                <div className="custom-react-select w-50">
-                                    <Select
-                                        placeholder="Type"
-                                        className="react-select-container"
-                                        classNamePrefix="react-select"
-                                    //options={BulkActionItems}
-                                    //styles={styles}
-                                    // onChange={(e: any) => {
-                                    //     setBulkAction(e.value);
-                                    // }}
-                                    />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="dash_activity_card mt-4">
-                        <h5 className="card-title">Pricing</h5>
-                        <div className="cm-admin-checkbox card-sub-title">
-                            <Form.Check
-                                type="checkbox"
-                                id="tt-check-lead-select-all"
-                                className="cc-checkbox"
-                                // onChange={(e) => selectAll(e.target.checked)}
-                                // checked={state.select_all ? state.select_all : false}
-                                label="Charge taxes for this item"
-                            />
-                        </div>
-                        <hr className="MuiDivider-root" />
-                        <div className="card-data-wrapper">
-                            <div className="input-area w-50">
-                                <Form.Control type="number" placeholder="Price" />
-                            </div>
-                        </div>
-                    </div>
 
                     <div className="dash_activity_card mt-4">
                         <div className="d-flex justify-content-between">
-                            <h5 className="card-title">Variants</h5>
-                            <span className="card-title-right text-uppercase" onClick={() => history.push('/admin/create-variant')}>Create Variants</span>
+                            <h5 className="card-title">Products in Summer collection</h5>
+                            <span className="card-title-right text-uppercase" onClick={() => history.push('/admin/create-variant')}>Assign Products</span>
                         </div>
                         <hr className="MuiDivider-root" />
                         <div className="card-data-wrapper">
@@ -145,10 +101,9 @@ export const CreateProduct = () => {
                                                         />
                                                     </div>
                                                 </th>
-                                                <th>Variant</th>
-                                                <th>SKU</th>
-                                                <th>Price</th>
-                                                <th>Inventory</th>
+                                                <th>Name</th>
+                                                <th>Type</th>
+                                                <th>Published</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -168,7 +123,6 @@ export const CreateProduct = () => {
                                                         />
                                                     </div>
                                                 </td>
-                                                <td>test</td>
                                                 <td>test</td>
                                                 <td>test</td>
                                                 <td>test</td>
@@ -199,51 +153,6 @@ export const CreateProduct = () => {
                 </Col>
                 <Col xl={4}>
                     <div className="dash_activity_card">
-                        <h5 className="card-title">Organize Product</h5>
-                        <hr className="MuiDivider-root" />
-                        <div className="card-data-wrapper">
-                            <div className="custom-react-select w-100">
-                                <Select
-                                    placeholder="Product Type"
-                                    className="react-select-container"
-                                    classNamePrefix="react-select"
-                                //options={BulkActionItems}
-                                //styles={styles}
-                                // onChange={(e: any) => {
-                                //     setBulkAction(e.value);
-                                // }}
-                                />
-                            </div>
-                            <hr className="MuiDivider-root" />
-                            <div className="custom-react-select w-100">
-                                <Select
-                                    placeholder="Category"
-                                    className="react-select-container"
-                                    classNamePrefix="react-select"
-                                //options={BulkActionItems}
-                                //styles={styles}
-                                // onChange={(e: any) => {
-                                //     setBulkAction(e.value);
-                                // }}
-                                />
-                            </div>
-                            <hr className="MuiDivider-root" />
-                            <div className="custom-react-select w-100">
-                                <Select
-                                    placeholder="Collections"
-                                    className="react-select-container"
-                                    classNamePrefix="react-select"
-                                //options={BulkActionItems}
-                                //styles={styles}
-                                // onChange={(e: any) => {
-                                //     setBulkAction(e.value);
-                                // }}
-                                />
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="dash_activity_card mt-4">
                         <h5 className="card-title">Visibility</h5>
                         <hr className="MuiDivider-root" />
                         <div className="card-data-wrapper">
@@ -256,7 +165,7 @@ export const CreateProduct = () => {
                                     name="visibility"
                                 />
                             </div>
-                            <div className="custom-radio-button w-100 mt-3">
+                            <div className="custom-radio-button w-100">
                                 <Form.Check
                                     type='radio'
                                     id={`default-2`}

@@ -6,24 +6,24 @@ import { FilterSelector } from 'js/components/common';
 import { history } from 'js/helpers';
 
 interface BulkActionItem {
-    value: string,
-    label: string,
+	value: string,
+	label: string,
 }
 
 const BulkActionItems: BulkActionItem[] = [
-    { value: 'delete', label: 'Delete' },
-    { value: 'publish', label: 'Publish' },
-    { value: 'un_publish', label: 'Unpublish' }
+	{ value: 'delete', label: 'Delete' },
+	{ value: 'publish', label: 'Publish' },
+	{ value: 'un_publish', label: 'Unpublish' }
 ]
 
-export const Products = () => {
+export const Vouchers = () => {
 
 	const [bulk_action, setBulkAction] = useState();
-	
+
 	return (
 		<section className="products-section">
 			<div className="generic-page-header">
-				<h2 className="page-head my-0">Products</h2>
+				<h2 className="page-head my-0">Vouchers</h2>
 				<div className="header-data-section">
 					<Button className="coloumn-btn mr-3 text-uppercase">
 						<i>
@@ -34,19 +34,19 @@ export const Products = () => {
 								fill="none"
 								xmlns="http://www.w3.org/2000/svg"
 							>
-							<path
-								fillRule="evenodd"
-								clipRule="evenodd"
-								d="M14.728 12.8206H11.9003L9.97152 10.0926L7.94478 12.8206H5.10477L8.62819 8.38936L5.78315 4.51387H8.6517L9.98439 6.62121L11.4044 4.51387H14.3233L11.3406 8.38936L14.728 12.8206ZM18.4585 16.6071H1.66699V0.570107H18.4585V16.6071ZM3.2801 14.994H16.8426V2.18433H3.2801"
-								fill="#10C56E"
-							/>
+								<path
+									fillRule="evenodd"
+									clipRule="evenodd"
+									d="M14.728 12.8206H11.9003L9.97152 10.0926L7.94478 12.8206H5.10477L8.62819 8.38936L5.78315 4.51387H8.6517L9.98439 6.62121L11.4044 4.51387H14.3233L11.3406 8.38936L14.728 12.8206ZM18.4585 16.6071H1.66699V0.570107H18.4585V16.6071ZM3.2801 14.994H16.8426V2.18433H3.2801"
+									fill="#10C56E"
+								/>
 							</svg>
 						</i>
 						Export To Excel
           			</Button>
 					<Button
 						className="add-new-btn text-uppercase"
-					    onClick={() => history.push('/admin/create-product')}
+						onClick={() => history.push('/admin/create-product')}
 					>
 						<i>
 							<svg
@@ -56,13 +56,13 @@ export const Products = () => {
 								fill="none"
 								xmlns="http://www.w3.org/2000/svg"
 							>
-							<path
-								d="M5.03027 7.77295H0.171875V5.6001H5.03027V0.619629H7.22754V5.6001H12.0981V7.77295H7.22754V12.729H5.03027V7.77295Z"
-								fill="#fff"
-							/>
+								<path
+									d="M5.03027 7.77295H0.171875V5.6001H5.03027V0.619629H7.22754V5.6001H12.0981V7.77295H7.22754V12.729H5.03027V7.77295Z"
+									fill="#fff"
+								/>
 							</svg>
 						</i>
-						Create Product
+						Create Voucher
           			</Button>
 				</div>
 			</div>
@@ -96,31 +96,8 @@ export const Products = () => {
 														type="text"
 														name=""
 														id=""
-														placeholder="Search Product"
+														placeholder="Search Category"
 													//onChange={(e) => onParamsChange('search', e.target.value)}
-													/>
-												</div>
-											</Form.Group>
-										</Col>
-									</Row>
-								</Col>
-								<Col xs="12" lg="5">
-									<Row>
-										<Col xs="12" md="6">
-											<FilterSelector />
-										</Col>
-										<Col xs="12" md="6">
-											<Form.Group>
-												<div className="custom-react-select w-100">
-													<Select
-														placeholder="Status"
-														className="react-select-container"
-														classNamePrefix="react-select"
-													// options={lookups.lead_status}
-													// styles={styles}
-													// onChange={(e) => {
-													//     onParamsChange('status', e.value);
-													// }}
 													/>
 												</div>
 											</Form.Group>
@@ -150,18 +127,12 @@ export const Products = () => {
 											/>
 										</div>
 									</th>
-									<th>Name</th>
-									<th>Type</th>
-									<th>ABV</th>
-									<th>Size</th>
-									<th>Material</th>
-									<th>Color</th>
-									<th>Volume</th>
-									<th className="sortable" onClick={() => console.log("tets")}>
-										Status
-                  					</th>
-									<th>Price</th>
-									<th>Actions</th>
+									<th>Code</th>
+									<th>Min. Spent</th>
+									<th>Starts</th>
+									<th>Ends</th>
+									<th>Value</th>
+									<th>Uses</th>
 								</tr>
 							</thead>
 							<tbody>
@@ -181,7 +152,6 @@ export const Products = () => {
 											/>
 										</div>
 									</td>
-									<td>test</td>
 									<td>test</td>
 									<td>test</td>
 									<td>test</td>

@@ -2,7 +2,7 @@ import { fchmodSync } from "fs";
 import React from "react";
 import { Button, Modal, InputGroup, FormControl } from "react-bootstrap";
 
-export const Sales = () => {
+export const CreateSale = () => {
   return (
     <div className="common_details_container">
       <p className="sales-global-header">Create Sales</p>

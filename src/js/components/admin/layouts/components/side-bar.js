@@ -41,7 +41,7 @@ export const Sidebar = () => {
                         </NavLink>
                     </li>
                     <li className="sidebar__list">
-                        <NavLink to='!#' className="sidebar__list--text">
+                        <NavLink to='/admin/products' className="sidebar__list--text">
                             <div className="sidenav">
                                 <button onClick={() => secondLevelMenuToggle('catalog')} className="dropdown-btn">
                                     <img src='/images/sidebar/catalog.svg' className="sidebar-button-icons " alt="" />
@@ -58,14 +58,14 @@ export const Sidebar = () => {
                                 </button>
                                 <div className={state.catalog ? "all_style" : "none_style"}>
                                     <NavLink to="/admin/products">Products</NavLink>
-                                    <NavLink to="!#">Category</NavLink>
-                                    <NavLink to="!#">Collection</NavLink>
+                                    <NavLink to="/admin/categories">Category</NavLink>
+                                    <NavLink to="/admin/collections">Collection</NavLink>
                                 </div>
                             </div>
                         </NavLink>
                     </li>
                     <li className="sidebar__list">
-                        <NavLink to='/admin/user-management' className="sidebar__list--text">
+                        <NavLink to='/admin/orders' className="sidebar__list--text">
                             <div className="sidenav">
                                 <button onClick={() => secondLevelMenuToggle('order')} className="dropdown-btn">
                                     <img src='/images/sidebar/order.svg' className="sidebar-button-icons"alt=""  />
@@ -81,25 +81,24 @@ export const Sidebar = () => {
                                     <svg className={state.order ? "MuiSvgIcon_root_3" : "MuiSvgIcon_root_2"} focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 8l-6 6 1.41 1.41L12 10.83l4.59 4.58L18 14z"></path></svg>
                                 </button>
                                 <div className={state.order ? "all_style" : "none_style"}>
-                                    <a href="#/">Orders</a>
-                                    <a href="#/">Drafts</a>
+                                    <NavLink to="/admin/orders">Orders</NavLink>
+                                    <NavLink to="/admin/drafts">Drafts</NavLink>
                                 </div>
                             </div>
                         </NavLink>
                     </li>
                     <li className="sidebar__list">
-                        <NavLink to='/admin/leads' onClick={toogleNavBar} className="sidebar__list--text">
+                        <NavLink to='/admin/customers' onClick={toogleNavBar} className="sidebar__list--text">
                             <div className="sidenav">
                                 <button className="dropdown-btn">
                                     <img src='/images/sidebar/customer.svg' className="sidebar-button-icons"alt=""  />
-
                                     <span className="text-uppercase">Customers</span>
                                 </button>
                             </div>
                         </NavLink>
                     </li>
                     <li className="sidebar__list">
-                        <NavLink to='/admin/user-management' className="sidebar__list--text">
+                        <NavLink to='/admin/sales' className="sidebar__list--text">
                             <div className="sidenav">
                                 <button onClick={() => secondLevelMenuToggle('discount')} className="dropdown-btn">
                                     <img src='/images/sidebar/discount.svg' className="sidebar-button-icons "alt=""  />
@@ -116,7 +115,7 @@ export const Sidebar = () => {
                                 </button>
                                 <div className={state.discount ? "all_style" : "none_style"}>
                                     <NavLink to="/admin/sales">Sales</NavLink>
-                                    <NavLink to="/admin/voucher">Vouchers</NavLink>
+                                    <NavLink to="/admin/vouchers">Vouchers</NavLink>
                                 </div>
                             </div>
                         </NavLink>

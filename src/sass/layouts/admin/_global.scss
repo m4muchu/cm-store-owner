@@ -15,23 +15,6 @@
     }
 }
 
-.global-datawrap {
-    padding-top: 0px;
-    position: relative;
-    min-height: 100vw!important;
-    max-width: 100%;
-    display: flex;
-    flex-grow: 1;
-    flex-direction: column;
-    height: auto ;
-}
-.global-datawrap__inner {
-    padding: 25px 33px;
-    @media (max-width: 991.98px) {
-       padding: 25px 15px;
-    }
-}
-
 .admin-footer{
     background-color: #ECEFF3;
     padding:27px 0;

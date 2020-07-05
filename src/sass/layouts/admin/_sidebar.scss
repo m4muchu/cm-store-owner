@@ -21,6 +21,7 @@
   list-style: none;
   padding: 0;
   height: 93vh;
+  overflow-x: scroll;
   // overflow-y: auto;//if scroll needed change this part
   @media (max-width: 991.98px) {
     height: auto;
@@ -31,19 +32,23 @@
   width: 5px;
 }
 
+// .admin-sidebar::-webkit-scrollbar:hover {
+//   width: 15px;
+// }
+
 /* Track */
 .admin-sidebar::-webkit-scrollbar-track {
   background: $cm-dark-grey;
 }
 
 /* Handle */  
-// .admin-sidebar::-webkit-scrollbar-thumb {
-//     background: $cm-primary;
-// }
+.admin-sidebar::-webkit-scrollbar-thumb {
+    background: #999;
+}
 
-// /* Handle on hover */
+/* Handle on hover */
 // .admin-sidebar::-webkit-scrollbar-thumb:hover {
-//     background: $cm-primary;
+//     background: #999;
 // }
 
 .sidebar__list--logo {

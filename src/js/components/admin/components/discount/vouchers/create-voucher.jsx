@@ -1,7 +1,7 @@
 import React from "react";
 import { Button, Modal, InputGroup, FormControl } from "react-bootstrap";
 
-export const Voucher = () => {
+export const CreateVoucher = () => {
   return (
     <div className="common_details_container">
       <p className="voucher-global-header">Create Voucher</p>
