@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
-
+import { history } from 'js/helpers';
 
 
 export const Login = () => {
@@ -13,7 +13,7 @@ export const Login = () => {
                     <div className="input-area">
                         <Form.Control type="email" placeholder="Email" />
                         <Form.Control type="password" placeholder="Password" />
-                        <Button type="submit" className="auth-submit-button">LOG IN</Button>
+                        <Button type="submit" className="auth-submit-button" onClick={() => history.push('/admin/dashoard')}>LOG IN</Button>
                     </div>
                     <p className="forgot-password">Forgot Password ?</p>
                 </Col>
