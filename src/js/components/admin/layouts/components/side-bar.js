@@ -1,9 +1,8 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-import { Navbar } from 'react-bootstrap';
 import { useState } from 'react';
-import { useContext } from 'react';
-import { AuthProvider } from 'js/contexts';
+// import { useContext } from 'react';
+// import { AuthProvider } from 'js/contexts';
 
 
 export const Sidebar = () => {
@@ -13,7 +12,7 @@ export const Sidebar = () => {
         discount: false,
     })
 
-    const { auth } = useContext(AuthProvider)
+    //const { auth } = useContext(AuthProvider)
     const secondLevelMenuToggle = (key) => {
         menuToggle({ ...state, [key]: !state[key] })
     }

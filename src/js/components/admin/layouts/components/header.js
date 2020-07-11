@@ -1,7 +1,6 @@
 import React from "react";
 import { useState } from "react";
 
-import imga from "./profile.png";
 import { Navbar, Nav, NavItem, Dropdown } from "react-bootstrap";
 import Notification from "./notificarion";
 import { history } from 'js/helpers/history';

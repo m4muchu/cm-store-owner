@@ -1,5 +1,5 @@
 import React from "react";
-import { Button, Modal, InputGroup, FormControl } from "react-bootstrap";
+import { InputGroup, FormControl } from "react-bootstrap";
 
 export const Address = () => {
   return (

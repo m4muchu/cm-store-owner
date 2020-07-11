@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, Redirect } from "react-router-dom";
+import { Route, Switch } from "react-router-dom";
 import { portalRoutes } from "js/routes/Admin/portal";
 import { Sidebar } from 'js/components/admin/layouts/components/side-bar';
 import { Header } from 'js/components/admin/layouts/components/header';

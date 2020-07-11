@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button, Modal, InputGroup, FormControl } from "react-bootstrap";
-import imga from "./saleordemoproduct_fd_juice_05-thumbnail-255x255.png";
 
 export function StaffInfo() {
     const [show, setShow] = useState(false);

@@ -15,6 +15,9 @@ import { CreateVoucher } from 'js/components/admin/components/discount/vouchers/
 import { CreateVariant } from 'js/components/admin/components/catalogs/create-variant';
 import { CreateCategory } from 'js/components/admin/components/catalogs/categories/create-category';
 import { CreateCollection } from 'js/components/admin/components/catalogs/collections/create-collection';
+import { CreateCustomer } from 'js/components/admin/components/customers/create-customer';
+import { EditCustomer } from 'js/components/admin/components/customers/edit-customer';
+
 
 
 export const portalRoutes = [
@@ -57,6 +60,14 @@ export const portalRoutes = [
     {
         path: "/admin/customers",
         component: Customers
+    },
+    {
+        path: "/admin/create-customer",
+        component: CreateCustomer
+    },
+    {
+        path: "/admin/edit-customer",
+        component: EditCustomer
     },
     {
         path: "/admin/sales",
