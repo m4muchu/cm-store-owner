@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button, Table, Row, Col, Form } from "react-bootstrap";
 import Select from "react-select";
-import AsyncSelect from "react-select/async";
 import { FilterSelector } from 'js/components/common';
 import { history } from 'js/helpers';
 

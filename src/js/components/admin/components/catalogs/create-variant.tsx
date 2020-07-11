@@ -1,8 +1,5 @@
 import React from 'react';
-import { Button, Table, Row, Col, Form } from "react-bootstrap";
-import Select from "react-select";
-import { EditorComponent, FileUploadComponent, ImageSortable } from 'js/components/common';
-import classnames from 'classnames';
+import { Button, Row, Col, Form } from "react-bootstrap";
 
 
 export const CreateVariant = () => {

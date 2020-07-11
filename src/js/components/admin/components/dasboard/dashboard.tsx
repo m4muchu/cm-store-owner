@@ -1,6 +1,5 @@
 import React from 'react';
 import Card from './card'
-import imga from "./images.jpeg";
 import MiniReport from './mini_report'
 import TopProduct from './Top_procucts'
 import Activity from './activity'

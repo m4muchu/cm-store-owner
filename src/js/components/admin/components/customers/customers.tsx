@@ -1,8 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button, Table, Row, Col, Form } from "react-bootstrap";
 import Select from "react-select";
-import AsyncSelect from "react-select/async";
-import { FilterSelector } from 'js/components/common';
 import { history } from 'js/helpers';
 
 interface BulkActionItem {
@@ -46,7 +44,7 @@ export const Customers = () => {
           			</Button>
 					<Button
 						className="add-new-btn text-uppercase"
-						onClick={() => history.push('/admin/create-product')}
+						onClick={() => history.push('/admin/create-customer')}
 					>
 						<i>
 							<svg
@@ -62,7 +60,7 @@ export const Customers = () => {
 								/>
 							</svg>
 						</i>
-						Add Customer
+						Create Customer
           			</Button>
 				</div>
 			</div>
