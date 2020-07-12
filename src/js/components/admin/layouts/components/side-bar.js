@@ -43,7 +43,7 @@ export const Sidebar = () => {
                         <NavLink to='/admin/products' className="sidebar__list--text">
                             <div className="sidenav">
                                 <button onClick={() => secondLevelMenuToggle('catalog')} className="dropdown-btn">
-                                    <img src='/images/sidebar/catalog.svg' className="sidebar-button-icons " alt="" />
+                                    <img src='/images/sidebar/catalog.svg' className="sidebar-button-icons" alt="" />
                                     <span className="text-uppercase">Catalog</span>
                                     <svg
                                         className={state.catalog ? "MuiSvgIcon_root_2" : "MuiSvgIcon_root_3"}
@@ -119,7 +119,7 @@ export const Sidebar = () => {
                             </div>
                         </NavLink>
                     </li>
-                    <li className="sidebar__list">
+                    {/* <li className="sidebar__list">
                         <NavLink to='/admin/exchanges' onClick={toogleNavBar} className="sidebar__list--text" >
                             <div className="sidenav">
                                 <button className="dropdown-btn">
@@ -128,12 +128,12 @@ export const Sidebar = () => {
                                 </button>
                             </div>
                         </NavLink>
-                    </li>
+                    </li> */}
                     <li className="sidebar__list">
-                        <NavLink to='/admin/advertising' className="sidebar__list--text" >
+                        <NavLink to='/admin/configuration' className="sidebar__list--text" >
                             <div className="sidenav">
                                 <button className="dropdown-btn">
-                                    <img src='/images/sidebar/config.svg ' className="sidebar-button-icons " alt="" />
+                                    <img src='/images/sidebar/config.svg' className="sidebar-button-icons " alt="" />
                                     <span className="text-uppercase">Configuration</span>
                                 </button>
                             </div>

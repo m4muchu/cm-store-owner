@@ -17,6 +17,7 @@ import { CreateCategory } from 'js/components/admin/components/catalogs/categori
 import { CreateCollection } from 'js/components/admin/components/catalogs/collections/create-collection';
 import { CreateCustomer } from 'js/components/admin/components/customers/create-customer';
 import { EditCustomer } from 'js/components/admin/components/customers/edit-customer';
+import { Configuration } from 'js/components/admin/components/configuration/configuration';
 
 
 
@@ -92,6 +93,10 @@ export const portalRoutes = [
     {
         path: "/admin/account-settings",
         component: StaffInfo
+    },
+    {
+        path: "/admin/configuration",
+        component: Configuration
     },
     {
         path: "/",
