@@ -18,6 +18,10 @@ import { CreateCollection } from 'js/components/admin/components/catalogs/collec
 import { CreateCustomer } from 'js/components/admin/components/customers/create-customer';
 import { EditCustomer } from 'js/components/admin/components/customers/edit-customer';
 import { Configuration } from 'js/components/admin/components/configuration/configuration';
+import { Attributes } from 'js/components/admin/components/configuration/attribute/attributes';
+import { ProductTypes } from 'js/components/admin/components/configuration/product-type/product-types';
+import { CreateEditAttribute } from 'js/components/admin/components/configuration/attribute/create-edit-attribute';
+import { CreateEditProductType } from 'js/components/admin/components/configuration/product-type/create-edit-product-type';
 
 
 
@@ -97,6 +101,22 @@ export const portalRoutes = [
     {
         path: "/admin/configuration",
         component: Configuration
+    },
+    {
+        path: "/admin/attributes",
+        component: Attributes
+    },
+    {
+        path: "/admin/create-attribute",
+        component: CreateEditAttribute
+    },
+    {
+        path: "/admin/product-types",
+        component: ProductTypes
+    },
+    {
+        path: "/admin/create-product-type",
+        component: CreateEditProductType
     },
     {
         path: "/",

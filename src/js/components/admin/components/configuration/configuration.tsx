@@ -1,6 +1,6 @@
 import React from 'react';
 import { Row, Col } from "react-bootstrap";
-
+import { history } from 'js/helpers';
 
 export const Configuration = () => {
     return (
@@ -16,7 +16,7 @@ export const Configuration = () => {
                     <div className="configuration-sub-head">Attributes and Product Types</div>
                 </Col>
                 <Col xl={5} className="mb-4">
-                    <div className="configuration-card justify-content-sm-start">
+                    <div className="configuration-card justify-content-sm-start" onClick={() => history.push('/admin/attributes')}>
                         <div className="configuration-icon mr-2">
                             <img src="/images/admin/global/attribute_icon.svg" alt="" />
                         </div>
@@ -27,7 +27,7 @@ export const Configuration = () => {
                     </div>
                 </Col>
                 <Col xl={5} className="mb-4">
-                    <div className="configuration-card justify-content-sm-start">
+                    <div className="configuration-card justify-content-sm-start" onClick={() => history.push('/admin/product-types')}>
                         <div className="configuration-icon mr-2">
                             <img src="/images/admin/global/product_icon.svg" alt="" />
                         </div>
