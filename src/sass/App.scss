@@ -2,7 +2,6 @@
 @import "utilities/helpers";
 @import "base/typography";
 
-@import "layouts/admin/global";
 @import "layouts/admin/sidebar";
 @import "layouts/admin/header";
 @import "layouts/global";
@@ -18,6 +17,7 @@
 @import 'pages/staff-info';
 @import 'pages/create-product';
 @import 'pages/edit-customer';
+@import 'pages/configuration';
 
 
 @import 'components/button';

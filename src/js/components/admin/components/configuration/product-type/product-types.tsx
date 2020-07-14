@@ -14,14 +14,14 @@ const BulkActionItems: BulkActionItem[] = [
 	{ value: 'un_publish', label: 'Unpublish' }
 ]
 
-export const Sales = () => {
+export const ProductTypes = () => {
 
 	const [bulk_action, setBulkAction] = useState();
 
 	return (
 		<section className="products-section">
 			<div className="generic-page-header">
-				<h2 className="page-head my-0">Sales</h2>
+				<h2 className="page-head my-0">Product Types</h2>
 				<div className="header-data-section">
 					<Button className="coloumn-btn mr-3 text-uppercase">
 						<i>
@@ -44,7 +44,7 @@ export const Sales = () => {
           			</Button>
 					<Button
 						className="add-new-btn text-uppercase"
-						// onClick={() => history.push('/admin/create-product')}
+						onClick={() => history.push('/admin/create-product-type')}
 					>
 						<i>
 							<svg
@@ -60,7 +60,7 @@ export const Sales = () => {
 								/>
 							</svg>
 						</i>
-						Create Sale
+						create Product Type
           			</Button>
 				</div>
 			</div>
@@ -94,7 +94,7 @@ export const Sales = () => {
 														type="text"
 														name=""
 														id=""
-														placeholder="Search Category"
+														placeholder="Search Product Type"
 													//onChange={(e) => onParamsChange('search', e.target.value)}
 													/>
 												</div>
@@ -125,10 +125,9 @@ export const Sales = () => {
 											/>
 										</div>
 									</th>
-									<th>Name</th>
-									<th>Starts</th>
-									<th>Ends</th>
-									<th>Value</th>
+									<th>Type Name</th>
+									<th>Type</th>
+									<th>Tax</th>
 								</tr>
 							</thead>
 							<tbody>

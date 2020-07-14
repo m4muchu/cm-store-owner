@@ -44,7 +44,7 @@ export const Vouchers = () => {
           			</Button>
 					<Button
 						className="add-new-btn text-uppercase"
-						onClick={() => history.push('/admin/create-product')}
+						// onClick={() => history.push('/admin/create-product')}
 					>
 						<i>
 							<svg
