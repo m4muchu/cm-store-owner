@@ -4,6 +4,8 @@ import { useState } from "react";
 import { Navbar, Nav, NavItem, Dropdown } from "react-bootstrap";
 import Notification from "./notificarion";
 import { history } from 'js/helpers/history';
+import { configConstants } from 'js/constants';
+
 
 export const Header = (props) => {
   const sidemenuToggle = () => {
@@ -13,6 +15,11 @@ export const Header = (props) => {
   const handleClick = () => {
     return setButton(!buttonstate);
   };
+
+  const logout = () => {
+    localStorage.removeItem(configConstants.ADMIN_TOKEN);
+    history.push('/auth');
+  }
   return (
     <Navbar color="white" light expand="lg" className="admin-navbar-head">
       <div className=" hide-lg">
@@ -60,7 +67,7 @@ export const Header = (props) => {
                     Account setting
                   </Dropdown.Item>
                   <Dropdown.Item
-                    href="#/action-2"
+                    onClick={logout}
                     className="navigation-drop-link"
                   >
                     Logout

@@ -1,12 +1,8 @@
 import { history } from 'js/helpers'
 import axios from 'axios';
+import { configConstants } from 'js/constants';
 const CancelToken = axios.CancelToken;
 let cancel = {};
-
-const configConstants = {
-    TOKEN_NAME: 'token',
-    PARTNER_TOKEN: 'partner_token',
-}
 
 //Common Request
 export function request(options){
@@ -78,6 +74,7 @@ export function requestOptions(method = 'GET', url=null, params = null, is_authe
         requestOptions.params = params;
     }
     else if( content_type === 'json' ) {
+        console.log('params+++++++=', params);
         requestOptions.headers['Content-Type'] = 'application/json';
         requestOptions.data = params;
     }

@@ -14,7 +14,7 @@ function login(params: loginParam) {
     return request({
         method: 'POST',
         url: 'auth/login',
-        params: params,
+        param: params,
         is_authenticated: false,
         content_type: 'json',
     })
