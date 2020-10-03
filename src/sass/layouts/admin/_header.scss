@@ -155,7 +155,7 @@
     pointer-events: none;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.0592448);
     background-color: $cm-white;
-    // right: -11px !important;
+    right: -11px !important;
   }
 
   .dropdown-menu.show {
@@ -249,9 +249,6 @@
 }
 .header-drop-link {
   font-size: 14px;
-}
-.navigation-drop-link-container {
-  right: 18px !important;
 }
 .header_top_icons li:first-child {
   margin-left: -2.5rem;
@@ -419,31 +416,31 @@
   }
 }
 @media only screen and (max-width: 1355px) and (min-width: 1005px) {
-  .header_top_icons {
-    width: 22vw !important;
+    .header_top_icons {
+      width: 22vw !important;
+    }
   }
+  @media only screen and (max-width: 1232px) and (min-width: 1080px) {
+    .header_top_icons {
+      width: 26vw !important;
+    }
 }
-@media only screen and (max-width: 1232px) and (min-width: 1080px) {
-  .header_top_icons {
-    width: 26vw !important;
+    @media only screen and (max-width: 1080px) and (min-width: 993px) {
+        .header_top_icons {
+          width: 28vw !important;
+        }
   }
-}
-@media only screen and (max-width: 1080px) and (min-width: 993px) {
-  .header_top_icons {
-    width: 28vw !important;
-  }
-}
-//CSS MEDIA QUERY FOR HEADER ICONS ENDDDDDDDDDDD  ----------------------------------------------------------------------------------------------------------->
+  //CSS MEDIA QUERY FOR HEADER ICONS ENDDDDDDDDDDD  ----------------------------------------------------------------------------------------------------------->
+
 
 // NOTIFICATION STYLE START----------------------------------->
 
 .notification_container {
+  position: relative;
   display: flex;
   justify-content: start;
-  right: 26rem;
-  position: absolute;
   align-items: flex-start;
-  z-index: 1000;
+  
 }
 .MuiSvgIcon-root-2,
 .MuiSvgIcon-root-3 {
@@ -484,7 +481,9 @@
   border-radius: 4px;
   letter-spacing: 0.01rem;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  width: 24rem;
+  width: 21rem;
+  position: absolute;
+  right: 6rem;
 }
 .notification-card-text {
   padding-left: 1rem;
@@ -545,18 +544,21 @@
   height: 25rem;
   overflow: hidden;
   overflow-y: scroll;
+  z-index: 1000;
+  position: relative;
   margin-top: 2rem;
   display: inline-block;
-}
-/* Hide scrollbar for Chrome, Safari and Opera */
-.dash_notification_card::-webkit-scrollbar {
-  display: none;
-}
 
-/* Hide scrollbar for IE and Edge */
-.dash_notification_card {
-  -ms-overflow-style: none;
 }
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  .dash_notification_card::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Hide scrollbar for IE and Edge */
+  .dash_notification_card {
+    -ms-overflow-style: none;
+  }
 .notification_container {
   width: 1rem;
 }

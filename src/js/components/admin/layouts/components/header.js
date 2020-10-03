@@ -3,7 +3,7 @@ import { useState } from "react";
 
 import { Navbar, Nav, NavItem, Dropdown } from "react-bootstrap";
 import Notification from "./notificarion";
-import { history } from "js/helpers/history";
+import { history } from 'js/helpers/history';
 
 export const Header = (props) => {
   const sidemenuToggle = () => {
@@ -44,11 +44,7 @@ export const Header = (props) => {
             </li>
 
             <li className=" MuiAvatar-circle header_menu profile_pic  ">
-              <img
-                alt="User"
-                src={"/images/sidebar/profile.jpeg"}
-                className="MuiAvatar-img"
-              />{" "}
+              <img alt="User" src={'/images/sidebar/profile.jpeg'} className="MuiAvatar-img" />{" "}
             </li>
             <li className="header_menu storename  "> STORE NAME </li>
             <li>
@@ -56,12 +52,9 @@ export const Header = (props) => {
                 <Dropdown.Toggle className="header_down_arrow header_menu">
                   {/* <li >  <svg class="MuiSvgIcon_root_3" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.59 8.59L12 13.17 7.41 8.59 6 10l6 6 6-6z"></path></svg> </li> */}
                 </Dropdown.Toggle>
-                <Dropdown.Menu
-                  alignRight
-                  className="navigation-drop-link-container"
-                >
+                <Dropdown.Menu alignRight>
                   <Dropdown.Item
-                    onClick={() => history.push("/admin/account-settings")}
+                    onClick={() => history.push('/admin/account-settings')}
                     className="navigation-drop-link"
                   >
                     Account setting
