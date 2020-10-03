@@ -10,11 +10,11 @@ import { history } from 'js/helpers';
 
 export const PortalLayout = () => {
 
-    useEffect(() => {
-        if(!localStorage.getItem(configConstants.ADMIN_TOKEN)){
-            history.push('/auth');
-        }
-    },[]);
+    // useEffect(() => {
+    //     if(!localStorage.getItem(configConstants.ADMIN_TOKEN)){
+    //         history.push('/auth');
+    //     }
+    // },[]);
 
     const switchRoutes = (
         <Switch>

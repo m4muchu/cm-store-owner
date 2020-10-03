@@ -17,11 +17,11 @@ const switchRoutes = (
 
 export const AuthLayout = () => {
     
-    useEffect(() => {
-        if(localStorage.getItem(configConstants.ADMIN_TOKEN)){
-            history.push('/admin/dashboard');
-        }
-    },[]);
+    // useEffect(() => {
+    //     if(localStorage.getItem(configConstants.ADMIN_TOKEN)){
+    //         history.push('/admin/dashboard');
+    //     }
+    // },[]);
 
     return (
         <React.Fragment>
