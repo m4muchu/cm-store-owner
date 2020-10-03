@@ -6,7 +6,7 @@ import { AdminIndex } from 'js/routes/Admin/index';
 export default class AppAdmin extends React.Component {
     render() {
         return (
-            <div className="">
+            <div>
                 <Switch>
                     {AdminIndex.map((prop, key) => {
                         return <Route path={prop.path} component={prop.component} key={key} />;
