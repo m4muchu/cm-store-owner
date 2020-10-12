@@ -1,21 +1,28 @@
-import React, { useState } from 'react';
-import { Button, Table, Row, Col, Form } from 'react-bootstrap';
-import Select from 'react-select';
+import React, { useState } from "react";
+import { Button, Table, Row, Col, Form } from "react-bootstrap";
+import Select from "react-select";
+import MyVerticallyCenteredModal from "./Modal";
 import {
   EditorComponent,
   FileUploadComponent,
-  ImageSortable
-} from 'js/components/common';
-import classnames from 'classnames';
-import { history } from 'js/helpers';
+  ImageSortable,
+} from "js/components/common";
+import classnames from "classnames";
+import { history } from "js/helpers";
 
 export const CreateProduct = () => {
   const [productDetails, setProductDetails] = useState({});
+  const [modalShow, setModalShow] = useState(false);
+  const [childData, setChildData] = useState({});
+  const pcallBack = (childData) => {
+    // setChildData(...setChildData, childData);
+    console.log("data is", childData);
+  };
 
   const editorHandleChange = (value, key) => {
     setProductDetails({
       ...productDetails,
-      key: value
+      key: value,
     });
   };
 
@@ -42,23 +49,23 @@ export const CreateProduct = () => {
                   type="text"
                   name="name"
                   placeholder="Name"
-                  onChange={e =>
+                  onChange={(e) =>
                     setProductDetails({
                       ...productDetails,
-                      [e.target.name]: e.target.value
+                      [e.target.name]: e.target.value,
                     })
                   }
                 />
               </div>
             </div>
             <div className="editor-wrapper">
-              <div className={classnames('editor-outer-wrap')}>
+              <div className={classnames("editor-outer-wrap")}>
                 <EditorComponent
                   advertisement
                   id="description"
                   content={productDetails?.description}
-                  onChange={content =>
-                    editorHandleChange(content, 'description')
+                  onChange={(content) =>
+                    editorHandleChange(content, "description")
                   }
                 />
               </div>
@@ -77,15 +84,15 @@ export const CreateProduct = () => {
                     entity_type="TripMedia"
                     multiple={true}
                     max={10}
-                    accepted={['image/*']}
+                    accepted={["image/*"]}
                     // onSuccess={props.onAddNewFiles}
                   />
                 </div>
                 <ImageSortable
                   files={[
-                    { attachment_url: 'https://picsum.photos/200/300' },
-                    { attachment_url: 'https://picsum.photos/200/200' },
-                    { attachment_url: 'https://picsum.photos/200/204' }
+                    { attachment_url: "https://picsum.photos/200/300" },
+                    { attachment_url: "https://picsum.photos/200/200" },
+                    { attachment_url: "https://picsum.photos/200/204" },
                   ]}
                 />
                 <div className="drag-drop-text">
@@ -148,10 +155,10 @@ export const CreateProduct = () => {
                 <Form.Control
                   type="number"
                   placeholder="Price"
-                  onChange={e =>
+                  onChange={(e) =>
                     setProductDetails({
                       ...productDetails,
-                      [e.target.name]: e.target.value
+                      [e.target.name]: e.target.value,
                     })
                   }
                 />
@@ -164,10 +171,17 @@ export const CreateProduct = () => {
               <h5 className="card-title">Variants</h5>
               <span
                 className="card-title-right text-uppercase"
-                onClick={() => history.push('/admin/create-variant')}
+                onClick={() => history.push("/admin/create-variant")}
               >
                 Create Variants
               </span>
+              <button onClick={() => setModalShow(true)}>Variant</button>
+              {/* MODEL */}
+              <MyVerticallyCenteredModal
+                show={modalShow}
+                onHide={() => setModalShow(false)}
+                pcallBack={pcallBack}
+              />
             </div>
             <hr className="MuiDivider-root" />
             <div className="card-data-wrapper">

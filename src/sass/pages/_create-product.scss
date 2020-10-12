@@ -1,11 +1,23 @@
 .crearte-products-section {
-    .dash_activity_card {
-        width: auto;
-    }
+  .dash_activity_card {
+    width: auto;
+  }
 
-    .card-data-wrapper {
-        .MuiDivider-root {
-            margin: 1.4rem 0;
-        }
+  .card-data-wrapper {
+    .MuiDivider-root {
+      margin: 1.4rem 0;
     }
+  }
+}
+// MODEL STYLES
+.product__InfoFields {
+  padding-left: 0 !important;
+}
+.product__InfoFields > input {
+  margin-bottom: 30px;
+  width: 100%;
+}
+.product__InfoFieldsContainer {
+  display: flex;
+  justify-content: space-between;
 }
