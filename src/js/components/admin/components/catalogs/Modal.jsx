@@ -3,17 +3,17 @@ import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 
 function MyVerticallyCenteredModal(props) {
-  const [gDeatils, setGdetails] = useState({});
+  const [genDetails, setGenDetails] = useState({});
 
   const HandleChange = (e) => {
-    setGdetails({
-      ...gDeatils,
+    setGenDetails({
+      ...genDetails,
       [e.target.name]: e.target.value,
     });
   };
   const sendData = () => {
-    props.pcallBack(gDeatils);
-    console.log("dae", gDeatils);
+    props.modelCallBack(genDetails);
+    console.log("dae", genDetails);
   };
   return (
     <Modal

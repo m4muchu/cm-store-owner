@@ -13,10 +13,10 @@ import { history } from "js/helpers";
 export const CreateProduct = () => {
   const [productDetails, setProductDetails] = useState({});
   const [modalShow, setModalShow] = useState(false);
-  const [childData, setChildData] = useState({});
-  const pcallBack = (childData) => {
-    // setChildData(...setChildData, childData);
-    console.log("data is", childData);
+  const [modalData, setModalData] = useState({});
+  const modelCallBack = (modalData) => {
+    setModalData({ ...setModalData, modalData });
+    console.log("data is", modalData);
   };
 
   const editorHandleChange = (value, key) => {
@@ -180,7 +180,7 @@ export const CreateProduct = () => {
               <MyVerticallyCenteredModal
                 show={modalShow}
                 onHide={() => setModalShow(false)}
-                pcallBack={pcallBack}
+                modelCallBack={modelCallBack}
               />
             </div>
             <hr className="MuiDivider-root" />
