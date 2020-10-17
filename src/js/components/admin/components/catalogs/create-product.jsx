@@ -171,11 +171,11 @@ export const CreateProduct = () => {
               <h5 className="card-title">Variants</h5>
               <span
                 className="card-title-right text-uppercase"
-                onClick={() => history.push("/admin/create-variant")}
+                onClick={() => setModalShow(true)}
               >
                 Create Variants
               </span>
-              <button onClick={() => setModalShow(true)}>Variant</button>
+              {/* <button onClick={() => setModalShow(true)}>Variant</button> */}
               {/* MODEL */}
               <MyVerticallyCenteredModal
                 show={modalShow}

@@ -28,8 +28,10 @@ function MyVerticallyCenteredModal(props) {
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
+        <p>Name</p>
+
         <input
-          className="col-lg-12 mb-3 product__InfoFieldsContainer"
+          className="col-lg-12 mb-3 product__InfoFieldsContainer form-control"
           placeholder="variant name"
           name="name"
           onChange={HandleChange}
@@ -40,7 +42,7 @@ function MyVerticallyCenteredModal(props) {
               <div className="col-lg-6 mb-3 product__InfoFields">
                 <p>Selling Price Override</p>
                 <input
-                  className=" mb-3"
+                  className=" mb-3 form-control"
                   placeholder="cost price override"
                   name="spo"
                   onChange={HandleChange}
@@ -49,7 +51,7 @@ function MyVerticallyCenteredModal(props) {
               <div className="col-lg-6 mb-3 product__InfoFields">
                 <p>Cost Price Override</p>
                 <input
-                  className=" mb-3"
+                  className=" mb-3 form-control"
                   placeholder="cost price override"
                   name="cpo"
                   onChange={HandleChange}
@@ -65,6 +67,7 @@ function MyVerticallyCenteredModal(props) {
                 <p>SKU(Stock Keeping Unit)</p>
                 <input
                   placeholder="selling price override"
+                  className=" form-control"
                   name="sku"
                   onChange={HandleChange}
                 ></input>
@@ -72,6 +75,7 @@ function MyVerticallyCenteredModal(props) {
               <div className="col-lg-6 mb-3 product__InfoFields">
                 <p>Inventory Stock</p>
                 <input
+                  className=" mb-3 form-control"
                   placeholder="Inventory stock"
                   name="istock"
                   onChange={HandleChange}
@@ -81,8 +85,10 @@ function MyVerticallyCenteredModal(props) {
           </div>
         </div>
       </Modal.Body>
-      <Modal.Footer>
-        <button onClick={sendData}>Submit</button>
+      <Modal.Footer className="productInfo__footer">
+        <button className=" productInfo__button" onClick={sendData}>
+          Submit
+        </button>
       </Modal.Footer>
     </Modal>
   );
