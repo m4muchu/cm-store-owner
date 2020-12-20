@@ -1,19 +1,20 @@
-import React, { useState } from "react";
-import Button from "react-bootstrap/Button";
-import Modal from "react-bootstrap/Modal";
+import React, { useState } from 'react';
+import Button from 'react-bootstrap/Button';
+import Modal from 'react-bootstrap/Modal';
 
-function MyVerticallyCenteredModal(props) {
+function CreateVariantModal({ modelCallBack, ...props }) {
   const [genDetails, setGenDetails] = useState({});
 
-  const HandleChange = (e) => {
+  const HandleChange = e => {
     setGenDetails({
       ...genDetails,
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
   const sendData = () => {
-    props.modelCallBack(genDetails);
-    console.log("dae", genDetails);
+    modelCallBack(genDetails);
+    props.onHide();
+    console.log('dae', genDetails);
   };
   return (
     <Modal
@@ -33,7 +34,7 @@ function MyVerticallyCenteredModal(props) {
         <input
           className="col-lg-12 mb-3 product__InfoFieldsContainer form-control"
           placeholder="variant name"
-          name="name"
+          name="variant"
           onChange={HandleChange}
         ></input>
         <div>
@@ -77,7 +78,7 @@ function MyVerticallyCenteredModal(props) {
                 <input
                   className=" mb-3 form-control"
                   placeholder="Inventory stock"
-                  name="istock"
+                  name="inventoryStock"
                   onChange={HandleChange}
                 ></input>
               </div>
@@ -86,11 +87,11 @@ function MyVerticallyCenteredModal(props) {
         </div>
       </Modal.Body>
       <Modal.Footer className="productInfo__footer">
-        <button className=" productInfo__button" onClick={sendData}>
+        <Button className=" productInfo__button" onClick={sendData}>
           Submit
-        </button>
+        </Button>
       </Modal.Footer>
     </Modal>
   );
 }
-export default MyVerticallyCenteredModal;
+export default CreateVariantModal;

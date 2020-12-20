@@ -1,23 +1,41 @@
-import React, { useState } from "react";
-import { Button, Table, Row, Col, Form } from "react-bootstrap";
-import Select from "react-select";
-import MyVerticallyCenteredModal from "./Modal";
+import React, { useState } from 'react';
+import { Button, Table, Row, Col, Form } from 'react-bootstrap';
+import Select from 'react-select';
+import { isEmpty } from 'lodash';
+import CreateVariantModal from './CreateVariantModal';
 import {
   EditorComponent,
   FileUploadComponent,
   ImageSortable,
-} from "js/components/common";
-import classnames from "classnames";
-import { history } from "js/helpers";
+} from 'js/components/common';
+import classnames from 'classnames';
+import { useErrorsValidator } from './useErrorsValidator';
 
 export const CreateProduct = () => {
-  const [productDetails, setProductDetails] = useState({});
+  const [productDetails, setProductDetails] = useState({
+    material: '',
+  });
   const [modalShow, setModalShow] = useState(false);
-  const [modalData, setModalData] = useState({});
+  const [errors, validateData] = useErrorsValidator();
+
   const modelCallBack = (modalData) => {
-    setModalData({ ...setModalData, modalData });
-    console.log("data is", modalData);
+    let modalDataArray = !isEmpty(productDetails.variants)
+      ? productDetails.variants
+      : [];
+    modalDataArray.push(modalData);
+    setProductDetails({ ...productDetails, variants: modalDataArray });
   };
+
+  const requiredFields = [
+    {
+      name: 'name',
+      type: 'text',
+    },
+    {
+      name: 'material',
+      type: 'text',
+    },
+  ];
 
   const editorHandleChange = (value, key) => {
     setProductDetails({
@@ -26,14 +44,19 @@ export const CreateProduct = () => {
     });
   };
 
+  const handleSubmit = () => {
+    const productData = {
+      ...productDetails,
+    };
+
+    validateData(requiredFields, productData);
+  };
+
   return (
     <section className="crearte-products-section">
       <div className="generic-page-header">
         <h2 className="page-head my-0">Create Product</h2>
-        <Button
-          className="add-new-btn"
-          //onClick={() => history.push('/admin/create-product')}
-        >
+        <Button className="add-new-btn" onClick={handleSubmit}>
           Save Changes
         </Button>
       </div>
@@ -44,34 +67,40 @@ export const CreateProduct = () => {
             <hr className="MuiDivider-root" />
             <div className="card-data-wrapper">
               <div className="input-area">
-                <Form.Label>Name</Form.Label>
-                <Form.Control
-                  type="text"
-                  name="name"
-                  placeholder="Name"
-                  onChange={(e) =>
-                    setProductDetails({
-                      ...productDetails,
-                      [e.target.name]: e.target.value,
-                    })
-                  }
-                />
+                <Form.Group>
+                  <Form.Label>Name</Form.Label>
+                  <Form.Control
+                    type="text"
+                    name="name"
+                    placeholder="Name"
+                    onChange={(e) =>
+                      setProductDetails({
+                        ...productDetails,
+                        [e.target.name]: e.target.value,
+                      })
+                    }
+                    isInvalid={errors.name}
+                  />
+                  <Form.Control.Feedback type="invalid" tooltip>
+                    {errors.name}
+                  </Form.Control.Feedback>
+                </Form.Group>
               </div>
             </div>
             <div className="editor-wrapper">
-              <div className={classnames("editor-outer-wrap")}>
+              <div className={classnames('editor-outer-wrap')}>
                 <EditorComponent
                   advertisement
                   id="description"
                   content={productDetails?.description}
                   onChange={(content) =>
-                    editorHandleChange(content, "description")
+                    editorHandleChange(content, 'description')
                   }
                 />
               </div>
             </div>
           </div>
-
+          {/* 
           <div className="dash_activity_card mt-4">
             <div className="d-flex justify-content-between">
               <h5 className="card-title">Images</h5>
@@ -84,15 +113,15 @@ export const CreateProduct = () => {
                     entity_type="TripMedia"
                     multiple={true}
                     max={10}
-                    accepted={["image/*"]}
+                    accepted={['image/*']}
                     // onSuccess={props.onAddNewFiles}
                   />
                 </div>
                 <ImageSortable
                   files={[
-                    { attachment_url: "https://picsum.photos/200/300" },
-                    { attachment_url: "https://picsum.photos/200/200" },
-                    { attachment_url: "https://picsum.photos/200/204" },
+                    { attachment_url: 'https://picsum.photos/200/300' },
+                    { attachment_url: 'https://picsum.photos/200/200' },
+                    { attachment_url: 'https://picsum.photos/200/204' }
                   ]}
                 />
                 <div className="drag-drop-text">
@@ -110,7 +139,7 @@ export const CreateProduct = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           <div className="dash_activity_card mt-4">
             <h5 className="card-title">Attributes</h5>
@@ -175,13 +204,6 @@ export const CreateProduct = () => {
               >
                 Create Variants
               </span>
-              {/* <button onClick={() => setModalShow(true)}>Variant</button> */}
-              {/* MODEL */}
-              <MyVerticallyCenteredModal
-                show={modalShow}
-                onHide={() => setModalShow(false)}
-                modelCallBack={modelCallBack}
-              />
             </div>
             <hr className="MuiDivider-root" />
             <div className="card-data-wrapper">
@@ -211,27 +233,30 @@ export const CreateProduct = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>
-                          <div className="tt-admin-checkbox">
-                            <Form.Check
-                              type="checkbox"
-                              // id={'tt-check' + lead.lead_id}
-                              className="tt-checkbox"
-                              // onChange={(e) => {
-                              //     setState({
-                              //         ...state, selected_lead: { ...state.selected_lead, [lead.lead_id]: e.target.checked }
-                              //     });
-                              // }}
-                              // checked={state.selected_lead[lead.lead_id] ? state.selected_lead[lead.lead_id] : false}
-                            />
-                          </div>
-                        </td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                        <td>test</td>
-                      </tr>
+                      {!isEmpty(productDetails.variants) &&
+                        productDetails.variants.map((variant) => (
+                          <tr>
+                            <td>
+                              <div className="tt-admin-checkbox">
+                                <Form.Check
+                                  type="checkbox"
+                                  // id={'tt-check' + lead.lead_id}
+                                  className="tt-checkbox"
+                                  // onChange={(e) => {
+                                  //     setState({
+                                  //         ...state, selected_lead: { ...state.selected_lead, [lead.lead_id]: e.target.checked }
+                                  //     });
+                                  // }}
+                                  // checked={state.selected_lead[lead.lead_id] ? state.selected_lead[lead.lead_id] : false}
+                                />
+                              </div>
+                            </td>
+                            <td>{variant.variant}</td>
+                            <td>{variant.sku}</td>
+                            <td>{variant.cpo}</td>
+                            <td>{variant.inventoryStock}</td>
+                          </tr>
+                        ))}
                     </tbody>
                   </Table>
                 </div>
@@ -239,7 +264,7 @@ export const CreateProduct = () => {
             </div>
           </div>
 
-          <div className="dash_activity_card mt-4">
+          {/* <div className="dash_activity_card mt-4">
             <h5 className="card-title">Search Engine Preview</h5>
             <hr className="MuiDivider-root" />
             <div className="card-data-wrapper">
@@ -262,7 +287,7 @@ export const CreateProduct = () => {
                 If empty, the preview shows what will be autogenerated.
               </span>
             </div>
-          </div>
+          </div> */}
         </Col>
         <Col xl={4}>
           <div className="dash_activity_card">
@@ -335,6 +360,13 @@ export const CreateProduct = () => {
             </div>
           </div>
         </Col>
+        {modalShow && (
+          <CreateVariantModal
+            show={modalShow}
+            onHide={() => setModalShow(false)}
+            modelCallBack={modelCallBack}
+          />
+        )}
       </Row>
       {/* 
             <Row className="mt-5 d-flex justify-content-center">

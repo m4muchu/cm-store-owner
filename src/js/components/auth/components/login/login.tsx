@@ -1,48 +1,51 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Row, Col, Form, Button, Spinner } from 'react-bootstrap';
 import { history } from 'js/helpers';
-import { authServices } from 'js/services'
+import { authServices } from 'js/services';
 import { configConstants } from 'js/constants';
 import { isEmpty } from 'lodash';
 
-
 interface loginResponse {
-  email: string,
-  access_token: string
+  email: string;
+  access_token: string;
 }
 
 interface errorResponse {
-  status: number,
-  error: string
+  status: number;
+  error: string;
 }
 
-export const Login = () => {
-
+export const Login: React.FC<{}> = () => {
   const [state, setState] = useState({
     email: '',
     password: '',
   });
 
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
 
-  const [errors, setErrors] = useState(false);
+  const [errors, setErrors] = useState<boolean>(false);
 
   const onSubmit = () => {
     if (isEmpty(state.email) && isEmpty(state.password)) {
       setErrors(true);
-    }
-    else {
+    } else {
       setLoading(true);
-      authServices.login(state).then((response: loginResponse) => {
-        localStorage.setItem(configConstants.ADMIN_TOKEN, response.access_token);
-        history.push('/admin/dashboard');
-        setLoading(false);
-      }).catch((errors: errorResponse) => {
-        setLoading(false);
-        setErrors(true);
-      });
+      authServices
+        .login(state)
+        .then((response: loginResponse) => {
+          localStorage.setItem(
+            configConstants.ADMIN_TOKEN,
+            response.access_token
+          );
+          history.push('/admin/dashboard');
+          setLoading(false);
+        })
+        .catch((errors: errorResponse) => {
+          setLoading(false);
+          setErrors(true);
+        });
     }
-  }
+  };
 
   return (
     <div className="container cm-admin-card">
@@ -55,26 +58,36 @@ export const Login = () => {
               type="email"
               required
               placeholder="Email"
-              onChange={(e) => setState({
-                ...state,
-                email: e.target.value
-              })}
+              onChange={(e) =>
+                setState({
+                  ...state,
+                  email: e.target.value,
+                })
+              }
               isInvalid={errors}
             />
             <Form.Control
               type="password"
               required
               placeholder="Password"
-              onChange={(e) => setState({
-                ...state,
-                password: e.target.value
-              })}
+              onChange={(e) =>
+                setState({
+                  ...state,
+                  password: e.target.value,
+                })
+              }
               isInvalid={errors}
             />
-            <Button type="submit" className="auth-submit-button" onClick={onSubmit}>
-              {
-                !loading ? "LOG IN" : <Spinner animation="border" variant="primary" />
-              }
+            <Button
+              type="submit"
+              className="auth-submit-button"
+              onClick={onSubmit}
+            >
+              {!loading ? (
+                'LOG IN'
+              ) : (
+                <Spinner animation="border" variant="primary" />
+              )}
             </Button>
             <Form.Control.Feedback type="invalid" className="pt-2">
               Please check your email and password
@@ -82,9 +95,8 @@ export const Login = () => {
           </div>
           <p className="forgot-password">Forgot Password ?</p>
         </Col>
-        <Col lg="6" className="auth-image-section border">
-        </Col>
+        <Col lg="6" className="auth-image-section border"></Col>
       </Row>
     </div>
   );
-}
+};
