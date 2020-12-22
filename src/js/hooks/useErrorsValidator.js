@@ -15,18 +15,18 @@ export const useErrorsValidator = () => {
             isEmpty(currentDataObject[item.name]))
         ) {
           formErrors[item.name] = `The ${item.name} field is required!`;
-          reject();
         } else {
-          let isInvalid = false;
           if (currentDataObject[item.name]) {
-            if (item.name) {
-              switch (item.name) {
+            if (item.type) {
+              switch (item.type) {
                 case 'number':
                   if (
                     isNaN(Number(currentDataObject[item.name])) ||
                     Math.sign(currentDataObject[item.name]) === -1
                   )
-                    isInvalid = true;
+                    formErrors[item.name] = [
+                      `The given ${item.name} is invalid`,
+                    ];
                   break;
                 case 'email':
                   if (
@@ -34,28 +34,32 @@ export const useErrorsValidator = () => {
                       /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
                     )
                   )
-                    isInvalid = true;
+                    formErrors[item.name] = [
+                      `The given ${item.name} is invalid`,
+                    ];
                   break;
-                // eslint-disable-next-line no-useless-escape
                 case 'phone':
                   if (
                     !currentDataObject[item.name].match(
                       /^[+]*[(]{0,1}[0-9]{1,4}[)]{0,1}[-\s\./0-9]*$/
                     )
                   )
-                    isInvalid = true;
+                    formErrors[item.name] = [
+                      `The given ${item.name} is invalid`,
+                    ];
                   break;
                 default:
                   break;
               }
             }
           }
-          if (isInvalid) {
-            formErrors[item.name] = [`The given ${item.name} is invalid`];
-            reject();
-          } else resolve();
         }
       });
+      if (!isEmpty(formErrors)) {
+        reject();
+      } else {
+        resolve();
+      }
       setErrors(formErrors);
     });
   };

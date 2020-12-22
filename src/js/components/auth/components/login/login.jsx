@@ -8,11 +8,11 @@ import { history } from 'js/helpers/history';
 const requiredFields = [
   {
     name: 'email',
-    type: 'text',
+    type: 'email',
   },
   {
     name: 'password',
-    type: 'text',
+    type: 'password',
   },
 ];
 
