@@ -33,12 +33,15 @@ export const Login = () => {
       authServices
         .login(state)
         .then((response) => {
-          localStorage.setItem(
-            configConstants.ADMIN_TOKEN,
-            response.access_token
-          );
-          setLoading(false);
-          history.push('/admin/dashboard');
+          if (response.data) {
+            const { data } = response;
+            localStorage.setItem(
+              configConstants.ADMIN_TOKEN,
+              data.access_token
+            );
+            setLoading(false);
+            history.push('/admin/dashboard');
+          }
         })
         .catch((errors) => {
           setLoading(false);
