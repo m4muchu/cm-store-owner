@@ -1,20 +1,8 @@
 import React, { useState } from 'react';
 import { Row, Col, Form, Button, Spinner } from 'react-bootstrap';
-import { isEmpty } from 'lodash';
 import { authServices } from 'js/services';
 import { configConstants } from 'js/constants';
-// import { isEmpty } from 'lodash';
 import { useErrorsValidator } from 'js/hooks/useErrorsValidator';
-
-// interface loginResponse {
-//   email: string;
-//   access_token: string;
-// }
-
-// interface errorResponse {
-//   status: number;
-//   error: string;
-// }
 
 const requiredFields = [
   {
@@ -34,13 +22,11 @@ export const Login = () => {
   });
 
   const [loading, setLoading] = useState(false);
+  const [serverError, setServerError] = useState(false);
   const [errors, validateData] = useErrorsValidator();
 
-  const onSubmit = () => {
-    console.log('errors++++++++++++++', errors);
-    validateData(requiredFields, state);
-
-    if (isEmpty(errors)) {
+  const onSubmit = async () => {
+    await validateData(requiredFields, state).then(() => {
       authServices
         .login(state)
         .then((response) => {
@@ -52,8 +38,9 @@ export const Login = () => {
         })
         .catch((errors) => {
           setLoading(false);
+          setServerError(true);
         });
-    }
+    });
   };
 
   return (
@@ -98,6 +85,11 @@ export const Login = () => {
               <Form.Control.Feedback type="invalid" tooltip>
                 {errors.password}
               </Form.Control.Feedback>
+              {serverError && (
+                <div className="invalid-feedback d-block mt-2">
+                  Please check your email and password
+                </div>
+              )}
             </Form.Group>
             <Button
               type="submit"
@@ -110,9 +102,6 @@ export const Login = () => {
                 <Spinner animation="border" variant="primary" />
               )}
             </Button>
-            <Form.Control.Feedback type="invalid" className="pt-2">
-              Please check your email and password
-            </Form.Control.Feedback>
           </div>
           <p className="forgot-password">Forgot Password ?</p>
         </Col>
