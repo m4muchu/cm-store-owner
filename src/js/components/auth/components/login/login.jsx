@@ -3,6 +3,7 @@ import { Row, Col, Form, Button, Spinner } from 'react-bootstrap';
 import { authServices } from 'js/services';
 import { configConstants } from 'js/constants';
 import { useErrorsValidator } from 'js/hooks/useErrorsValidator';
+import { history } from 'js/helpers/history';
 
 const requiredFields = [
   {
@@ -26,7 +27,9 @@ export const Login = () => {
   const [errors, validateData] = useErrorsValidator();
 
   const onSubmit = async () => {
+    setServerError(false);
     await validateData(requiredFields, state).then(() => {
+      setLoading(true);
       authServices
         .login(state)
         .then((response) => {
@@ -35,6 +38,7 @@ export const Login = () => {
             response.access_token
           );
           setLoading(false);
+          history.push('/admin/dashboard');
         })
         .catch((errors) => {
           setLoading(false);
