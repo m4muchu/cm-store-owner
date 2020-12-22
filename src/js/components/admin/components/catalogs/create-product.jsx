@@ -9,7 +9,7 @@ import {
   ImageSortable,
 } from 'js/components/common';
 import classnames from 'classnames';
-import { useErrorsValidator } from './useErrorsValidator';
+import { useErrorsValidator } from 'js/hooks/useErrorsValidator';
 
 export const CreateProduct = () => {
   const [productDetails, setProductDetails] = useState({

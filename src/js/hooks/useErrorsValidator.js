@@ -7,22 +7,6 @@ export const useErrorsValidator = () => {
   const getData = (requiredFields, currentDataObject) => {
     let formErrors = {};
 
-    // const requiredFieldsKeyBy = keyBy(requiredFields, 'name')
-    // const requiredFieldsKey = Object.keys(requiredFieldsKeyBy);
-    // const currentDataKeys = Object.keys(currentDataObject);
-    // const errorFields = currentDataKeys.filter(
-    //   key => requiredFieldsKey.includes(key) && isEmpty(currentDataObject[key])
-    // );
-
-    // const errorsObject = {};
-
-    // errorFields.map(key => {
-    //   errorsObject[key] = requiredFieldsKeyBy[key].message;
-    //   return key;
-    // });
-
-    // setErrors(errorsObject);
-
     forEach(requiredFields, (item) => {
       if (
         currentDataObject[item.name] === undefined ||
