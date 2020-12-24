@@ -1,53 +1,44 @@
 import React, { useState } from 'react';
 import { Row, Col, Form, Button, Spinner } from 'react-bootstrap';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
 import { authServices } from 'js/services';
 import { configConstants } from 'js/constants';
-import { useErrorsValidator } from 'js/hooks/useErrorsValidator';
 import { history } from 'js/helpers/history';
 
-const requiredFields = [
-  {
-    name: 'email',
-    type: 'email',
-  },
-  {
-    name: 'password',
-    type: 'password',
-  },
-];
-
 export const Login = () => {
-  const [state, setState] = useState({
-    email: '',
-    password: '',
-  });
-
   const [loading, setLoading] = useState(false);
   const [serverError, setServerError] = useState(false);
-  const [errors, validateData] = useErrorsValidator();
 
-  const onSubmit = async () => {
+  const validationSchema = Yup.object().shape({
+    email: Yup.string()
+      .required('Email is required')
+      .email('please check the email'),
+    password: Yup.string().required('Password is required'),
+  });
+
+  const { register, handleSubmit, errors } = useForm({
+    resolver: yupResolver(validationSchema),
+  });
+
+  const apiCall = (data) => {
     setServerError(false);
-    await validateData(requiredFields, state).then(() => {
-      setLoading(true);
-      authServices
-        .login(state)
-        .then((response) => {
-          if (response.data) {
-            const { data } = response;
-            localStorage.setItem(
-              configConstants.ADMIN_TOKEN,
-              data.access_token
-            );
-            setLoading(false);
-            history.push('/admin/dashboard');
-          }
-        })
-        .catch((errors) => {
+    setLoading(true);
+    authServices
+      .login(data)
+      .then((response) => {
+        if (response.data) {
+          const { data } = response;
+          localStorage.setItem(configConstants.ADMIN_TOKEN, data.access_token);
           setLoading(false);
-          setServerError(true);
-        });
-    });
+          history.push('/admin/dashboard');
+        }
+      })
+      .catch((errors) => {
+        setLoading(false);
+        setServerError(true);
+      });
   };
 
   return (
@@ -59,38 +50,27 @@ export const Login = () => {
           <div className="input-area">
             <Form.Group className="mb-4">
               <Form.Control
+                ref={register}
                 type="email"
                 name="email"
-                required
                 placeholder="Email"
-                onChange={(e) =>
-                  setState({
-                    ...state,
-                    email: e.target.value,
-                  })
-                }
                 isInvalid={errors.email}
               />
               <Form.Control.Feedback type="invalid" tooltip>
-                {errors.email}
+                {errors.email?.message}
               </Form.Control.Feedback>
             </Form.Group>
             <Form.Group className="mb-4">
               <Form.Control
+                ref={register}
                 type="password"
                 name="password"
                 required
                 placeholder="Password"
-                onChange={(e) =>
-                  setState({
-                    ...state,
-                    password: e.target.value,
-                  })
-                }
                 isInvalid={errors.password}
               />
               <Form.Control.Feedback type="invalid" tooltip>
-                {errors.password}
+                {errors.password?.message}
               </Form.Control.Feedback>
               {serverError && (
                 <div className="invalid-feedback d-block mt-2">
@@ -101,7 +81,7 @@ export const Login = () => {
             <Button
               type="submit"
               className="auth-submit-button"
-              onClick={onSubmit}
+              onClick={handleSubmit(apiCall)}
             >
               {!loading ? (
                 'LOG IN'
