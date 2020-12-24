@@ -100,7 +100,7 @@ export const CreateProduct = () => {
               </div>
             </div>
           </div>
-          {/* 
+
           <div className="dash_activity_card mt-4">
             <div className="d-flex justify-content-between">
               <h5 className="card-title">Images</h5>
@@ -121,7 +121,7 @@ export const CreateProduct = () => {
                   files={[
                     { attachment_url: 'https://picsum.photos/200/300' },
                     { attachment_url: 'https://picsum.photos/200/200' },
-                    { attachment_url: 'https://picsum.photos/200/204' }
+                    { attachment_url: 'https://picsum.photos/200/204' },
                   ]}
                 />
                 <div className="drag-drop-text">
@@ -139,7 +139,7 @@ export const CreateProduct = () => {
                 </div>
               </div>
             </div>
-          </div> */}
+          </div>
 
           <div className="dash_activity_card mt-4">
             <h5 className="card-title">Attributes</h5>
