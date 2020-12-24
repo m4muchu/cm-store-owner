@@ -14,7 +14,7 @@ export const Login = () => {
   const validationSchema = Yup.object().shape({
     email: Yup.string()
       .required('Email is required')
-      .email('please check the email'),
+      .email('The given email is invalid'),
     password: Yup.string().required('Password is required'),
   });
 
@@ -56,9 +56,11 @@ export const Login = () => {
                 placeholder="Email"
                 isInvalid={errors.email}
               />
-              <Form.Control.Feedback type="invalid" tooltip>
-                {errors.email?.message}
-              </Form.Control.Feedback>
+              {!serverError && (
+                <Form.Control.Feedback type="invalid" tooltip="true">
+                  {errors.email?.message}
+                </Form.Control.Feedback>
+              )}
             </Form.Group>
             <Form.Group className="mb-4">
               <Form.Control
@@ -69,9 +71,12 @@ export const Login = () => {
                 placeholder="Password"
                 isInvalid={errors.password}
               />
-              <Form.Control.Feedback type="invalid" tooltip>
-                {errors.password?.message}
-              </Form.Control.Feedback>
+              {!serverError && (
+                <Form.Control.Feedback type="invalid" tooltip="true">
+                  {errors.password?.message}
+                </Form.Control.Feedback>
+              )}
+
               {serverError && (
                 <div className="invalid-feedback d-block mt-2">
                   Please check your email and password
