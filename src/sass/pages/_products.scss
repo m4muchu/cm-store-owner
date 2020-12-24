@@ -1,0 +1,117 @@
+// //STYLES FOR FILTER STARTS------------------------------------------------>
+
+.allStyle-filter {
+    height: 130px;
+    width: 16rem;
+    color: $cm-black;
+    z-index: 10001;
+    position: absolute;
+
+  }
+  .filter-dropdown-btn{
+      line-height: 20px;
+      height: calc(1.5em + .75rem + 2px);
+      width: 7rem;
+      color: #A4ADB9;
+      background-color: #F3F5F7;
+      border: none;
+      border-radius: 3px;
+      text-align: start;
+  }
+  .noneStyle-filter {
+    height: 0px;
+    overflow: hidden;
+    width: 16rem;
+    background-color: $cm-white;
+    z-index: 10001;
+    position: absolute;
+    color: $cm-black;
+  }
+  
+  .filter_card {
+    color: $cm-black;
+    background-color: #282c34;
+    margin-bottom: 1.5rem;
+    height: auto;
+    border-radius: 4px;
+    letter-spacing: 0.01rem;
+    background-color: $cm-white;
+    margin-top: 1.5rem;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+
+  }
+  .card-text {
+    padding-bottom: 0.1rem;
+    height: 0.2rem;
+  }
+  
+  .MuiDivider-root-filter {
+    height: 1px;
+    margin: 0;
+    background-color: rgba(255, 255, 255, 0.12);
+  }
+  .filter-options {
+    display: flex;
+    flex-direction: row;
+    input{
+        margin-left: 1rem;
+        margin-top: 1rem;
+    }
+  }
+.filter-drop-outer-text{
+    margin-left: 1rem;
+    margin-top: 1rem;
+
+}
+  .filter_inner_list_open ul li {
+    list-style: none;
+  }
+  .filter_inner_list_close {
+    cursor: pointer;
+    display: none;
+  }
+  
+  .filter_inner_list_open ul li {
+    padding: 0.2rem;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+  }
+  .filter_inner_list_open ul li p{
+    padding-left: 1rem;
+  
+  }
+  .filter-options-wrapper {
+    display: flex;
+    flex-direction: column;
+  }
+  .filter-card-header button {
+    height: 2rem;
+    margin-top: 2rem;
+    position: absolute;
+  
+    right: 1rem;
+  }
+  .filter-card-header {
+    display: flex;
+    flex-direction: row;
+  }
+  .filter-card-body {
+    position: relative;
+  }
+  .filter-clear {
+    left: 8rem;
+  }
+  .filter-save,.filter-clear{
+      margin-bottom: 1rem;
+  }
+  
+  .padding-adjustmnet{
+      margin-top: 1rem;
+  }
+
+
+
+
+
+// //STYLES FOR FILTER ENDS___________________________________________________--------->

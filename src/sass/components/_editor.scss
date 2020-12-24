@@ -1,0 +1,37 @@
+.editor-outer-wrap{
+    .tox-tbtn[aria-label="Add Media"], .tox-tbtn[aria-label="Add Advertisement"]{
+        background-color: transparent !important;
+        border: solid 1px $cm-primary !important;
+        border-radius: 4px;
+        font-size: 13px !important;
+        font-weight: 600 !important;
+        padding: 0 19px !important;
+        margin-left: 15px;
+        color: $cm-primary !important;
+        height: 25px;
+        cursor: pointer !important;
+        span {
+            cursor: pointer !important;
+        }
+        &:hover{
+            background-color: $cm-primary !important;
+            color: $cm-white !important;
+        }
+        &:focus{
+            background-color: $cm-primary !important;
+            color: $cm-white !important;
+        }
+    }
+
+
+}
+
+.editor-outer-wrap{
+    position: relative;
+    min-height: 400px;
+    padding-right: 0.4rem;
+}
+
+.editor-wrapper{
+    padding: 1.3rem;
+}

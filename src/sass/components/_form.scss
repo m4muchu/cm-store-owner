@@ -1,0 +1,20 @@
+.cm-admin-checkbox {
+    .custom-control-label::before {
+        border: solid 1px $cm-black !important;
+    }
+
+    .custom-control-input:checked~.custom-control-label::before {
+        border-color: $cm-primary !important;
+        background-color: $cm-primary !important;
+    }
+
+    .custom-control-input:focus~.custom-control-label::before {
+        box-shadow: 0 0 0 0.2rem rgb(255, 238, 208);
+    }
+
+    .cc-checkbox {
+        label {
+            margin-left: 0.8rem;
+        }
+    }
+}

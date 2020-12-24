@@ -1,9 +1,29 @@
-@import 'utilities/variables';
-@import 'utilities/helpers';
-@import 'base/typography';
+@import "utilities/variables";
+@import "utilities/helpers";
+@import "base/typography";
 
-@import 'layouts/admin/global';
-@import 'layouts/admin/sidebar';
-@import 'layouts/admin/header';
-@import 'layouts/global';
-@import 'layouts/footer';
+@import "layouts/admin/sidebar";
+@import "layouts/admin/header";
+@import "layouts/global";
+@import "layouts/footer";
+
+@import "pages/products";
+@import "pages/customer";
+@import "pages/sales";
+@import "pages/address";
+@import "pages/voucher";
+@import 'pages/login';
+@import 'pages/dashboard';
+@import 'pages/staff-info';
+@import 'pages/create-product';
+@import 'pages/edit-customer';
+@import 'pages/configuration';
+
+
+@import 'components/button';
+@import 'components/react-select';
+@import 'components/input';
+@import 'components/table';
+@import 'components/form';
+@import 'components/editor';
+@import 'components/file-uploader';

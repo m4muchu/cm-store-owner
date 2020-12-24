@@ -1,0 +1,29 @@
+.filter-input--outer{
+    position: relative;
+    width: 100%;
+    input[type="text"]{
+        background: #F3F5F7;
+        border-radius: 4px;
+        border: none;
+        font-family: Open Sans;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 13px;
+        line-height: 20px;
+        color: $cm-black;
+        padding:20px .75rem;
+
+    }
+}
+
+
+.custom-radio-button {
+
+    input {
+        width: 1.2rem;
+    }
+
+    label {
+        margin-left: 0.5rem; 
+    }
+}

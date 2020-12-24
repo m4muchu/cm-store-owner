@@ -1,0 +1,145 @@
+.customer_card {
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+    color: $cm-black;
+    background-color: $cm-white;
+    margin-bottom: 1.5rem;
+    height: auto;
+    border-radius: 4px;
+    letter-spacing: 0.01rem;
+    padding-bottom: 2rem;
+    width: 80vw;
+    min-width: 20vw;
+    margin: 0 auto;
+    margin-top: 2rem;
+  }
+
+  .horizontal_line_pad{
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+.address_table{
+  overflow-x: scroll;
+  }
+  /*  */
+  .customer-checkbox-container {
+    margin-top: 1rem;
+  }
+  .customer-checkbox-container li {
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    align-items: baseline;
+  }
+  .customer_card_header p,
+  .customer_card_header span {
+    margin-left: 1rem;
+  }
+  .customer_card_title {
+    padding-top: 1rem;
+  }
+  .customer_card_header span {
+    font-size: 0.8rem;
+    padding-top: -2rem;
+  }
+  
+@media only screen and (min-width: 992px) {
+    .customer_card {
+      width: 22vw !important;
+      min-width: 10vw;
+    }
+    .common_details_container {
+      display: flex;
+      justify-content: flex-start;
+      flex-direction: column;
+      position: absolute;
+      left: 2rem;
+    }
+    .address_block_flex_container{
+      display: flex;
+    }
+    .address_left_card{
+      width: 50vw !important; 
+      margin-right: 1.5rem;
+    }
+    .order_list_card{
+      margin-left: 0rem !important; 
+    }
+  }
+
+  @media only screen and (min-width: 1000px) and (max-width: 1245px)  {
+    .customer_card {
+      width: 26vw !important;
+    }
+    .address_left_card{
+      width: 45vw !important; 
+      margin-right: 1.5rem;
+    }
+
+  }
+
+  //SPECIFIC SIZES ONLY START
+
+  .customer_card_header p,.personal_info_card_title{
+      font-size: 16px;
+  }
+  .common_card_title{
+      font-size: 16px;
+  }
+  .common_settings_data_container {
+      p{
+    font-size: 16px;
+    margin-left: 2rem;
+      }
+    span{
+        font-size: 14px;
+        margin-left: 2rem;
+    }
+
+  }
+  .address_header{
+      font-size: 14px;
+   font-weight: 600!important;
+   margin-left: 1rem;
+  }
+.address_management{
+    font-size: 16px;
+    margin-right: 1rem;
+    font-weight: 600;
+  }
+.customer_address_container p{
+    font-size: 14px;
+    margin-left: 1.5rem;
+
+}
+.personal_info_card_title{
+    margin-left: 1rem;
+    padding-top: 1rem!important;
+    font-weight: 600;
+}
+.customer_card_title{
+    font-weight: 600;
+
+}
+.general_info_header,.contact_info_header{
+    font-size: 14px;
+    margin-left: 1rem;
+}
+.customer-checkbox-container p{
+    margin-left: 1rem;
+}
+.customer-checkbox-container{
+    margin-left: -1.5rem;
+}
+
+.input_pad{
+    margin-left: .5rem;
+}
+.admin_note{
+    height: 5rem;
+}
+.custom_pad_adjust{
+    padding-bottom: 0rem !important;
+    margin-bottom: 0rem !important;
+
+}
+  //SPECIFIC SIZES END------------------------------------------------------------------>

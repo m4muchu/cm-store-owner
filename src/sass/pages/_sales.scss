@@ -1,0 +1,110 @@
+.common_settings_card {
+  box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+  color: $cm-black;
+  background-color: $cm-white;
+  margin-bottom: 1.5rem;
+  height: auto;
+  border-radius: 4px;
+  letter-spacing: 0.01rem;
+  padding-bottom: 2rem;
+  width: 80vw;
+  min-width: 40vw;
+  margin: 0 auto;
+  margin-top: 2rem;
+}
+.common_info_input_pad {
+  margin-left: -0.5rem !important;
+}
+.MuiDivider-root {
+  height: 1px;
+  margin: 0;
+  background-color: rgba(255, 255, 255, 0.12);
+}
+.input_name {
+  margin-top: 2rem;
+  margin: 0 auto;
+  width: 90%;
+  padding: 0.5rem;
+}
+@media only screen and (min-width: 992px) {
+  .common_settings_card {
+    width: 60vw !important;
+    min-width: 50vw;
+  }
+
+  .common_date_container {
+    display: flex;
+    flex-direction: row;
+  }
+  .common_date_container div {
+    width: 90%;
+  }
+}
+
+//   //ADDITIONAL STYLES FOR SALES PAGE_ABOVE STYLES ARE FROM PREVIOUS PAGES
+
+.common_settings_card_header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.common_settings_card_header p,
+.common_card_title {
+  margin-top: 1rem;
+  margin-bottom: 1rem !important;
+}
+.common_info_name_container input {
+  margin-left: 1rem;
+}
+.common_info_name_container input:first-child {
+  margin-top: 1rem;
+}
+.common_info_name_container label {
+  margin-left: 1rem;
+}
+.common_date_checkbox_data ul li p {
+  margin-left: 1rem;
+}
+.common_date_checkbox_data ul li {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  align-items: baseline;
+}
+.common_flex_row_data ul li {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+  align-items: baseline;
+}
+.common_flex_row_data ul li p {
+  margin-left: 1rem;
+}
+.common_flex_row_data ul li span {
+  font-size: 0.7rem;
+}
+.usage_limit_container ul,
+.active_dates_data_container {
+  margin-top: 1rem;
+}
+.usage_limit_container ul li {
+  padding-right: 1rem;
+}
+.common_info_name_container label {
+  font-size: 14px !important;
+}
+input::placeholder {
+  font-size: 14px;
+}
+.common_date_checkbox_data ul li p {
+  font-size: 14px;
+}
+.common_card_title {
+  margin-left: 1rem;
+  font-weight: 600;
+}
+.sales-global-header {
+  font-size: 20px;
+  font-weight: 600;
+}
