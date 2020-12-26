@@ -1,19 +1,19 @@
-import React, { useState } from 'react';
-import { Button, Table, Row, Col, Form } from 'react-bootstrap';
-import Select from 'react-select';
-import { isEmpty } from 'lodash';
-import CreateVariantModal from './CreateVariantModal';
+import React, { useState } from "react";
+import { Button, Table, Row, Col, Form, Container } from "react-bootstrap";
+import Select from "react-select";
+import { isEmpty } from "lodash";
+import CreateVariantModal from "./CreateVariantModal";
 import {
   EditorComponent,
   FileUploadComponent,
   ImageSortable,
-} from 'js/components/common';
-import classnames from 'classnames';
-import { useErrorsValidator } from 'js/hooks/useErrorsValidator';
+} from "js/components/common";
+import classnames from "classnames";
+import { useErrorsValidator } from "js/hooks/useErrorsValidator";
 
 export const CreateProduct = () => {
   const [productDetails, setProductDetails] = useState({
-    material: '',
+    material: "",
   });
   const [modalShow, setModalShow] = useState(false);
   const [errors, validateData] = useErrorsValidator();
@@ -28,12 +28,12 @@ export const CreateProduct = () => {
 
   const requiredFields = [
     {
-      name: 'name',
-      type: 'text',
+      name: "name",
+      type: "text",
     },
     {
-      name: 'material',
-      type: 'text',
+      name: "material",
+      type: "text",
     },
   ];
 
@@ -88,13 +88,13 @@ export const CreateProduct = () => {
               </div>
             </div>
             <div className="editor-wrapper">
-              <div className={classnames('editor-outer-wrap')}>
+              <div className={classnames("editor-outer-wrap")}>
                 <EditorComponent
                   advertisement
                   id="description"
                   content={productDetails?.description}
                   onChange={(content) =>
-                    editorHandleChange(content, 'description')
+                    editorHandleChange(content, "description")
                   }
                 />
               </div>
@@ -113,15 +113,15 @@ export const CreateProduct = () => {
                     entity_type="TripMedia"
                     multiple={true}
                     max={10}
-                    accepted={['image/*']}
+                    accepted={["image/*"]}
                     // onSuccess={props.onAddNewFiles}
                   />
                 </div>
                 <ImageSortable
                   files={[
-                    { attachment_url: 'https://picsum.photos/200/300' },
-                    { attachment_url: 'https://picsum.photos/200/200' },
-                    { attachment_url: 'https://picsum.photos/200/204' },
+                    { attachment_url: "https://picsum.photos/200/300" },
+                    { attachment_url: "https://picsum.photos/200/200" },
+                    { attachment_url: "https://picsum.photos/200/204" },
                   ]}
                 />
                 <div className="drag-drop-text">
@@ -164,36 +164,175 @@ export const CreateProduct = () => {
               </div>
             </div>
           </div>
-
+          {/* pricing */}
           <div className="dash_activity_card mt-4">
             <h5 className="card-title">Pricing</h5>
-            <div className="cm-admin-checkbox card-sub-title">
-              <Form.Check
-                type="checkbox"
-                id="tt-check-lead-select-all"
-                className="cc-checkbox"
-                // onChange={(e) => selectAll(e.target.checked)}
-                // checked={state.select_all ? state.select_all : false}
-                label="Charge taxes for this item"
-              />
-            </div>
+
             <hr className="MuiDivider-root" />
             <div className="card-data-wrapper">
-              <div className="input-area w-50">
-                <Form.Label>Price</Form.Label>
-                <Form.Control
-                  type="number"
-                  placeholder="Price"
-                  onChange={(e) =>
-                    setProductDetails({
-                      ...productDetails,
-                      [e.target.name]: e.target.value,
-                    })
-                  }
-                />
+              <div className="input-area ">
+                <Container className="container-custom-margin">
+                  <Row>
+                    <Col md={6}>
+                      <Form.Label>Price</Form.Label>
+                      <Form.Control
+                        type="number"
+                        placeholder="Price"
+                        onChange={(e) =>
+                          setProductDetails({
+                            ...productDetails,
+                            [e.target.name]: e.target.value,
+                          })
+                        }
+                      />
+                    </Col>
+                    <Col md={6}>
+                      <Form.Label> Compare at price</Form.Label>
+                      <Form.Control
+                        type="number"
+                        placeholder="Price"
+                        onChange={(e) =>
+                          setProductDetails({
+                            ...productDetails,
+                            [e.target.name]: e.target.value,
+                          })
+                        }
+                      />
+                    </Col>
+                  </Row>
+                </Container>
+                <hr className="MuiDivider-root card-custom-hr-line" />
+                <Container className="container-custom-margin">
+                  <Row>
+                    <Col md={6}>
+                      <Form.Label>Cost per item</Form.Label>
+                      <Form.Control
+                        type="number"
+                        placeholder="ComparePrice"
+                        onChange={(e) =>
+                          setProductDetails({
+                            ...productDetails,
+                            [e.target.name]: e.target.value,
+                          })
+                        }
+                      />
+                      <Form.Text className="text-muted">
+                        Customers won’t see this
+                      </Form.Text>
+                    </Col>
+                    {/* <div className="price-card-bottom-data"> */}
+                    <Col className="price-card-bottom-data">
+                      <p>Margin</p>
+                      <p className="price-card-bottom-data-unit">21</p>
+                    </Col>
+                    <Col className="price-card-bottom-data">
+                      <p>Profit</p>
+                      <p className="price-card-bottom-data-unit">21</p>
+                    </Col>
+                  </Row>
+                </Container>
               </div>
+              <Container className="container-custom-margin">
+                <div className="cm-admin-checkbox card-sub-title mt-3 " md={6}>
+                  <Form.Check
+                    type="checkbox"
+                    id="tt-check-lead-select-all"
+                    md={6}
+                    className="cc-checkbox"
+                    // onChange={(e) => selectAll(e.target.checked)}
+                    // checked={state.select_all ? state.select_all : false}
+                    label="Charge taxes for this item"
+                  />
+                </div>
+              </Container>
             </div>
           </div>
+
+          {/* inventory */}
+          <div className="dash_activity_card mt-4">
+            <h5 className="card-title">Inventory</h5>
+
+            <hr className="MuiDivider-root" />
+            <div className="card-data-wrapper">
+              <div className="input-area ">
+                <Container className="container-custom-margin">
+                  <Row>
+                    <Col md={6}>
+                      <Form.Label>SKU (Stock Keeping Unit)</Form.Label>
+                      <Form.Control
+                        type="number"
+                        placeholder="Price"
+                        onChange={(e) =>
+                          setProductDetails({
+                            ...productDetails,
+                            [e.target.name]: e.target.value,
+                          })
+                        }
+                      />
+                    </Col>
+                    <Col md={6}>
+                      <Form.Label> Barcode (ISBN, UPC, GTIN, etc.</Form.Label>
+                      <Form.Control
+                        type="number"
+                        placeholder="Price"
+                        onChange={(e) =>
+                          setProductDetails({
+                            ...productDetails,
+                            [e.target.name]: e.target.value,
+                          })
+                        }
+                      />
+                    </Col>
+                  </Row>
+                </Container>
+              </div>
+              <Container className="container-custom-margin container-custom-padding">
+                <Col md={6}>
+                  <div className="cm-admin-checkbox card-sub-title mt-4">
+                    <Form.Check
+                      type="checkbox"
+                      id="tt-check-lead-select-all"
+                      className="cc-checkbox"
+                      // onChange={(e) => selectAll(e.target.checked)}
+                      // checked={state.select_all ? state.select_all : false}
+                      label="
+                  Track quantity"
+                    />
+                    <Form.Check
+                      type="checkbox"
+                      id="tt-check-lead-select-all"
+                      className="cc-checkbox"
+                      // onChange={(e) => selectAll(e.target.checked)}
+                      // checked={state.select_all ? state.select_all : false}
+                      label="
+                  Continue selling when out of stock"
+                    />
+                  </div>
+                </Col>
+              </Container>
+              <hr className="MuiDivider-root card-custom-hr-line" />
+              <Container className="container-custom-margin container-custom-padding">
+                <Col md={6}>
+                  <div className="inventory-card-bottom ">
+                    <h6 className="mb-3">QUANTITY</h6>
+                    <Form.Label>Available</Form.Label>
+                    <Form.Control
+                      type="number"
+                      placeholder="0"
+                      onChange={(e) =>
+                        setProductDetails({
+                          ...productDetails,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
+                    />
+                  </div>
+                </Col>
+              </Container>
+            </div>
+          </div>
+
+          {/* Variants */}
 
           <div className="dash_activity_card mt-4">
             <div className="d-flex justify-content-between">
