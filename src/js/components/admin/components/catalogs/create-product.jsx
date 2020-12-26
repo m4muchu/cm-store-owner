@@ -177,7 +177,7 @@ export const CreateProduct = () => {
                       <Form.Label>Price</Form.Label>
                       <Form.Control
                         type="number"
-                        placeholder="Price"
+                        placeholder="0.00"
                         onChange={(e) =>
                           setProductDetails({
                             ...productDetails,
@@ -190,7 +190,7 @@ export const CreateProduct = () => {
                       <Form.Label> Compare at price</Form.Label>
                       <Form.Control
                         type="number"
-                        placeholder="Price"
+                        placeholder="0.00"
                         onChange={(e) =>
                           setProductDetails({
                             ...productDetails,
@@ -208,7 +208,7 @@ export const CreateProduct = () => {
                       <Form.Label>Cost per item</Form.Label>
                       <Form.Control
                         type="number"
-                        placeholder="ComparePrice"
+                        placeholder="0.00"
                         onChange={(e) =>
                           setProductDetails({
                             ...productDetails,
@@ -261,7 +261,7 @@ export const CreateProduct = () => {
                       <Form.Label>SKU (Stock Keeping Unit)</Form.Label>
                       <Form.Control
                         type="number"
-                        placeholder="Price"
+                        placeholder=""
                         onChange={(e) =>
                           setProductDetails({
                             ...productDetails,
@@ -274,7 +274,7 @@ export const CreateProduct = () => {
                       <Form.Label> Barcode (ISBN, UPC, GTIN, etc.</Form.Label>
                       <Form.Control
                         type="number"
-                        placeholder="Price"
+                        placeholder=""
                         onChange={(e) =>
                           setProductDetails({
                             ...productDetails,
@@ -314,7 +314,9 @@ export const CreateProduct = () => {
               <Container className="container-custom-margin container-custom-padding">
                 <Col md={6}>
                   <div className="inventory-card-bottom ">
-                    <h6 className="mb-3">QUANTITY</h6>
+                    <h6 className="mb-3 inventory-card-bottom-header ">
+                      Quantity
+                    </h6>
                     <Form.Label>Available</Form.Label>
                     <Form.Control
                       type="number"
