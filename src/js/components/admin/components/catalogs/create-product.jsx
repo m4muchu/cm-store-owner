@@ -1,56 +1,50 @@
-import React, { useState } from "react";
-import { Button, Table, Row, Col, Form } from "react-bootstrap";
-import Select from "react-select";
-import { isEmpty } from "lodash";
-import CreateVariantModal from "./CreateVariantModal";
-import {
-  EditorComponent,
-  FileUploadComponent,
-  ImageSortable,
-} from "js/components/common";
-import classnames from "classnames";
-import { useErrorsValidator } from "js/hooks/useErrorsValidator";
+import React, { useState } from 'react'
+import { Button, Table, Row, Col, Form } from 'react-bootstrap'
+import Select from 'react-select'
+import { isEmpty } from 'lodash'
+import CreateVariantModal from './CreateVariantModal'
+import { EditorComponent, FileUploadComponent, ImageSortable } from 'js/components/common'
+import classnames from 'classnames'
+import { useErrorsValidator } from 'js/hooks/useErrorsValidator'
 
 export const CreateProduct = () => {
   const [productDetails, setProductDetails] = useState({
-    material: "",
-  });
-  const [modalShow, setModalShow] = useState(false);
-  const [errors, validateData] = useErrorsValidator();
+    material: '',
+  })
+  const [modalShow, setModalShow] = useState(false)
+  const [errors, validateData] = useErrorsValidator()
 
-  const modelCallBack = (modalData) => {
-    let modalDataArray = !isEmpty(productDetails.variants)
-      ? productDetails.variants
-      : [];
-    modalDataArray.push(modalData);
-    setProductDetails({ ...productDetails, variants: modalDataArray });
-  };
+  const modelCallBack = modalData => {
+    let modalDataArray = !isEmpty(productDetails.variants) ? productDetails.variants : []
+    modalDataArray.push(modalData)
+    setProductDetails({ ...productDetails, variants: modalDataArray })
+  }
 
   const requiredFields = [
     {
-      name: "name",
-      type: "text",
+      name: 'name',
+      type: 'text',
     },
     {
-      name: "material",
-      type: "text",
+      name: 'material',
+      type: 'text',
     },
-  ];
+  ]
 
   const editorHandleChange = (value, key) => {
     setProductDetails({
       ...productDetails,
       key: value,
-    });
-  };
+    })
+  }
 
   const handleSubmit = () => {
     const productData = {
       ...productDetails,
-    };
+    }
 
-    validateData(requiredFields, productData);
-  };
+    validateData(requiredFields, productData)
+  }
 
   return (
     <section className="crearte-products-section">
@@ -73,7 +67,7 @@ export const CreateProduct = () => {
                     type="text"
                     name="name"
                     placeholder="Name"
-                    onChange={(e) =>
+                    onChange={e =>
                       setProductDetails({
                         ...productDetails,
                         [e.target.name]: e.target.value,
@@ -88,14 +82,12 @@ export const CreateProduct = () => {
               </div>
             </div>
             <div className="editor-wrapper">
-              <div className={classnames("editor-outer-wrap")}>
+              <div className={classnames('editor-outer-wrap')}>
                 <EditorComponent
                   advertisement
                   id="description"
                   content={productDetails?.description}
-                  onChange={(content) =>
-                    editorHandleChange(content, "description")
-                  }
+                  onChange={content => editorHandleChange(content, 'description')}
                 />
               </div>
             </div>
@@ -113,15 +105,15 @@ export const CreateProduct = () => {
                     entity_type="TripMedia"
                     multiple={true}
                     max={10}
-                    accepted={["image/*"]}
+                    accepted={['image/*']}
                     // onSuccess={props.onAddNewFiles}
                   />
                 </div>
                 <ImageSortable
                   files={[
-                    { attachment_url: "https://picsum.photos/200/300" },
-                    { attachment_url: "https://picsum.photos/200/200" },
-                    { attachment_url: "https://picsum.photos/200/204" },
+                    { attachment_url: 'https://picsum.photos/200/300' },
+                    { attachment_url: 'https://picsum.photos/200/200' },
+                    { attachment_url: 'https://picsum.photos/200/204' },
                   ]}
                 />
                 <div className="drag-drop-text">
@@ -133,8 +125,8 @@ export const CreateProduct = () => {
                 <div className="drag-drop-text">
                   <h4>
                     <img src="/images/admin/global/info.svg" alt="" />
-                    You can only add upto 10 files at a time, max Size of file
-                    should be less than 2mb
+                    You can only add upto 10 files at a time, max Size of file should be less than
+                    2mb
                   </h4>
                 </div>
               </div>
@@ -177,7 +169,7 @@ export const CreateProduct = () => {
                     <Form.Control
                       type="number"
                       placeholder="0.00"
-                      onChange={(e) =>
+                      onChange={e =>
                         setProductDetails({
                           ...productDetails,
                           [e.target.name]: e.target.value,
@@ -190,7 +182,7 @@ export const CreateProduct = () => {
                     <Form.Control
                       type="number"
                       placeholder="0.00"
-                      onChange={(e) =>
+                      onChange={e =>
                         setProductDetails({
                           ...productDetails,
                           [e.target.name]: e.target.value,
@@ -206,16 +198,14 @@ export const CreateProduct = () => {
                     <Form.Control
                       type="number"
                       placeholder="0.00"
-                      onChange={(e) =>
+                      onChange={e =>
                         setProductDetails({
                           ...productDetails,
                           [e.target.name]: e.target.value,
                         })
                       }
                     />
-                    <Form.Text className="text-muted">
-                      Customers won’t see this
-                    </Form.Text>
+                    <Form.Text className="text-muted">Customers won’t see this</Form.Text>
                   </Col>
                   {/* <div className="price-card-bottom-data"> */}
                   <Col className="price-card-bottom-data">
@@ -255,7 +245,7 @@ export const CreateProduct = () => {
                     <Form.Control
                       type="number"
                       placeholder=""
-                      onChange={(e) =>
+                      onChange={e =>
                         setProductDetails({
                           ...productDetails,
                           [e.target.name]: e.target.value,
@@ -268,7 +258,7 @@ export const CreateProduct = () => {
                     <Form.Control
                       type="number"
                       placeholder=""
-                      onChange={(e) =>
+                      onChange={e =>
                         setProductDetails({
                           ...productDetails,
                           [e.target.name]: e.target.value,
@@ -303,14 +293,12 @@ export const CreateProduct = () => {
               <hr className="MuiDivider-root card-custom-hr-line" />
               <Col md={6}>
                 <div className="inventory-card-bottom ">
-                  <h6 className="mb-3 inventory-card-bottom-header ">
-                    Quantity
-                  </h6>
+                  <h6 className="mb-3 inventory-card-bottom-header ">Quantity</h6>
                   <Form.Label>Available</Form.Label>
                   <Form.Control
                     type="number"
                     placeholder="0"
-                    onChange={(e) =>
+                    onChange={e =>
                       setProductDetails({
                         ...productDetails,
                         [e.target.name]: e.target.value,
@@ -327,10 +315,7 @@ export const CreateProduct = () => {
           <div className="dash_activity_card mt-4">
             <div className="d-flex justify-content-between">
               <h5 className="card-title">Variants</h5>
-              <span
-                className="card-title-right text-uppercase"
-                onClick={() => setModalShow(true)}
-              >
+              <span className="card-title-right text-uppercase" onClick={() => setModalShow(true)}>
                 Create Variants
               </span>
             </div>
@@ -363,7 +348,7 @@ export const CreateProduct = () => {
                     </thead>
                     <tbody>
                       {!isEmpty(productDetails.variants) &&
-                        productDetails.variants.map((variant) => (
+                        productDetails.variants.map(variant => (
                           <tr>
                             <td>
                               <div className="tt-admin-checkbox">
@@ -478,13 +463,7 @@ export const CreateProduct = () => {
                 />
               </div>
               <div className="custom-radio-button w-100 mt-3">
-                <Form.Check
-                  type="radio"
-                  id={`default-2`}
-                  label="Hidden"
-                  inline
-                  name="visibility"
-                />
+                <Form.Check type="radio" id={`default-2`} label="Hidden" inline name="visibility" />
               </div>
             </div>
           </div>
@@ -507,5 +486,5 @@ export const CreateProduct = () => {
           			</Button>
             </Row> */}
     </section>
-  );
-};
+  )
+}
