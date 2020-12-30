@@ -6,6 +6,7 @@ import CreateVariantModal from './CreateVariantModal'
 import { EditorComponent, FileUploadComponent, ImageSortable } from 'js/components/common'
 import classnames from 'classnames'
 import { useErrorsValidator } from 'js/hooks/useErrorsValidator'
+import VariantOption from './VariantOption'
 
 export const CreateProduct = () => {
   const [productDetails, setProductDetails] = useState({
@@ -310,6 +311,103 @@ export const CreateProduct = () => {
             </div>
           </div>
 
+          {/* VARIANTS */}
+          <div className="dash_activity_card mt-4">
+            <h5 className="card-title ">Variants</h5>
+            <div className="card-data-wrapper">
+              <div className="cm-admin-checkbox  ">
+                <Form.Check
+                  type="checkbox"
+                  id="tt-check-lead-select-all"
+                  md={6}
+                  className="cc-checkbox"
+                  // onChange={(e) => selectAll(e.target.checked)}
+                  // checked={state.select_all ? state.select_all : false}
+                  label="This product has multiple options, like different sizes or colors"
+                />
+              </div>
+              <hr className="MuiDivider-root card-custom-hr-line" />
+              <div className="input-area ">
+                <h5 className="variants-sub-heading mb-3">OPTIONS</h5>
+                <Row>
+                  <Col md={3}>
+                    <Form.Label>Option 1</Form.Label>
+                    <VariantOption />
+                  </Col>
+                  <Col md={9}>
+                    <Form.Label className="variants-custom-label">Remove</Form.Label>
+
+                    <Form.Control
+                      type="number"
+                      placeholder="Seperate options with comma"
+                      onChange={e =>
+                        setProductDetails({
+                          ...productDetails,
+                          [e.target.name]: e.target.value,
+                        })
+                      }
+                    />
+                  </Col>
+                </Row>
+                <hr className="MuiDivider-root card-custom-hr-line" />
+                <Button className="add-new-btn" onClick={handleSubmit}>
+                  Add another option{' '}
+                </Button>{' '}
+              </div>
+              <hr className="MuiDivider-root card-custom-hr-line" />
+
+              <h5 className="variants-sub-heading mb-3">Preview</h5>
+              <Row>
+                <Col md={3}>variant</Col>
+                <Col md={3}>Price</Col>
+                <Col md={3}>Quantity</Col>
+                <Col md={3}>SKU</Col>
+              </Row>
+
+              <hr className="MuiDivider-root card-custom-hr-line" />
+
+              <Row>
+                <Col md={3}>text</Col>
+                <Col md={3}>
+                  <Form.Control
+                    type="number"
+                    placeholder="0.00"
+                    onChange={e =>
+                      setProductDetails({
+                        ...productDetails,
+                        [e.target.name]: e.target.value,
+                      })
+                    }
+                  />
+                </Col>
+                <Col md={3}>
+                  <Form.Control
+                    type="number"
+                    placeholder="0.00"
+                    onChange={e =>
+                      setProductDetails({
+                        ...productDetails,
+                        [e.target.name]: e.target.value,
+                      })
+                    }
+                  />
+                </Col>
+                <Col md={3}>
+                  <Form.Control
+                    type="number"
+                    placeholder="0.00"
+                    onChange={e =>
+                      setProductDetails({
+                        ...productDetails,
+                        [e.target.name]: e.target.value,
+                      })
+                    }
+                  />
+                </Col>
+              </Row>
+            </div>
+          </div>
+
           {/* Variants */}
 
           <div className="dash_activity_card mt-4">
@@ -319,7 +417,7 @@ export const CreateProduct = () => {
                 Create Variants
               </span>
             </div>
-            <hr className="MuiDivider-root" />
+            <hr className="MuiDivider-root card-custom-hr-line" />
             <div className="card-data-wrapper">
               <div className="cm-admin-card--data">
                 <div className="table-wrap">
@@ -413,10 +511,10 @@ export const CreateProduct = () => {
                   placeholder="Product Type"
                   className="react-select-container"
                   classNamePrefix="react-select"
-                  //options={BulkActionItems}
-                  //styles={styles}
+                  // options={BulkActionItems}
+                  // styles={styles}
                   // onChange={(e: any) => {
-                  //     setBulkAction(e.value);
+                  //   setBulkAction(e.value)
                   // }}
                 />
               </div>
