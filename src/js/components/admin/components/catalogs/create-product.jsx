@@ -408,7 +408,7 @@ export const CreateProduct = () => {
             </div>
           </div>
 
-          {/* Variants */}
+          {/* Variants
 
           <div className="dash_activity_card mt-4">
             <div className="d-flex justify-content-between">
@@ -474,7 +474,7 @@ export const CreateProduct = () => {
                 </div>
               </div>
             </div>
-          </div>
+          </div> */}
 
           {/* <div className="dash_activity_card mt-4">
             <h5 className="card-title">Search Engine Preview</h5>
