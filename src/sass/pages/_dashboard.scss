@@ -207,6 +207,20 @@
   font-weight: 800;
 }
 
+// variants start----------->
+
+.variants-sub-heading {
+  font-size: 1rem;
+  font-weight: 800;
+}
+.variants-sub-input-container {
+  margin-bottom: 30px;
+}
+
+.variants-custom-label {
+  display: flex;
+  flex-direction: row-reverse;
+}
 // MINI_REPORT STYLE START->
 
 .minireport_text {
