@@ -14,6 +14,8 @@ export const CreateProduct = () => {
   })
   const [modalShow, setModalShow] = useState(false)
   const [errors, validateData] = useErrorsValidator()
+  const [variantcheck, setVariantcheck] = useState(false)
+  const [fields, setFields] = useState([{ value: null }])
 
   const modelCallBack = modalData => {
     let modalDataArray = !isEmpty(productDetails.variants) ? productDetails.variants : []
@@ -47,6 +49,21 @@ export const CreateProduct = () => {
     validateData(requiredFields, productData)
   }
 
+  const Variantcheck = e => {
+    setVariantcheck(!variantcheck)
+  }
+
+  function handleAdd(id) {
+    const values = [...fields]
+    values.push({ value: null })
+    setFields(values)
+  }
+  function handleRemove(i) {
+    const values = [...fields]
+    values.splice(i, 1)
+    setFields(values)
+    console.log('VALUE', i)
+  }
   return (
     <section className="crearte-products-section">
       <div className="generic-page-header">
@@ -321,90 +338,97 @@ export const CreateProduct = () => {
                   id="tt-check-lead-select-all"
                   md={6}
                   className="cc-checkbox"
-                  // onChange={(e) => selectAll(e.target.checked)}
+                  onChange={e => Variantcheck(e)}
                   // checked={state.select_all ? state.select_all : false}
                   label="This product has multiple options, like different sizes or colors"
                 />
               </div>
-              <hr className="MuiDivider-root card-custom-hr-line" />
-              <div className="input-area ">
-                <h5 className="variants-sub-heading mb-3">OPTIONS</h5>
-                <Row>
-                  <Col md={3}>
-                    <Form.Label>Option 1</Form.Label>
-                    <VariantOption />
-                  </Col>
-                  <Col md={9}>
-                    <Form.Label className="variants-custom-label">Remove</Form.Label>
+              {variantcheck ? (
+                <div>
+                  <hr className="MuiDivider-root card-custom-hr-line" />
+                  <h5 className="variants-sub-heading mb-3">OPTIONS</h5>
+                  {fields.map((field, id) => {
+                    return (
+                      <div className="input-area variants-sub-input-container  key={id}">
+                        <Row>
+                          <Col md={3}>
+                            <Form.Label>Option 1</Form.Label>
+                            <VariantOption />
+                          </Col>
+                          <Col md={9}>
+                            <Form.Label
+                              className="variants-custom-label"
+                              onClick={() => handleRemove(id)}
+                            >
+                              Remove
+                            </Form.Label>
 
-                    <Form.Control
-                      type="number"
-                      placeholder="Seperate options with comma"
-                      onChange={e =>
-                        setProductDetails({
-                          ...productDetails,
-                          [e.target.name]: e.target.value,
-                        })
-                      }
-                    />
-                  </Col>
-                </Row>
-                <hr className="MuiDivider-root card-custom-hr-line" />
-                <Button className="add-new-btn" onClick={handleSubmit}>
-                  Add another option{' '}
-                </Button>{' '}
-              </div>
-              <hr className="MuiDivider-root card-custom-hr-line" />
-
-              <h5 className="variants-sub-heading mb-3">Preview</h5>
-              <Row>
-                <Col md={3}>variant</Col>
-                <Col md={3}>Price</Col>
-                <Col md={3}>Quantity</Col>
-                <Col md={3}>SKU</Col>
-              </Row>
-
-              <hr className="MuiDivider-root card-custom-hr-line" />
-
-              <Row>
-                <Col md={3}>text</Col>
-                <Col md={3}>
-                  <Form.Control
-                    type="number"
-                    placeholder="0.00"
-                    onChange={e =>
-                      setProductDetails({
-                        ...productDetails,
-                        [e.target.name]: e.target.value,
-                      })
-                    }
-                  />
-                </Col>
-                <Col md={3}>
-                  <Form.Control
-                    type="number"
-                    placeholder="0.00"
-                    onChange={e =>
-                      setProductDetails({
-                        ...productDetails,
-                        [e.target.name]: e.target.value,
-                      })
-                    }
-                  />
-                </Col>
-                <Col md={3}>
-                  <Form.Control
-                    type="number"
-                    placeholder="0.00"
-                    onChange={e =>
-                      setProductDetails({
-                        ...productDetails,
-                        [e.target.name]: e.target.value,
-                      })
-                    }
-                  />
-                </Col>
-              </Row>
+                            <Form.Control
+                              // type="number"
+                              placeholder="Seperate options with comma"
+                              // onChange={e => handleRemove(id, e)}
+                            />
+                          </Col>
+                        </Row>
+                      </div>
+                    )
+                  })}
+                  <hr className="MuiDivider-root card-custom-hr-line" />
+                  <Button className="add-new-btn" onClick={() => handleAdd()}>
+                    Add another option{' '}
+                  </Button>{' '}
+                  <hr className="MuiDivider-root card-custom-hr-line" />
+                  <h5 className="variants-sub-heading mb-3">Preview</h5>
+                  <Row>
+                    <Col md={3}>variant</Col>
+                    <Col md={3}>Price</Col>
+                    <Col md={3}>Quantity</Col>
+                    <Col md={3}>SKU</Col>
+                  </Row>
+                  <hr className="MuiDivider-root card-custom-hr-line" />
+                  <Row>
+                    <Col md={3}>text</Col>
+                    <Col md={3}>
+                      <Form.Control
+                        type="number"
+                        placeholder="0.00"
+                        onChange={e =>
+                          setProductDetails({
+                            ...productDetails,
+                            [e.target.name]: e.target.value,
+                          })
+                        }
+                      />
+                    </Col>
+                    <Col md={3}>
+                      <Form.Control
+                        type="number"
+                        placeholder="0.00"
+                        onChange={e =>
+                          setProductDetails({
+                            ...productDetails,
+                            [e.target.name]: e.target.value,
+                          })
+                        }
+                      />
+                    </Col>
+                    <Col md={3}>
+                      <Form.Control
+                        type="number"
+                        placeholder="0.00"
+                        onChange={e =>
+                          setProductDetails({
+                            ...productDetails,
+                            [e.target.name]: e.target.value,
+                          })
+                        }
+                      />
+                    </Col>
+                  </Row>
+                </div>
+              ) : (
+                ''
+              )}
             </div>
           </div>
 
