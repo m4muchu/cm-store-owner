@@ -289,7 +289,7 @@ export const CreateProduct = () => {
                   </Col>
                 </Row>
               </div>
-              <Col md={6} className="inventory-card-checkbox-custom-padding">
+              <Col md={6}>
                 <div className="cm-admin-checkbox card-sub-title mt-4">
                   <Form.Check
                     type="checkbox"
