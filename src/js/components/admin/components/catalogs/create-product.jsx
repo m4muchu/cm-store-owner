@@ -236,7 +236,10 @@ export const CreateProduct = () => {
                   </Col>
                 </Row>
               </div>
-              <div className="cm-admin-checkbox card-sub-title mt-3 " md={6}>
+              <div
+                className="cm-admin-checkbox card-sub-title mt-3 cm-dashboard-price-footer "
+                md={6}
+              >
                 <Form.Check
                   type="checkbox"
                   id="tt-check-lead-select-all"
@@ -286,7 +289,7 @@ export const CreateProduct = () => {
                   </Col>
                 </Row>
               </div>
-              <Col md={6}>
+              <Col md={6} className="inventory-card-checkbox-custom-padding">
                 <div className="cm-admin-checkbox card-sub-title mt-4">
                   <Form.Check
                     type="checkbox"

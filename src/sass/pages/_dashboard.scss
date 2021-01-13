@@ -123,7 +123,9 @@
   padding-bottom: 0.8rem;
   line-height: 1.5;
 }
-
+.inventory-card-checkbox-custom-padding {
+  padding-left: 0px !important;
+}
 .card-title-right {
   color: $cm-primary;
   font-size: 14px;
@@ -201,10 +203,16 @@
 .price-card-bottom-data-unit {
   margin-top: -1rem !important;
 }
+.cm-dashboard-price-footer {
+  padding-bottom: 0px !important;
+}
 // INVENTORY_CARD_STYLES---------------------------------->
 
 .inventory-card-bottom-header {
   font-weight: 800;
+}
+.cm-admin-checkbox {
+  padding-left: 0 !important;
 }
 
 // variants start----------->
