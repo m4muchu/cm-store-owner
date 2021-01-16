@@ -7,7 +7,7 @@
   display: flex;
   flex-direction: column;
 
-  li{
+  li {
     list-style: none;
     font-weight: normal;
     //font-size: 14px;
@@ -45,16 +45,16 @@
     //   //       border: solid 1px $tt-white;
     //   //  }
     // }
-    .active{
-        color:$cm-primary;
-        font-weight: 600;
-        i{
-            path{
-                fill: $cm-primary;
-            }
+    .active {
+      color: $cm-primary;
+      font-weight: 600;
+      i {
+        path {
+          fill: $cm-primary;
         }
+      }
     }
-}
+  }
 }
 
 .global-sidebar {
@@ -69,7 +69,7 @@
 .admin-sidebar {
   list-style: none;
   padding: 0;
-  height: 93vh;
+  height: 100vh;
   overflow-x: scroll;
   // overflow-y: auto;//if scroll needed change this part
   @media (max-width: 991.98px) {
@@ -90,9 +90,9 @@
   background: $cm-dark-grey;
 }
 
-/* Handle */  
+/* Handle */
 .admin-sidebar::-webkit-scrollbar-thumb {
-    background: #999;
+  background: #999;
 }
 
 /* Handle on hover */
@@ -135,6 +135,7 @@
 
 body .sidebar__list .active {
   color: $cm-primary !important;
+  text-decoration: none !important;
   i svg {
     path,
     rect {
@@ -207,16 +208,15 @@ body .sidebar__list .active {
   font-weight: 400;
   line-height: 1.75;
   font-size: 14px;
-  font-family: "Roboto", "Helvetica", "Arial", sans-serif;
-  letter-spacing: 0.6px
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  letter-spacing: 0.6px;
 }
 
 .sidenav {
-  .dropdown-btn:focus{
+  .dropdown-btn:focus {
     outline: none;
   }
 }
-
 
 .dropdown-btn span {
   margin-left: 1rem;
@@ -265,3 +265,45 @@ body .sidebar__list .active {
   width: 1.2rem;
   filter: brightness(0) invert(1);
 }
+
+// custom styles for accordion------------------------>
+
+// CARD--->
+.admin-sidebar-custom-accordion {
+  border: none !important;
+  border-radius: 0px;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  text-align: left !important;
+  background-color: $cm-dark-grey;
+  font-weight: 500;
+  line-height: 1.75;
+}
+.admin-sidebar-custom-accordion-header-name {
+  background-color: $cm-dark-grey;
+  text-decoration: none !important;
+  color: #fff;
+  border-radius: 0px;
+  font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
+  font-weight: 400;
+  font-size: 14px;
+  text-align: left !important;
+  line-height: 1.75;
+
+  // letter-spacing: 0.6px !important;
+}
+.admin-sidebar-custom-accordion-header-name :hover {
+  color: rgb(91, 96, 105);
+}
+.admin-sidebar-custom-accordion-dropdown {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+}
+
+// REACT BOOTSTRAP INTERNAL STYLE OVERRIDE----->
+.show a {
+  text-decoration: none !important;
+}
+.collapse a {
+  text-decoration: none !important;
+}
+// -----------end-------->
