@@ -15,7 +15,7 @@ export const CreateVariant = () => {
       </div>
       <Row className="mt-5">
         <Col xl={8}>
-          <div className="dash_activity_card">
+          <div className="dashboard-activity-card">
             <h5 className="card-title">General Informations</h5>
             <hr className="MuiDivider-root" />
             <div className="card-data-wrapper">
@@ -24,7 +24,7 @@ export const CreateVariant = () => {
               </div>
             </div>
           </div>
-          <div className="dash_activity_card mt-4">
+          <div className="dashboard-activity-card mt-4">
             <h5 className="card-title">Pricing</h5>
             <hr className="MuiDivider-root" />
             <div className="card-data-wrapper d-flex justify-space-between">
@@ -41,7 +41,7 @@ export const CreateVariant = () => {
               </div>
             </div>
           </div>
-          <div className="dash_activity_card mt-4">
+          <div className="dashboard-activity-card mt-4">
             <h5 className="card-title">Inventory</h5>
             <hr className="MuiDivider-root" />
             <div className="card-data-wrapper d-flex justify-space-between">
@@ -60,7 +60,7 @@ export const CreateVariant = () => {
           </div>
         </Col>
         <Col xl={4}>
-          <div className="dash_activity_card">
+          <div className="dashboard-activity-card">
             <h5 className="card-title">Variants</h5>
             <hr className="MuiDivider-root" />
             <div className="card-data-wrapper"></div>

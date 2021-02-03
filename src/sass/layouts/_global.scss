@@ -244,3 +244,12 @@ body::-webkit-scrollbar {
   margin: 0;
   background-color: $cm-light-grey2;
 }
+
+.submit-footer {
+  display: flex;
+  justify-content: center;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

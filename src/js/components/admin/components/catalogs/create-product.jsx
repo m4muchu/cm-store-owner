@@ -1,38 +1,16 @@
 import React, { useState } from 'react'
-import { Button, Table, Row, Col, Form } from 'react-bootstrap'
+import { Button, Row, Col, Form } from 'react-bootstrap'
 import Select from 'react-select'
-import { isEmpty } from 'lodash'
-import CreateVariantModal from './CreateVariantModal'
 import { EditorComponent, FileUploadComponent, ImageSortable } from 'js/components/common'
 import classnames from 'classnames'
-import { useErrorsValidator } from 'js/hooks/useErrorsValidator'
 import VariantOption from './VariantOption'
 
 export const CreateProduct = () => {
   const [productDetails, setProductDetails] = useState({
     material: '',
   })
-  const [modalShow, setModalShow] = useState(false)
-  const [errors, validateData] = useErrorsValidator()
-  const [variantcheck, setVariantcheck] = useState(false)
+  const [hasVariants, setHasVariants] = useState(false)
   const [fields, setFields] = useState([{ value: null }])
-
-  const modelCallBack = modalData => {
-    let modalDataArray = !isEmpty(productDetails.variants) ? productDetails.variants : []
-    modalDataArray.push(modalData)
-    setProductDetails({ ...productDetails, variants: modalDataArray })
-  }
-
-  const requiredFields = [
-    {
-      name: 'name',
-      type: 'text',
-    },
-    {
-      name: 'material',
-      type: 'text',
-    },
-  ]
 
   const editorHandleChange = (value, key) => {
     setProductDetails({
@@ -45,12 +23,6 @@ export const CreateProduct = () => {
     const productData = {
       ...productDetails,
     }
-
-    validateData(requiredFields, productData)
-  }
-
-  const Variantcheck = e => {
-    setVariantcheck(!variantcheck)
   }
 
   function handleAdd(id) {
@@ -74,7 +46,7 @@ export const CreateProduct = () => {
       </div>
       <Row className="mt-5">
         <Col xl={8}>
-          <div className="dash_activity_card">
+          <div className="dashboard-activity-card">
             <h5 className="card-title">General Informations</h5>
             <hr className="MuiDivider-root" />
             <div className="card-data-wrapper">
@@ -91,11 +63,11 @@ export const CreateProduct = () => {
                         [e.target.name]: e.target.value,
                       })
                     }
-                    isInvalid={errors.name}
+                    // isInvalid={errors.name}
                   />
-                  <Form.Control.Feedback type="invalid" tooltip>
+                  {/* <Form.Control.Feedback type="invalid" tooltip>
                     {errors.name}
-                  </Form.Control.Feedback>
+                  </Form.Control.Feedback> */}
                 </Form.Group>
               </div>
             </div>
@@ -111,7 +83,7 @@ export const CreateProduct = () => {
             </div>
           </div>
 
-          <div className="dash_activity_card mt-4">
+          <div className="dashboard-activity-card mt-4">
             <div className="d-flex justify-content-between">
               <h5 className="card-title">Images</h5>
             </div>
@@ -150,34 +122,9 @@ export const CreateProduct = () => {
               </div>
             </div>
           </div>
-
-          <div className="dash_activity_card mt-4">
-            <h5 className="card-title">Attributes</h5>
-            <hr className="MuiDivider-root" />
-            <div className="card-data-wrapper">
-              <div className="attributes-wrapper d-flex justify-content-between align-items-center">
-                <div className="text-area-attributes">
-                  <span className="mb-3">Material</span>
-                </div>
-                <div className="custom-react-select w-50">
-                  <Select
-                    placeholder="Type"
-                    className="react-select-container"
-                    classNamePrefix="react-select"
-                    //options={BulkActionItems}
-                    //styles={styles}
-                    // onChange={(e: any) => {
-                    //     setBulkAction(e.value);
-                    // }}
-                  />
-                </div>
-              </div>
-            </div>
-          </div>
           {/* pricing */}
-          <div className="dash_activity_card mt-4">
+          <div className="dashboard-activity-card mt-4">
             <h5 className="card-title">Pricing</h5>
-
             <hr className="MuiDivider-root" />
             <div className="card-data-wrapper">
               <div className="input-area ">
@@ -185,6 +132,7 @@ export const CreateProduct = () => {
                   <Col md={6}>
                     <Form.Label>Price</Form.Label>
                     <Form.Control
+                      name="price"
                       type="number"
                       placeholder="0.00"
                       onChange={e =>
@@ -193,11 +141,13 @@ export const CreateProduct = () => {
                           [e.target.name]: e.target.value,
                         })
                       }
+                      value={productDetails.price}
                     />
                   </Col>
                   <Col md={6}>
                     <Form.Label> Compare at price</Form.Label>
                     <Form.Control
+                      name="comparePrice"
                       type="number"
                       placeholder="0.00"
                       onChange={e =>
@@ -206,6 +156,7 @@ export const CreateProduct = () => {
                           [e.target.name]: e.target.value,
                         })
                       }
+                      value={productDetails.comparePrice}
                     />
                   </Col>
                 </Row>
@@ -214,6 +165,7 @@ export const CreateProduct = () => {
                   <Col md={6}>
                     <Form.Label>Cost per item</Form.Label>
                     <Form.Control
+                      name="costPerItem"
                       type="number"
                       placeholder="0.00"
                       onChange={e =>
@@ -222,17 +174,22 @@ export const CreateProduct = () => {
                           [e.target.name]: e.target.value,
                         })
                       }
+                      value={productDetails.costPerItem}
                     />
                     <Form.Text className="text-muted">Customers won’t see this</Form.Text>
                   </Col>
                   {/* <div className="price-card-bottom-data"> */}
                   <Col className="price-card-bottom-data">
                     <p>Margin</p>
-                    <p className="price-card-bottom-data-unit">21</p>
+                    <p className="price-card-bottom-data-unit">todo</p>
                   </Col>
                   <Col className="price-card-bottom-data">
                     <p>Profit</p>
-                    <p className="price-card-bottom-data-unit">21</p>
+                    {productDetails && productDetails.price && productDetails.costPerItem && (
+                      <p className="price-card-bottom-data-unit">
+                        {productDetails.price - productDetails.costPerItem}
+                      </p>
+                    )}
                   </Col>
                 </Row>
               </div>
@@ -242,7 +199,7 @@ export const CreateProduct = () => {
               >
                 <Form.Check
                   type="checkbox"
-                  id="tt-check-lead-select-all"
+                  id="tax-check"
                   md={6}
                   className="cc-checkbox"
                   // onChange={(e) => selectAll(e.target.checked)}
@@ -254,9 +211,8 @@ export const CreateProduct = () => {
           </div>
 
           {/* inventory */}
-          <div className="dash_activity_card mt-4">
+          <div className="dashboard-activity-card mt-4">
             <h5 className="card-title">Inventory</h5>
-
             <hr className="MuiDivider-root" />
             <div className="card-data-wrapper">
               <div className="input-area ">
@@ -289,64 +245,59 @@ export const CreateProduct = () => {
                   </Col>
                 </Row>
               </div>
-              <Col md={6}>
-                <div className="cm-admin-checkbox card-sub-title mt-4">
-                  <Form.Check
-                    type="checkbox"
-                    id="tt-check-lead-select-all"
-                    className="cc-checkbox"
-                    // onChange={(e) => selectAll(e.target.checked)}
-                    // checked={state.select_all ? state.select_all : false}
-                    label="
+              <div className="cm-admin-checkbox card-sub-title mt-4">
+                <Form.Check
+                  type="checkbox"
+                  id="tt-check-lead-select-all"
+                  className="cc-checkbox"
+                  // onChange={(e) => selectAll(e.target.checked)}
+                  // checked={state.select_all ? state.select_all : false}
+                  label="
                   Track quantity"
-                  />
-                  <Form.Check
-                    type="checkbox"
-                    id="tt-check-lead-select-all"
-                    className="cc-checkbox"
-                    // onChange={(e) => selectAll(e.target.checked)}
-                    // checked={state.select_all ? state.select_all : false}
-                    label="
+                />
+                <Form.Check
+                  type="checkbox"
+                  id="tt-check-lead-select-all"
+                  className="cc-checkbox"
+                  // onChange={(e) => selectAll(e.target.checked)}
+                  // checked={state.select_all ? state.select_all : false}
+                  label="
                   Continue selling when out of stock"
-                  />
-                </div>
-              </Col>
+                />
+              </div>
               <hr className="MuiDivider-root card-custom-hr-line" />
-              <Col md={6}>
-                <div className="inventory-card-bottom ">
-                  <h6 className="mb-3 inventory-card-bottom-header ">Quantity</h6>
-                  <Form.Label>Available</Form.Label>
-                  <Form.Control
-                    type="number"
-                    placeholder="0"
-                    onChange={e =>
-                      setProductDetails({
-                        ...productDetails,
-                        [e.target.name]: e.target.value,
-                      })
-                    }
-                  />
-                </div>
-              </Col>
+              <div className="inventory-card-bottom ">
+                <h6 className="mb-3 inventory-card-bottom-header ">Quantity</h6>
+                <Form.Label>Available</Form.Label>
+                <Form.Control
+                  type="number"
+                  placeholder="0"
+                  onChange={e =>
+                    setProductDetails({
+                      ...productDetails,
+                      [e.target.name]: e.target.value,
+                    })
+                  }
+                />
+              </div>
             </div>
           </div>
 
           {/* VARIANTS */}
-          <div className="dash_activity_card mt-4">
+          <div className="dashboard-activity-card mt-4">
             <h5 className="card-title ">Variants</h5>
             <div className="card-data-wrapper">
               <div className="cm-admin-checkbox  ">
                 <Form.Check
                   type="checkbox"
-                  id="tt-check-lead-select-all"
-                  md={6}
+                  id="variant"
                   className="cc-checkbox"
-                  onChange={e => Variantcheck(e)}
-                  // checked={state.select_all ? state.select_all : false}
+                  onChange={() => setHasVariants(!hasVariants)}
+                  checked={hasVariants}
                   label="This product has multiple options, like different sizes or colors"
                 />
               </div>
-              {variantcheck ? (
+              {hasVariants ? (
                 <div>
                   <hr className="MuiDivider-root card-custom-hr-line" />
                   <h5 className="variants-sub-heading mb-3">OPTIONS</h5>
@@ -355,12 +306,12 @@ export const CreateProduct = () => {
                       <div className="input-area variants-sub-input-container  key={id}">
                         <Row>
                           <Col md={3}>
-                            <Form.Label>Option 1</Form.Label>
+                            <Form.Label>Option {id + 1}</Form.Label>
                             <VariantOption />
                           </Col>
                           <Col md={9}>
                             <Form.Label
-                              className="variants-custom-label"
+                              className="variants-custom-label text-danger"
                               onClick={() => handleRemove(id)}
                             >
                               Remove
@@ -434,102 +385,9 @@ export const CreateProduct = () => {
               )}
             </div>
           </div>
-
-          {/* Variants
-
-          <div className="dash_activity_card mt-4">
-            <div className="d-flex justify-content-between">
-              <h5 className="card-title">Variants</h5>
-              <span className="card-title-right text-uppercase" onClick={() => setModalShow(true)}>
-                Create Variants
-              </span>
-            </div>
-            <hr className="MuiDivider-root card-custom-hr-line" />
-            <div className="card-data-wrapper">
-              <div className="cm-admin-card--data">
-                <div className="table-wrap">
-                  <Table
-                    responsive
-                    className="cm-admin-table-compact cm-admin-table-compact--checkbox "
-                  >
-                    <thead>
-                      <tr>
-                        <th>
-                          <div className="cm-admin-checkbox">
-                            <Form.Check
-                              type="checkbox"
-                              id="tt-check-lead-select-all"
-                              className="cc-checkbox"
-                              // onChange={(e) => selectAll(e.target.checked)}
-                              // checked={state.select_all ? state.select_all : false}
-                            />
-                          </div>
-                        </th>
-                        <th>Variant</th>
-                        <th>SKU</th>
-                        <th>Price</th>
-                        <th>Inventory</th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {!isEmpty(productDetails.variants) &&
-                        productDetails.variants.map(variant => (
-                          <tr>
-                            <td>
-                              <div className="tt-admin-checkbox">
-                                <Form.Check
-                                  type="checkbox"
-                                  // id={'tt-check' + lead.lead_id}
-                                  className="tt-checkbox"
-                                  // onChange={(e) => {
-                                  //     setState({
-                                  //         ...state, selected_lead: { ...state.selected_lead, [lead.lead_id]: e.target.checked }
-                                  //     });
-                                  // }}
-                                  // checked={state.selected_lead[lead.lead_id] ? state.selected_lead[lead.lead_id] : false}
-                                />
-                              </div>
-                            </td>
-                            <td>{variant.variant}</td>
-                            <td>{variant.sku}</td>
-                            <td>{variant.cpo}</td>
-                            <td>{variant.inventoryStock}</td>
-                          </tr>
-                        ))}
-                    </tbody>
-                  </Table>
-                </div>
-              </div>
-            </div>
-          </div> */}
-
-          {/* <div className="dash_activity_card mt-4">
-            <h5 className="card-title">Search Engine Preview</h5>
-            <hr className="MuiDivider-root" />
-            <div className="card-data-wrapper">
-              <span className="mb-3">
-                Add search engine title and description to make this product
-                easier to find
-              </span>
-              <div className="input-area mt-3">
-                <Form.Control type="text" placeholder="Search Engine Title" />
-              </div>
-              <span className="reminder-text ml-2 mt-1">
-                If empty, the preview shows what will be autogenerated.
-              </span>
-
-              <div className="input-area mt-3">
-                <Form.Control as="textarea" rows={3} placeholder="Note" />
-              </div>
-
-              <span className="reminder-text ml-2">
-                If empty, the preview shows what will be autogenerated.
-              </span>
-            </div>
-          </div> */}
         </Col>
         <Col xl={4}>
-          <div className="dash_activity_card">
+          <div className="dashboard-activity-card">
             <h5 className="card-title">Organize Product</h5>
             <hr className="MuiDivider-root" />
             <div className="card-data-wrapper">
@@ -558,23 +416,9 @@ export const CreateProduct = () => {
                   // }}
                 />
               </div>
-              <hr className="MuiDivider-root" />
-              <div className="custom-react-select w-100">
-                <Select
-                  placeholder="Collections"
-                  className="react-select-container"
-                  classNamePrefix="react-select"
-                  //options={BulkActionItems}
-                  //styles={styles}
-                  // onChange={(e: any) => {
-                  //     setBulkAction(e.value);
-                  // }}
-                />
-              </div>
             </div>
           </div>
-
-          <div className="dash_activity_card mt-4">
+          <div className="dashboard-activity-card mt-4">
             <h5 className="card-title">Visibility</h5>
             <hr className="MuiDivider-root" />
             <div className="card-data-wrapper">
@@ -593,23 +437,16 @@ export const CreateProduct = () => {
             </div>
           </div>
         </Col>
-        {modalShow && (
-          <CreateVariantModal
-            show={modalShow}
-            onHide={() => setModalShow(false)}
-            modelCallBack={modelCallBack}
-          />
-        )}
       </Row>
-      {/* 
-            <Row className="mt-5 d-flex justify-content-center">
-                <Button
-                    className="add-new-btn text-uppercase"
-                    //onClick={() => history.push('/admin/create-product')}
-                >
-                    Create Product
-          			</Button>
-            </Row> */}
+      <Row>
+        <Col>
+          <div className="submit-footer mt-4">
+            <Button className="add-new-btn" onClick={handleSubmit}>
+              Save Changes
+            </Button>
+          </div>
+        </Col>
+      </Row>
     </section>
   )
 }

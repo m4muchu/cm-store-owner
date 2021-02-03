@@ -18,7 +18,7 @@ export const CreateEditProductType = () => {
             </div>
             <Row className="mt-5">
                 <Col xl={8}>
-                    <div className="dash_activity_card">
+                    <div className="dashboard-activity-card">
                         <h5 className="card-title">General Informations</h5>
                         <hr className="MuiDivider-root" />
                         <div className="card-data-wrapper">
@@ -28,7 +28,7 @@ export const CreateEditProductType = () => {
                         </div>
                     </div>
 
-                    <div className="dash_activity_card mt-4">
+                    <div className="dashboard-activity-card mt-4">
                         <h5 className="card-title">Taxes</h5>
                         <hr className="MuiDivider-root" />
                         <div className="card-data-wrapper">
@@ -38,7 +38,7 @@ export const CreateEditProductType = () => {
                         </div>
                     </div>
 
-                    <div className="dash_activity_card mt-4">
+                    <div className="dashboard-activity-card mt-4">
                         <div className="d-flex justify-content-between">
                             <h5 className="card-title">Product Attributes</h5>
                             <span className="card-title-right text-uppercase" onClick={() => history.push('/admin/create-variant')}>Assign Attribute</span>
@@ -98,7 +98,7 @@ export const CreateEditProductType = () => {
                     </div>
 
 
-                    <div className="dash_activity_card mt-4">
+                    <div className="dashboard-activity-card mt-4">
                         <div className="d-flex justify-content-between">
                             <h5 className="card-title">Variant Attributes</h5>
                             <span className="card-title-right text-uppercase" onClick={() => history.push('/admin/create-variant')}>Assign Attribute</span>
@@ -158,7 +158,7 @@ export const CreateEditProductType = () => {
                     </div>
                 </Col>
                 <Col xl={4}>
-                    <div className="dash_activity_card">
+                    <div className="dashboard-activity-card">
                         <h5 className="card-title">Shipping</h5>
                         <hr className="MuiDivider-root" />
                         <div className="card-data-wrapper">
