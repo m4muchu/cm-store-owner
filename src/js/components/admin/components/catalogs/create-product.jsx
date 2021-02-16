@@ -1,16 +1,24 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Button, Row, Col, Form } from 'react-bootstrap'
 import Select from 'react-select'
+import { isEmpty } from 'lodash'
 import { EditorComponent, FileUploadComponent, ImageSortable } from 'js/components/common'
 import classnames from 'classnames'
-import VariantOption from './VariantOption'
+
+const variantOptionsData = [
+  { value: 'size', label: 'Size' },
+  { value: 'color', label: 'Color' },
+  { value: 'material', label: 'Material' },
+]
 
 export const CreateProduct = () => {
-  const [productDetails, setProductDetails] = useState({
-    material: '',
-  })
+  const [productDetails, setProductDetails] = useState({})
   const [hasVariants, setHasVariants] = useState(false)
-  const [fields, setFields] = useState([{ value: null }])
+  const [variantOptions, setVariantOptions] = useState([])
+  const [productVariants, setProductVariants] = useState('')
+
+  console.log('variant options+++++++++++++', variantOptions)
+  console.log('productVariants+++++++++++++', productVariants)
 
   const editorHandleChange = (value, key) => {
     setProductDetails({
@@ -25,17 +33,78 @@ export const CreateProduct = () => {
     }
   }
 
-  function handleAdd(id) {
-    const values = [...fields]
-    values.push({ value: null })
-    setFields(values)
+  const combineAll = array => {
+    const res = []
+    let max = array.length - 1
+    const helper = (arr, i) => {
+      for (let j = 0, l = array[i].length; j < l; j++) {
+        let copy = arr.slice(0)
+        copy.push(array[i][j])
+        if (i === max) res.push(copy)
+        else helper(copy, i + 1)
+      }
+    }
+    helper([], 0)
+    return res
   }
-  function handleRemove(i) {
-    const values = [...fields]
-    values.splice(i, 1)
-    setFields(values)
-    console.log('VALUE', i)
+
+  useEffect(() => {
+    const optionValuesCombinations = []
+    let result = []
+
+    variantOptions.forEach((varinatOption, index) => {
+      if (!isEmpty(varinatOption.optionValues)) {
+        const optionValuesArray = varinatOption.optionValues.split(',')
+        optionValuesCombinations.push(optionValuesArray)
+      }
+    })
+
+    if (!isEmpty(optionValuesCombinations)) {
+      result = combineAll(optionValuesCombinations)
+
+      const productVariants = result.map(variants => {
+        return {
+          variants,
+        }
+      })
+      setProductVariants(productVariants)
+    }
+  }, [variantOptions])
+
+  function handleAdd() {
+    const values = [...variantOptions]
+    values.push({ productOption: '', optionValues: null })
+    setVariantOptions(values)
   }
+  function handleRemove(index) {
+    const values = [...variantOptions]
+    values.splice(index, 1)
+    setVariantOptions(values)
+  }
+
+  const onOptionSelectChange = (value, ind, key) => {
+    let currentVariantOptions = [...variantOptions]
+
+    if (key === 'productOption') {
+      currentVariantOptions[ind].productOption = value
+    } else {
+      const trimedOptionValues = value.replace(/\s/g, '')
+      currentVariantOptions[ind].optionValues = trimedOptionValues
+    }
+
+    setVariantOptions(currentVariantOptions)
+  }
+
+  const onProductVariantsChange = (event, ind) => {
+    const name = event.target.name
+    const value = event.target.value
+    const currentProductVariants = [...productVariants]
+
+    currentProductVariants[ind][name] = value
+
+    setProductVariants(currentProductVariants)
+  }
+
   return (
     <section className="crearte-products-section">
       <div className="generic-page-header">
@@ -231,7 +300,7 @@ export const CreateProduct = () => {
                     />
                   </Col>
                   <Col md={6}>
-                    <Form.Label> Barcode (ISBN, UPC, GTIN, etc.</Form.Label>
+                    <Form.Label> Barcode (ISBN, UPC, GTIN, etc.)</Form.Label>
                     <Form.Control
                       type="number"
                       placeholder=""
@@ -301,26 +370,35 @@ export const CreateProduct = () => {
                 <div>
                   <hr className="MuiDivider-root card-custom-hr-line" />
                   <h5 className="variants-sub-heading mb-3">OPTIONS</h5>
-                  {fields.map((field, id) => {
+                  {variantOptions.map((options, ind) => {
                     return (
-                      <div className="input-area variants-sub-input-container  key={id}">
+                      <div
+                        className="input-area variants-sub-input-container"
+                        key={
+                          variantOptions.variantOption && variantOptions.variantOption.label
+                            ? variantOptions.variantOption
+                            : ind
+                        }
+                      >
                         <Row>
                           <Col md={3}>
-                            <Form.Label>Option {id + 1}</Form.Label>
-                            <VariantOption />
+                            <Form.Label>Option {ind + 1}</Form.Label>
+                            <Select
+                              options={variantOptionsData}
+                              onChange={e => onOptionSelectChange(e, ind, 'productOption')}
+                              value={options.variantOption}
+                            />
                           </Col>
                           <Col md={9}>
                             <Form.Label
                               className="variants-custom-label text-danger"
-                              onClick={() => handleRemove(id)}
+                              onClick={() => handleRemove(ind)}
                             >
                               Remove
                             </Form.Label>
-
                             <Form.Control
-                              // type="number"
                               placeholder="Seperate options with comma"
-                              // onChange={e => handleRemove(id, e)}
+                              onChange={e => onOptionSelectChange(e.target.value, ind)}
                             />
                           </Col>
                         </Row>
@@ -340,45 +418,36 @@ export const CreateProduct = () => {
                     <Col md={3}>SKU</Col>
                   </Row>
                   <hr className="MuiDivider-root card-custom-hr-line" />
-                  <Row>
-                    <Col md={3}>text</Col>
-                    <Col md={3}>
-                      <Form.Control
-                        type="number"
-                        placeholder="0.00"
-                        onChange={e =>
-                          setProductDetails({
-                            ...productDetails,
-                            [e.target.name]: e.target.value,
-                          })
-                        }
-                      />
-                    </Col>
-                    <Col md={3}>
-                      <Form.Control
-                        type="number"
-                        placeholder="0.00"
-                        onChange={e =>
-                          setProductDetails({
-                            ...productDetails,
-                            [e.target.name]: e.target.value,
-                          })
-                        }
-                      />
-                    </Col>
-                    <Col md={3}>
-                      <Form.Control
-                        type="number"
-                        placeholder="0.00"
-                        onChange={e =>
-                          setProductDetails({
-                            ...productDetails,
-                            [e.target.name]: e.target.value,
-                          })
-                        }
-                      />
-                    </Col>
-                  </Row>
+                  {!isEmpty(productVariants) &&
+                    productVariants.map((productVariant, index) => (
+                      <Row className="mt-3">
+                        <Col md={3}>{productVariant.variants.join()}</Col>
+                        <Col md={3}>
+                          <Form.Control
+                            name="price"
+                            type="number"
+                            placeholder="0.00"
+                            onChange={e => onProductVariantsChange(e, index)}
+                          />
+                        </Col>
+                        <Col md={3}>
+                          <Form.Control
+                            name="quantity"
+                            type="number"
+                            placeholder="0.00"
+                            onChange={e => onProductVariantsChange(e, index)}
+                          />
+                        </Col>
+                        <Col md={3}>
+                          <Form.Control
+                            name="sku"
+                            type="number"
+                            placeholder="0.00"
+                            onChange={e => onProductVariantsChange(e, index)}
+                          />
+                        </Col>
+                      </Row>
+                    ))}
                 </div>
               ) : (
                 ''
