@@ -17,13 +17,14 @@ export const CreateProduct = () => {
   const [variantOptions, setVariantOptions] = useState([])
   const [productVariants, setProductVariants] = useState('')
 
+  console.log('productDetails+++++++++++++', productDetails)
   console.log('variant options+++++++++++++', variantOptions)
   console.log('productVariants+++++++++++++', productVariants)
 
   const editorHandleChange = (value, key) => {
     setProductDetails({
       ...productDetails,
-      key: value,
+      [key]: value,
     })
   }
 
@@ -289,8 +290,9 @@ export const CreateProduct = () => {
                   <Col md={6}>
                     <Form.Label>SKU (Stock Keeping Unit)</Form.Label>
                     <Form.Control
+                      name="sku"
                       type="number"
-                      placeholder=""
+                      placeholder="SKU"
                       onChange={e =>
                         setProductDetails({
                           ...productDetails,
@@ -300,10 +302,11 @@ export const CreateProduct = () => {
                     />
                   </Col>
                   <Col md={6}>
-                    <Form.Label> Barcode (ISBN, UPC, GTIN, etc.)</Form.Label>
+                    <Form.Label> Barcode (ISBN, UPC, GTIN, etc)</Form.Label>
                     <Form.Control
+                      name="barcode"
                       type="number"
-                      placeholder=""
+                      placeholder="Barcode"
                       onChange={e =>
                         setProductDetails({
                           ...productDetails,
@@ -339,6 +342,7 @@ export const CreateProduct = () => {
                 <h6 className="mb-3 inventory-card-bottom-header ">Quantity</h6>
                 <Form.Label>Available</Form.Label>
                 <Form.Control
+                  name="quantity"
                   type="number"
                   placeholder="0"
                   onChange={e =>
