@@ -28,10 +28,45 @@ export const CreateProduct = () => {
     })
   }
 
+  const stringToIntParser = item => {
+    const parsedItem = item ? Number(item) : null
+
+    return parsedItem
+  }
+
   const handleSubmit = () => {
+    const formattedProductOptions =
+      !isEmpty(variantOptions) &&
+      variantOptions.map(item => {
+        return {
+          ...item,
+          productOption: item.productOption.value,
+        }
+      })
+
+    const formattedProductVariants =
+      !isEmpty(productVariants) &&
+      productVariants.map(item => {
+        return {
+          ...item,
+          variants: item.variants.join(),
+        }
+      })
+
     const productData = {
       ...productDetails,
+      comparePrice: stringToIntParser(productDetails.comparePrice),
+      costPerItem: stringToIntParser(productDetails.costPerItem),
+      price: stringToIntParser(productDetails.price),
+      quantity: stringToIntParser(productDetails.quantity),
+      images: [],
+      physicalQuantity: true,
+      weight: 2,
+      productOptions: formattedProductOptions,
+      productVariants: formattedProductVariants,
     }
+
+    console.log('productData33333333333333333333333+++++++++++++', productData)
   }
 
   const combineAll = array => {
