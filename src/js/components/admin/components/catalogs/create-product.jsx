@@ -1,9 +1,15 @@
 import React, { useState, useEffect } from 'react'
-import { Button, Row, Col, Form } from 'react-bootstrap'
+import { Button, Row, Col, Form, Spinner } from 'react-bootstrap'
 import Select from 'react-select'
-import { isEmpty } from 'lodash'
+import { isEmpty, isArray } from 'lodash'
+import { Link } from 'react-router-dom'
+import { useForm } from 'react-hook-form'
+import { yupResolver } from '@hookform/resolvers/yup'
+import * as Yup from 'yup'
+import { productServices, categoryServices } from 'js/services'
 import { EditorComponent, FileUploadComponent, ImageSortable } from 'js/components/common'
 import classnames from 'classnames'
+import { history } from 'js/helpers/history'
 
 const variantOptionsData = [
   { value: 'size', label: 'Size' },
@@ -11,15 +17,137 @@ const variantOptionsData = [
   { value: 'material', label: 'Material' },
 ]
 
-export const CreateProduct = () => {
+export const CreateProduct = ({ match: { params } }) => {
   const [productDetails, setProductDetails] = useState({})
   const [hasVariants, setHasVariants] = useState(false)
   const [variantOptions, setVariantOptions] = useState([])
   const [productVariants, setProductVariants] = useState('')
+  const [loading, setLoading] = useState(false)
+  const [categories, setCategories] = useState([])
 
-  console.log('productDetails+++++++++++++', productDetails)
-  console.log('variant options+++++++++++++', variantOptions)
-  console.log('productVariants+++++++++++++', productVariants)
+  const validationSchema = Yup.object().shape({
+    name: Yup.string().required('Name is required'),
+    price: Yup.string().required('Price is required'),
+    comparePrice: Yup.string().required('Compare price is required'),
+    costPerItem: Yup.string().required('Cost per item is required'),
+    quantity: Yup.string().required('Quantity is required'),
+    productCategoryId: Yup.string().required('Category is required'),
+  })
+
+  const { register, handleSubmit, errors } = useForm({
+    resolver: yupResolver(validationSchema),
+  })
+
+  console.log('errors+++++++++++++', errors)
+
+  const apiCalls = {
+    createProductApi: productDetails => {
+      setLoading(true)
+      productServices
+        .createProduct(productDetails)
+        .then(() => {
+          setLoading(false)
+          // history.push('/admin/products')
+        })
+        .catch(() => {
+          setLoading(false)
+        })
+    },
+    updateProductApi: (productDetails, productId) => {
+      setLoading(true)
+      productServices
+        .updateProduct(productDetails, productId)
+        .then(() => {
+          setLoading(false)
+          // history.push('/admin/products')
+        })
+        .catch(() => {
+          setLoading(false)
+        })
+    },
+    getProductApi: productId => {
+      productServices
+        .getProduct(productId)
+        .then(response => {
+          const { product } = response
+          const { productCategory } = product
+
+          if (!isEmpty(product)) {
+            if (!isEmpty(product.productOptions)) {
+              const options = product.productOptions.map(option => {
+                let productOption = option.productOption
+                const capitilizedProductOption =
+                  productOption.charAt(0).toUpperCase() + productOption.slice(1)
+
+                return {
+                  optionValues: option.optionValues,
+                  productOption: {
+                    label: capitilizedProductOption,
+                    value: productOption,
+                  },
+                }
+              })
+
+              setVariantOptions(options)
+              delete product.productOptions
+              setHasVariants(true)
+            }
+
+            if (!isEmpty(product.productVariants)) {
+              setProductVariants(product.productVariants)
+
+              delete product.productVariants
+            }
+
+            product.productCategoryId = {
+              id: productCategory.id,
+              label: productCategory.categoryName,
+              value: productCategory.id,
+            }
+
+            delete product.productCategory
+
+            console.log('product++++++++++++', product)
+
+            setProductDetails(product)
+          }
+        })
+        .catch(() => {
+          console.log('something went wrong while fetching product details')
+        })
+    },
+    getCategoryApi: productDetails => {
+      categoryServices
+        .getCategories()
+        .then(response => {
+          const { categories } = response
+          if (!isEmpty(categories)) {
+            const categoryOptions = categories.map(category => {
+              return {
+                id: category.id,
+                label: category.categoryName,
+                value: category.id,
+              }
+            })
+            setCategories(categoryOptions)
+          }
+
+          // history.push('/admin/products')
+        })
+        .catch(() => {
+          console.log('something went wrong while fetching categories')
+        })
+    },
+  }
+
+  useEffect(() => {
+    const { productId } = params
+    if (productId) {
+      apiCalls.getProductApi(productId)
+    }
+
+    apiCalls.getCategoryApi()
+  }, [])
 
   const editorHandleChange = (value, key) => {
     setProductDetails({
@@ -34,7 +162,8 @@ export const CreateProduct = () => {
     return parsedItem
   }
 
-  const handleSubmit = () => {
+  const handleSubmitApi = data => {
+    const { productId } = params
     const formattedProductOptions =
       !isEmpty(variantOptions) &&
       variantOptions.map(item => {
@@ -47,9 +176,12 @@ export const CreateProduct = () => {
     const formattedProductVariants =
       !isEmpty(productVariants) &&
       productVariants.map(item => {
+        const variant = isArray(item.variant) ? item.variant.join() : item.variant
         return {
           ...item,
-          variants: item.variants.join(),
+          variant,
+          price: stringToIntParser(item.price),
+          quantity: stringToIntParser(item.quantity),
         }
       })
 
@@ -64,9 +196,14 @@ export const CreateProduct = () => {
       weight: 2,
       productOptions: formattedProductOptions,
       productVariants: formattedProductVariants,
+      productCategoryId: productDetails.productCategoryId.id,
     }
 
-    console.log('productData33333333333333333333333+++++++++++++', productData)
+    if (productId) {
+      apiCalls.updateProductApi(productData, productId)
+    } else {
+      apiCalls.createProductApi(productData)
+    }
   }
 
   const combineAll = array => {
@@ -84,13 +221,25 @@ export const CreateProduct = () => {
     return res
   }
 
-  useEffect(() => {
+  function handleAdd() {
+    const values = [...variantOptions]
+    values.push({ productOption: '', optionValues: null })
+    setVariantOptions(values)
+  }
+
+  function handleRemove(index) {
+    const values = [...variantOptions]
+    values.splice(index, 1)
+    setVariantOptions(values)
+  }
+
+  const generateOptionValueCombinations = variantOptionsData => {
     const optionValuesCombinations = []
     let result = []
 
-    variantOptions.forEach((varinatOption, index) => {
-      if (!isEmpty(varinatOption.optionValues)) {
-        const optionValuesArray = varinatOption.optionValues.split(',')
+    variantOptionsData.forEach(variantOption => {
+      if (!isEmpty(variantOption.optionValues)) {
+        const optionValuesArray = variantOption.optionValues.split(',')
         optionValuesCombinations.push(optionValuesArray)
       }
     })
@@ -98,24 +247,13 @@ export const CreateProduct = () => {
     if (!isEmpty(optionValuesCombinations)) {
       result = combineAll(optionValuesCombinations)
 
-      const productVariants = result.map(variants => {
+      const productVariants = result.map(variant => {
         return {
-          variants,
+          variant,
         }
       })
       setProductVariants(productVariants)
     }
-  }, [variantOptions])
-
-  function handleAdd() {
-    const values = [...variantOptions]
-    values.push({ productOption: '', optionValues: null })
-    setVariantOptions(values)
-  }
-  function handleRemove(index) {
-    const values = [...variantOptions]
-    values.splice(index, 1)
-    setVariantOptions(values)
   }
 
   const onOptionSelectChange = (value, ind, key) => {
@@ -127,6 +265,8 @@ export const CreateProduct = () => {
       const trimedOptionValues = value.replace(/\s/g, '')
       currentVariantOptions[ind].optionValues = trimedOptionValues
     }
+
+    generateOptionValueCombinations(currentVariantOptions)
 
     setVariantOptions(currentVariantOptions)
   }
@@ -144,8 +284,19 @@ export const CreateProduct = () => {
   return (
     <section className="crearte-products-section">
       <div className="generic-page-header">
-        <h2 className="page-head my-0">Create Product</h2>
-        <Button className="add-new-btn" onClick={handleSubmit}>
+        <div className="header-data-section">
+          <Link
+            to={{
+              pathname: '/admin/products',
+              // state: { current_page }
+            }}
+            className="back-btn"
+          >
+            <img src="/images/admin/global/back-arrow.svg" alt="" />
+          </Link>
+          <h2 className="page-head my-0">Create Product</h2>
+        </div>
+        <Button className="add-new-btn" onClick={handleSubmit(handleSubmitApi)}>
           Save Changes
         </Button>
       </div>
@@ -159,20 +310,22 @@ export const CreateProduct = () => {
                 <Form.Group>
                   <Form.Label>Name</Form.Label>
                   <Form.Control
+                    ref={register}
                     type="text"
                     name="name"
                     placeholder="Name"
+                    isInvalid={errors.name}
                     onChange={e =>
                       setProductDetails({
                         ...productDetails,
                         [e.target.name]: e.target.value,
                       })
                     }
-                    // isInvalid={errors.name}
+                    value={productDetails.name}
                   />
-                  {/* <Form.Control.Feedback type="invalid" tooltip>
-                    {errors.name}
-                  </Form.Control.Feedback> */}
+                  <Form.Control.Feedback type="invalid" tooltip>
+                    {errors?.name?.message}
+                  </Form.Control.Feedback>
                 </Form.Group>
               </div>
             </div>
@@ -238,6 +391,8 @@ export const CreateProduct = () => {
                     <Form.Label>Price</Form.Label>
                     <Form.Control
                       name="price"
+                      ref={register}
+                      isInvalid={errors.price}
                       type="number"
                       placeholder="0.00"
                       onChange={e =>
@@ -248,12 +403,17 @@ export const CreateProduct = () => {
                       }
                       value={productDetails.price}
                     />
+                    <Form.Control.Feedback type="invalid" tooltip>
+                      {errors?.price?.message}
+                    </Form.Control.Feedback>
                   </Col>
                   <Col md={6}>
                     <Form.Label> Compare at price</Form.Label>
                     <Form.Control
                       name="comparePrice"
                       type="number"
+                      ref={register}
+                      isInvalid={errors.comparePrice}
                       placeholder="0.00"
                       onChange={e =>
                         setProductDetails({
@@ -263,6 +423,9 @@ export const CreateProduct = () => {
                       }
                       value={productDetails.comparePrice}
                     />
+                    <Form.Control.Feedback type="invalid" tooltip>
+                      {errors?.comparePrice?.message}
+                    </Form.Control.Feedback>
                   </Col>
                 </Row>
                 <hr className="MuiDivider-root card-custom-hr-line" />
@@ -271,6 +434,8 @@ export const CreateProduct = () => {
                     <Form.Label>Cost per item</Form.Label>
                     <Form.Control
                       name="costPerItem"
+                      ref={register}
+                      isInvalid={errors.costPerItem}
                       type="number"
                       placeholder="0.00"
                       onChange={e =>
@@ -281,6 +446,9 @@ export const CreateProduct = () => {
                       }
                       value={productDetails.costPerItem}
                     />
+                    <Form.Control.Feedback type="invalid" tooltip>
+                      {errors?.costPerItem?.message}
+                    </Form.Control.Feedback>
                     <Form.Text className="text-muted">Customers won’t see this</Form.Text>
                   </Col>
                   {/* <div className="price-card-bottom-data"> */}
@@ -334,6 +502,7 @@ export const CreateProduct = () => {
                           [e.target.name]: e.target.value,
                         })
                       }
+                      value={productDetails.sku}
                     />
                   </Col>
                   <Col md={6}>
@@ -348,6 +517,7 @@ export const CreateProduct = () => {
                           [e.target.name]: e.target.value,
                         })
                       }
+                      value={productDetails.barcode}
                     />
                   </Col>
                 </Row>
@@ -379,6 +549,8 @@ export const CreateProduct = () => {
                 <Form.Control
                   name="quantity"
                   type="number"
+                  ref={register}
+                  isInvalid={errors.quantity}
                   placeholder="0"
                   onChange={e =>
                     setProductDetails({
@@ -386,7 +558,11 @@ export const CreateProduct = () => {
                       [e.target.name]: e.target.value,
                     })
                   }
+                  value={productDetails.quantity}
                 />
+                <Form.Control.Feedback type="invalid" tooltip>
+                  {errors?.quantity?.message}
+                </Form.Control.Feedback>
               </div>
             </div>
           </div>
@@ -414,8 +590,8 @@ export const CreateProduct = () => {
                       <div
                         className="input-area variants-sub-input-container"
                         key={
-                          variantOptions.variantOption && variantOptions.variantOption.label
-                            ? variantOptions.variantOption
+                          variantOptions.productOption && variantOptions.productOption.label
+                            ? variantOptions.productOption.label
                             : ind
                         }
                       >
@@ -425,7 +601,7 @@ export const CreateProduct = () => {
                             <Select
                               options={variantOptionsData}
                               onChange={e => onOptionSelectChange(e, ind, 'productOption')}
-                              value={options.variantOption}
+                              value={options.productOption}
                             />
                           </Col>
                           <Col md={9}>
@@ -438,6 +614,7 @@ export const CreateProduct = () => {
                             <Form.Control
                               placeholder="Seperate options with comma"
                               onChange={e => onOptionSelectChange(e.target.value, ind)}
+                              value={options.optionValues}
                             />
                           </Col>
                         </Row>
@@ -460,12 +637,17 @@ export const CreateProduct = () => {
                   {!isEmpty(productVariants) &&
                     productVariants.map((productVariant, index) => (
                       <Row className="mt-3">
-                        <Col md={3}>{productVariant.variants.join()}</Col>
+                        <Col md={3}>
+                          {isArray(productVariant.variant)
+                            ? productVariant.variant.join()
+                            : productVariant.variant}
+                        </Col>
                         <Col md={3}>
                           <Form.Control
                             name="price"
                             type="number"
                             placeholder="0.00"
+                            value={productVariant.price}
                             onChange={e => onProductVariantsChange(e, index)}
                           />
                         </Col>
@@ -474,6 +656,7 @@ export const CreateProduct = () => {
                             name="quantity"
                             type="number"
                             placeholder="0.00"
+                            value={productVariant.quantity}
                             onChange={e => onProductVariantsChange(e, index)}
                           />
                         </Col>
@@ -481,6 +664,7 @@ export const CreateProduct = () => {
                           <Form.Control
                             name="sku"
                             type="number"
+                            value={productVariant.sku}
                             placeholder="0.00"
                             onChange={e => onProductVariantsChange(e, index)}
                           />
@@ -499,7 +683,7 @@ export const CreateProduct = () => {
             <h5 className="card-title">Organize Product</h5>
             <hr className="MuiDivider-root" />
             <div className="card-data-wrapper">
-              <div className="custom-react-select w-100">
+              {/* <div className="custom-react-select w-100">
                 <Select
                   placeholder="Product Type"
                   className="react-select-container"
@@ -511,18 +695,26 @@ export const CreateProduct = () => {
                   // }}
                 />
               </div>
-              <hr className="MuiDivider-root" />
+              <hr className="MuiDivider-root" /> */}
               <div className="custom-react-select w-100">
                 <Select
+                  name="productCategoryId"
+                  ref={register}
                   placeholder="Category"
-                  className="react-select-container"
+                  className="react-select-container is-invalid "
                   classNamePrefix="react-select"
-                  //options={BulkActionItems}
-                  //styles={styles}
-                  // onChange={(e: any) => {
-                  //     setBulkAction(e.value);
-                  // }}
+                  options={categories}
+                  value={productDetails.productCategoryId}
+                  onChange={value => {
+                    console.log('select category value+++++++++', value)
+                    setProductDetails({
+                      ...productDetails,
+                      productCategoryId: value,
+                    })
+                  }}
                 />
+
+                <div className="invalid-feedback d-block">{errors?.productCategoryId?.message}</div>
               </div>
             </div>
           </div>
@@ -549,8 +741,8 @@ export const CreateProduct = () => {
       <Row>
         <Col>
           <div className="submit-footer mt-4">
-            <Button className="add-new-btn" onClick={handleSubmit}>
-              Save Changes
+            <Button className="add-new-btn" onClick={handleSubmit(handleSubmitApi)}>
+              {loading ? <Spinner as="span" animation="border" /> : 'Save Changes'}
             </Button>
           </div>
         </Col>

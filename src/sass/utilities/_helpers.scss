@@ -1,65 +1,68 @@
-a{
-    transition: all .4s;
+a {
+  transition: all 0.4s;
 }
-.hr{
-    margin:20px 0 40px 0;
+.hr {
+  margin: 20px 0 40px 0;
 }
 .hr-small {
-    margin: 7px 0 22px 0;
+  margin: 7px 0 22px 0;
 }
 .hr-small2 {
-    margin: 0px 0 32px 0;
+  margin: 0px 0 32px 0;
 }
-.color--white{
-    color: $cm-white !important;
+.color--white {
+  color: $cm-white !important;
 }
-.color--orange{
-    color: $cm-primary !important;
+.color--orange {
+  color: $cm-primary !important;
 }
-.outline-red{
-    outline: solid 1px red;
+.outline-red {
+  outline: solid 1px red;
 }
-.hr-dashed{
-    border: dashed 1px #D8D8D8;
+.hr-dashed {
+  border: dashed 1px #d8d8d8;
 }
 .hr-solid {
-    border: solid 1px #D8D8D8;
-    opacity: 0.3;
+  border: solid 1px #d8d8d8;
+  opacity: 0.3;
 }
-.mt-10{
-    margin-top:26px;
+.mt-10 {
+  margin-top: 26px;
 }
-.hr-dotted{
-    border: dashed 1px #ccc;
-    margin:29px 0 6px 0;
+.hr-dotted {
+  border: dashed 1px #ccc;
+  margin: 29px 0 6px 0;
 }
-.hr-sidebar{
-    margin:29px 0
+.hr-sidebar {
+  margin: 29px 0;
 }
-.border-0{
-    border: none !important;
+.border-0 {
+  border: none !important;
 }
-.no-shadow{
-    box-shadow: unset !important;
+.no-shadow {
+  box-shadow: unset !important;
 }
-.rounded-img{
-    border-radius: 50%;
+.rounded-img {
+  border-radius: 50%;
 }
 /***Extended ***/
 %position-relative {
-    position: relative;
-    width: 100%;
-    float: left;
+  position: relative;
+  width: 100%;
+  float: left;
 }
 
 %common-flex {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
 %common-flex-j {
-    display: flex;
-    align-items: center;
-    justify-content: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.h-vh-100 {
+  height: 100vh;
+}

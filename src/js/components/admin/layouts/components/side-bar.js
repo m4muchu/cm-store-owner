@@ -45,8 +45,8 @@ export const Sidebar = () => {
             </NavLink>
           </li> */}
           <Accordion defaultActiveKey="0" className="admin-sidebar-custom-accordion-header-name ">
-            <li to="/admin/dashboard" className="sidebar__list">
-              <NavLink to="/admin/products" className="sidebar__list--text">
+            <li  className="sidebar__list">
+              <NavLink to="/admin/dashboard" className="sidebar__list--text">
                 <Card className="admin-sidebar-custom-accordion sidebar__list--text  dropdown-btn">
                   <img src="/images/sidebar/home.svg" className="sidebar-button-icons" alt="" />
 

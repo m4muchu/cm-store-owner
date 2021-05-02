@@ -1,20 +1,19 @@
 .custom-react-select--no-border {
-    width: 15%;
-    font-size: 13px;
+  width: 15%;
+  font-size: 13px;
 
-    .react-select-container .react-select__control {
-        height: 38px !important;
-        border-color: transparent;
-        background-color: #F3F5F7;
-    }
+  .react-select-container .react-select__control {
+    height: 38px !important;
+    border-color: transparent;
+    background-color: #f3f5f7;
+  }
 
-    @media(max-width:767.98px) {
-        width: 40%;
-    }
+  @media (max-width: 767.98px) {
+    width: 40%;
+  }
 }
 
 .custom-react-select {
-    font-size: 14px;
-    line-height: 1.5;
+  font-size: 14px;
+  line-height: 1.5;
 }
-
