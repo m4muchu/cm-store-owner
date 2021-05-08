@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Row, Col, Form, Spinner } from 'react-bootstrap'
 import Select from 'react-select'
-import { isEmpty, isArray, find } from 'lodash'
+import { isEmpty, isArray } from 'lodash'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import { useForm } from 'react-hook-form'
@@ -26,11 +26,7 @@ export const CreateProduct = ({ match: { params } }) => {
   const [productVariants, setProductVariants] = useState('')
   const [loading, setLoading] = useState(false)
   const [categories, setCategories] = useState([])
-
-  console.log('product details++++++++++++++++', productDetails)
-  console.log('categories++++++++++++++++', categories)
   const selectDefaultValue = !isEmpty(categories) && categories[0]
-  console.log('cateselectDefaultValuegories++++++++++++++++', selectDefaultValue)
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
@@ -44,19 +40,15 @@ export const CreateProduct = ({ match: { params } }) => {
     resolver: yupResolver(validationSchema),
   })
 
-  console.log('errors+++++++++++++', errors)
-
   const apiCalls = {
     createProductApi: productDetails => {
       setLoading(true)
       productServices
         .createProduct(productDetails)
         .then(response => {
-          console.log('response+++++++++++++++++++888888888888', response)
           setLoading(false)
           toast.success('Created Successfully')
           history.replace(`/admin/edit-product/${response.product.id}`)
-          // history.push('/admin/products')
         })
         .catch(() => {
           toast.error('Something went wrong!')
@@ -70,7 +62,6 @@ export const CreateProduct = ({ match: { params } }) => {
         .then(() => {
           toast.success('Updated Successfully')
           setLoading(false)
-          // history.push('/admin/products')
         })
         .catch(() => {
           toast.error('Something went wrong!')
@@ -82,7 +73,7 @@ export const CreateProduct = ({ match: { params } }) => {
         .getProduct(productId)
         .then(response => {
           const { product } = response
-          const { productCategory } = product
+          const { category } = product
 
           if (!isEmpty(product)) {
             if (!isEmpty(product.productOptions)) {
@@ -112,14 +103,11 @@ export const CreateProduct = ({ match: { params } }) => {
             }
 
             product.productCategoryId = {
-              id: productCategory.id,
-              label: productCategory.categoryName,
-              value: productCategory.id,
+              id: category.id,
+              label: category.categoryName,
+              value: category.id,
             }
-
             delete product.productCategory
-
-            console.log('product++++++++++++', product)
 
             setProductDetails(product)
           }
@@ -313,12 +301,14 @@ export const CreateProduct = ({ match: { params } }) => {
             }}
             className="back-btn"
           >
-            <img src="/images/admin/global/back-arrow.svg" alt="" />
+            <img src="/images/admin/global/back-button.svg" alt="" />
           </Link>
-          <h2 className="page-head my-0">Create Product</h2>
+          <h2 className="page-head my-0">
+            {params.productId ? 'Update Product' : 'Create Product'}
+          </h2>
         </div>
         <Button className="add-new-btn" onClick={handleSubmit(handleSubmitApi)}>
-          Save Changes
+          {loading ? <Spinner as="span" animation="border" /> : 'Save Changes'}
         </Button>
       </div>
       <Row className="mt-5">

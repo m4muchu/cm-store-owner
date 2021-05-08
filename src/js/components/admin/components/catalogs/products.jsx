@@ -25,8 +25,6 @@ export const Products = () => {
   const [products, setProducts] = useState({})
   const [loading, setLoading] = useState(false)
 
-  console.log('products++++++++++++++', products.meta)
-
   const apiCalls = {
     getProductsApi: params => {
       setLoading(true)
@@ -218,12 +216,12 @@ export const Products = () => {
                           </div>
                         </td>
                         <td>{product.name}</td>
-                        <td>Todo</td>
+                        <td>{product?.category?.categoryName}</td>
                         <td>{product.weight}</td>
                         <td>{product.quantity}</td>
                         <td>{product.price}</td>
                         <td>Todo</td>
-                        <td>
+                        <td style={{ textAlign: 'center' }}>
                           {' '}
                           <div className="action-wrap">
                             <Link
