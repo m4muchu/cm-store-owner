@@ -122,7 +122,7 @@ export const Products = () => {
                         name=""
                         id=""
                         placeholder="Search Product"
-                        //onChange={(e) => onParamsChange('search', e.target.value)}
+                        onChange={e => onParamsChange('keyword', e.target.value)}
                       />
                     </div>
                   </Form.Group>

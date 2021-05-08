@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import { Button, Row, Col, Form, Spinner } from 'react-bootstrap'
 import Select from 'react-select'
-import { isEmpty, isArray } from 'lodash'
+import { isEmpty, isArray, find } from 'lodash'
 import { Link } from 'react-router-dom'
+import { toast } from 'react-toastify'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
@@ -10,6 +11,7 @@ import { productServices, categoryServices } from 'js/services'
 import { EditorComponent, FileUploadComponent, ImageSortable } from 'js/components/common'
 import classnames from 'classnames'
 import { history } from 'js/helpers/history'
+import 'react-toastify/dist/ReactToastify.css'
 
 const variantOptionsData = [
   { value: 'size', label: 'Size' },
@@ -25,13 +27,17 @@ export const CreateProduct = ({ match: { params } }) => {
   const [loading, setLoading] = useState(false)
   const [categories, setCategories] = useState([])
 
+  console.log('product details++++++++++++++++', productDetails)
+  console.log('categories++++++++++++++++', categories)
+  const selectDefaultValue = !isEmpty(categories) && categories[0]
+  console.log('cateselectDefaultValuegories++++++++++++++++', selectDefaultValue)
+
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
     price: Yup.string().required('Price is required'),
     comparePrice: Yup.string().required('Compare price is required'),
     costPerItem: Yup.string().required('Cost per item is required'),
     quantity: Yup.string().required('Quantity is required'),
-    productCategoryId: Yup.string().required('Category is required'),
   })
 
   const { register, handleSubmit, errors } = useForm({
@@ -45,11 +51,15 @@ export const CreateProduct = ({ match: { params } }) => {
       setLoading(true)
       productServices
         .createProduct(productDetails)
-        .then(() => {
+        .then(response => {
+          console.log('response+++++++++++++++++++888888888888', response)
           setLoading(false)
+          toast.success('Created Successfully')
+          history.replace(`/admin/edit-product/${response.product.id}`)
           // history.push('/admin/products')
         })
         .catch(() => {
+          toast.error('Something went wrong!')
           setLoading(false)
         })
     },
@@ -58,10 +68,12 @@ export const CreateProduct = ({ match: { params } }) => {
       productServices
         .updateProduct(productDetails, productId)
         .then(() => {
+          toast.success('Updated Successfully')
           setLoading(false)
           // history.push('/admin/products')
         })
         .catch(() => {
+          toast.error('Something went wrong!')
           setLoading(false)
         })
     },
@@ -113,6 +125,7 @@ export const CreateProduct = ({ match: { params } }) => {
           }
         })
         .catch(() => {
+          toast.error('Something went wrong!')
           console.log('something went wrong while fetching product details')
         })
     },
@@ -145,9 +158,17 @@ export const CreateProduct = ({ match: { params } }) => {
     if (productId) {
       apiCalls.getProductApi(productId)
     }
-
     apiCalls.getCategoryApi()
   }, [])
+
+  useEffect(() => {
+    if (!isEmpty(categories) && !params.productId) {
+      setProductDetails(productDetails => ({
+        ...productDetails,
+        productCategoryId: categories[0],
+      }))
+    }
+  }, [categories, params.productId])
 
   const editorHandleChange = (value, key) => {
     setProductDetails({
@@ -157,7 +178,7 @@ export const CreateProduct = ({ match: { params } }) => {
   }
 
   const stringToIntParser = item => {
-    const parsedItem = item ? Number(item) : null
+    const parsedItem = item ? Number(item) : 0
 
     return parsedItem
   }
@@ -699,22 +720,22 @@ export const CreateProduct = ({ match: { params } }) => {
               <div className="custom-react-select w-100">
                 <Select
                   name="productCategoryId"
-                  ref={register}
-                  placeholder="Category"
-                  className="react-select-container is-invalid "
+                  // ref={register}
+                  // placeholder="Category"
+                  className="react-select-container is-invalid"
                   classNamePrefix="react-select"
                   options={categories}
+                  // defaultValue={selectDefaultValue}
                   value={productDetails.productCategoryId}
                   onChange={value => {
-                    console.log('select category value+++++++++', value)
                     setProductDetails({
                       ...productDetails,
                       productCategoryId: value,
                     })
                   }}
                 />
-
-                <div className="invalid-feedback d-block">{errors?.productCategoryId?.message}</div>
+                {/* 
+                <div className="invalid-feedback d-block">{customErrors?.productCategoryId?.message}</div> */}
               </div>
             </div>
           </div>
