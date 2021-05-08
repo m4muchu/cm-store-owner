@@ -26,7 +26,8 @@ export const CreateProduct = ({ match: { params } }) => {
   const [productVariants, setProductVariants] = useState('')
   const [loading, setLoading] = useState(false)
   const [categories, setCategories] = useState([])
-  const selectDefaultValue = !isEmpty(categories) && categories[0]
+
+  console.log('product variants++++++++++++', productVariants)
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
@@ -191,6 +192,7 @@ export const CreateProduct = ({ match: { params } }) => {
           variant,
           price: stringToIntParser(item.price),
           quantity: stringToIntParser(item.quantity),
+          sku: item.sku ? item.sku : '',
         }
       })
 
@@ -256,12 +258,22 @@ export const CreateProduct = ({ match: { params } }) => {
     if (!isEmpty(optionValuesCombinations)) {
       result = combineAll(optionValuesCombinations)
 
-      const productVariants = result.map(variant => {
+      const productVariantData = result.map((variant, index) => {
         return {
           variant,
         }
       })
-      setProductVariants(productVariants)
+
+      // const clonedProductVariant = [...productVariants]
+
+      // productVariantData.map((variantItem, index) => {
+      //   console.log('variantItem222222222222222222222222', variantItem)
+      //   clonedProductVariant[index].variant = variantItem.variant
+      //   console.log('11111111111111111111111', productVariants[index])
+      //   return variantItem
+      // })
+      console.log('product variants inside generate++++++++++++', productVariantData)
+      setProductVariants(productVariantData)
     }
   }
 
@@ -308,7 +320,7 @@ export const CreateProduct = ({ match: { params } }) => {
           </h2>
         </div>
         <Button className="add-new-btn" onClick={handleSubmit(handleSubmitApi)}>
-          {loading ? <Spinner as="span" animation="border" /> : 'Save Changes'}
+          {loading ? <Spinner as="span" size="sm" animation="border" /> : 'Save Changes'}
         </Button>
       </div>
       <Row className="mt-5">
@@ -658,7 +670,7 @@ export const CreateProduct = ({ match: { params } }) => {
                             name="price"
                             type="number"
                             placeholder="0.00"
-                            value={productVariant.price}
+                            value={productVariant.price ? productVariant.price : 0}
                             onChange={e => onProductVariantsChange(e, index)}
                           />
                         </Col>
@@ -667,7 +679,7 @@ export const CreateProduct = ({ match: { params } }) => {
                             name="quantity"
                             type="number"
                             placeholder="0.00"
-                            value={productVariant.quantity}
+                            value={productVariant.quantity ? productVariant.quantity : 0}
                             onChange={e => onProductVariantsChange(e, index)}
                           />
                         </Col>
@@ -675,7 +687,7 @@ export const CreateProduct = ({ match: { params } }) => {
                           <Form.Control
                             name="sku"
                             type="number"
-                            value={productVariant.sku}
+                            value={productVariant.sku ? productVariant.sku : ''}
                             placeholder="0.00"
                             onChange={e => onProductVariantsChange(e, index)}
                           />
@@ -753,7 +765,7 @@ export const CreateProduct = ({ match: { params } }) => {
         <Col>
           <div className="submit-footer mt-4">
             <Button className="add-new-btn" onClick={handleSubmit(handleSubmitApi)}>
-              {loading ? <Spinner as="span" animation="border" /> : 'Save Changes'}
+              {loading ? <Spinner as="span" animation="border" size="sm" /> : 'Save Changes'}
             </Button>
           </div>
         </Col>
