@@ -4,6 +4,7 @@ import Select from 'react-select'
 import { isEmpty, isArray } from 'lodash'
 import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
+import { find } from 'lodash'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
@@ -74,7 +75,6 @@ export const CreateProduct = ({ match: { params } }) => {
         .getProduct(productId)
         .then(response => {
           const { product } = response
-          const { category } = product
 
           if (!isEmpty(product)) {
             if (!isEmpty(product.productOptions)) {
@@ -102,14 +102,6 @@ export const CreateProduct = ({ match: { params } }) => {
 
               delete product.productVariants
             }
-
-            product.productCategoryId = {
-              id: category.id,
-              label: category.categoryName,
-              value: category.id,
-            }
-            delete product.productCategory
-
             setProductDetails(product)
           }
         })
@@ -154,7 +146,7 @@ export const CreateProduct = ({ match: { params } }) => {
     if (!isEmpty(categories) && !params.productId) {
       setProductDetails(productDetails => ({
         ...productDetails,
-        productCategoryId: categories[0],
+        productCategoryId: categories[0].id,
       }))
     }
   }, [categories, params.productId])
@@ -204,10 +196,10 @@ export const CreateProduct = ({ match: { params } }) => {
       quantity: stringToIntParser(productDetails.quantity),
       images: [],
       physicalQuantity: true,
-      weight: 2,
+      weight: 7,
       productOptions: formattedProductOptions,
       productVariants: formattedProductVariants,
-      productCategoryId: productDetails.productCategoryId.id,
+      category: productDetails.productCategoryId,
     }
 
     if (productId) {
@@ -489,7 +481,7 @@ export const CreateProduct = ({ match: { params } }) => {
                   </Col>
                 </Row>
               </div>
-              <div
+              {/* <div
                 className="cm-admin-checkbox card-sub-title mt-3 cm-dashboard-price-footer "
                 md={6}
               >
@@ -502,7 +494,7 @@ export const CreateProduct = ({ match: { params } }) => {
                   // checked={state.select_all ? state.select_all : false}
                   label="Charge taxes for this item"
                 />
-              </div>
+              </div> */}
             </div>
           </div>
 
@@ -517,7 +509,6 @@ export const CreateProduct = ({ match: { params } }) => {
                     <Form.Label>SKU (Stock Keeping Unit)</Form.Label>
                     <Form.Control
                       name="sku"
-                      type="number"
                       placeholder="SKU"
                       onChange={e =>
                         setProductDetails({
@@ -545,7 +536,7 @@ export const CreateProduct = ({ match: { params } }) => {
                   </Col>
                 </Row>
               </div>
-              <div className="cm-admin-checkbox card-sub-title mt-4">
+              {/* <div className="cm-admin-checkbox card-sub-title mt-4">
                 <Form.Check
                   type="checkbox"
                   id="tt-check-lead-select-all"
@@ -564,7 +555,7 @@ export const CreateProduct = ({ match: { params } }) => {
                   label="
                   Continue selling when out of stock"
                 />
-              </div>
+              </div> */}
               <hr className="MuiDivider-root card-custom-hr-line" />
               <div className="inventory-card-bottom ">
                 <h6 className="mb-3 inventory-card-bottom-header ">Quantity</h6>
@@ -686,7 +677,7 @@ export const CreateProduct = ({ match: { params } }) => {
                         <Col md={3}>
                           <Form.Control
                             name="sku"
-                            type="number"
+                            // type="number"
                             value={productVariant.sku ? productVariant.sku : ''}
                             placeholder="0.00"
                             onChange={e => onProductVariantsChange(e, index)}
@@ -728,11 +719,11 @@ export const CreateProduct = ({ match: { params } }) => {
                   classNamePrefix="react-select"
                   options={categories}
                   // defaultValue={selectDefaultValue}
-                  value={productDetails.productCategoryId}
+                  value={find(categories, ['id', productDetails.productCategoryId])}
                   onChange={value => {
                     setProductDetails({
                       ...productDetails,
-                      productCategoryId: value,
+                      productCategoryId: value.id,
                     })
                   }}
                 />
@@ -745,18 +736,58 @@ export const CreateProduct = ({ match: { params } }) => {
             <h5 className="card-title">Visibility</h5>
             <hr className="MuiDivider-root" />
             <div className="card-data-wrapper">
-              <div className="custom-radio-button w-100">
-                <Form.Check
+              {/* <div className="custom-radio-button w-100"> */}
+              {/* <Form.Check
                   type="radio"
                   id={`default-1`}
                   label="Visible"
                   inline
                   name="visibility"
+                  value={true}
+                  defaultChecked={productDetails.isVisible}
+                  onChange={e => {
+                    console.log('value radio+++++++++++=', e.target.checked)
+
+                    setProductDetails({
+                      ...productDetails,
+                      isVisible: e.target.checked,
+                    })
+                  }}
+                /> */}
+              <Form.Group controlId="formHorizontalCheck">
+                <Form.Check
+                  label="Visible to store front"
+                  checked={productDetails.isVisible}
+                  onChange={e => {
+                    console.log('value radio+++++++++++=', e.target.checked)
+
+                    setProductDetails({
+                      ...productDetails,
+                      isVisible: e.target.checked,
+                    })
+                  }}
                 />
-              </div>
-              <div className="custom-radio-button w-100 mt-3">
-                <Form.Check type="radio" id={`default-2`} label="Hidden" inline name="visibility" />
-              </div>
+              </Form.Group>
+              {/* </div> */}
+              {/* <div className="custom-radio-button w-100 mt-3">
+                <Form.Check
+                  type="radio"
+                  id={`default-2`}
+                  label="Hidden"
+                  inline
+                  value={false}
+                  name="visibility"
+                  defaultChecked={productDetails.isVisible}
+                  onChange={e => {
+                    console.log('value radio+++++++++++=', e.target.checked)
+
+                    setProductDetails({
+                      ...productDetails,
+                      isVisible: e.target.checked,
+                    })
+                  }}
+                />
+              </div> */}
             </div>
           </div>
         </Col>

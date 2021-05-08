@@ -199,7 +199,7 @@ export const Products = () => {
                 <tbody>
                   {!isEmpty(products.data) &&
                     products.data.map(product => (
-                      <tr>
+                      <tr key={product.id}>
                         <td>
                           <div className="tt-admin-checkbox">
                             <Form.Check
@@ -220,7 +220,7 @@ export const Products = () => {
                         <td>{product.weight}</td>
                         <td>{product.quantity}</td>
                         <td>{product.price}</td>
-                        <td>Todo</td>
+                        <td>{product.isVisible ? 'Visible' : 'Hidden'}</td>
                         <td style={{ textAlign: 'center' }}>
                           {' '}
                           <div className="action-wrap">
