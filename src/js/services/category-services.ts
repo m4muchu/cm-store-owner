@@ -4,9 +4,10 @@ export const categoryServices = {
   getCategories,
 }
 
-function getCategories() {
+function getCategories(params: { tree: true }) {
   return request({
     method: 'GET',
     url: 'product-category',
+    params,
   })
 }

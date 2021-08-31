@@ -31,9 +31,7 @@ export const Products = () => {
       productServices
         .getProducts(params)
         .then(response => {
-          const {
-            products: { data, count, currentPage, endPage, limit, startPage },
-          } = response
+          const { data, count, currentPage, endPage, limit, startPage } = response
 
           setProducts({
             data,

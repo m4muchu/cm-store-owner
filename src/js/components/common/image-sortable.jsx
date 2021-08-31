@@ -1,10 +1,10 @@
-import React from 'react';
-import { SortableContainer, SortableElement } from 'react-sortable-hoc';
-import arrayMove from 'array-move';
-import classnames from 'classnames';
+import React from 'react'
+import { SortableContainer, SortableElement } from 'react-sortable-hoc'
+import arrayMove from 'array-move'
+import classnames from 'classnames'
 
-const SortableItem = SortableElement((props) => {
-  const { value: item } = props;
+const SortableItem = SortableElement(props => {
+  const { value: item } = props
   return (
     <div
       className={classnames('uploaded-photo', {
@@ -13,22 +13,16 @@ const SortableItem = SortableElement((props) => {
     >
       <div className="image-wrap">
         {!props.hide_cover_btn && (
-          <span
-            className="set-as-cover-btn"
-            onClick={() => props.makeCover(item.index)}
-          />
+          <span className="set-as-cover-btn" onClick={() => props.makeCover(item.index)} />
         )}
-        <span
-          className="image-delete-btn"
-          onClick={() => props.removeItem(item.index)}
-        />
-        <img src={item.attachment_url} alt="" />
+        <span className="image-delete-btn" onClick={() => props.removeItem(item.index)} />
+        <img src={item?.url} alt="" />
       </div>
     </div>
-  );
-});
-const SortableList = SortableContainer((props) => {
-  const { items, ...restProps } = props;
+  )
+})
+const SortableList = SortableContainer(props => {
+  const { items, ...restProps } = props
   return (
     <div className="uploaded-photo-wrap">
       {items &&
@@ -42,25 +36,24 @@ const SortableList = SortableContainer((props) => {
           />
         ))}
     </div>
-  );
-});
+  )
+})
 
-export const ImageSortable = (props) => {
-  const makeCover = (file_index) => {
-    props.onUpdate && props.onUpdate(arrayMove(props.files, file_index, 0));
-  };
+export const ImageSortable = props => {
+  const makeCover = file_index => {
+    props.onUpdate && props.onUpdate(arrayMove(props.files, file_index, 0))
+  }
 
-  const onSortEnd = (dragResult) => {
-    const { oldIndex, newIndex } = dragResult;
-    props.onUpdate &&
-      props.onUpdate(arrayMove(props.files, oldIndex, newIndex));
-  };
-  const removeItem = (index) => {
-    let files = props.files;
-    let removed_item = files.splice(index, 1);
-    props.onRemove && props.onRemove(removed_item, files);
+  const onSortEnd = dragResult => {
+    const { oldIndex, newIndex } = dragResult
+    props.onUpdate && props.onUpdate(arrayMove(props.files, oldIndex, newIndex))
+  }
+  const removeItem = index => {
+    let files = props.files
+    let removed_item = files.splice(index, 1)
+    props.onRemove && props.onRemove(removed_item, files)
     // props.onUpdate && props.onUpdate( files );
-  };
+  }
 
   return (
     <SortableList
@@ -68,8 +61,8 @@ export const ImageSortable = (props) => {
       disabled={props.lock_sortable}
       items={props.files}
       onSortEnd={onSortEnd}
-      makeCover={(index) => makeCover(index)}
-      removeItem={(index) => removeItem(index)}
+      makeCover={index => makeCover(index)}
+      removeItem={index => removeItem(index)}
     />
-  );
-};
+  )
+}

@@ -8,7 +8,7 @@ import { find } from 'lodash'
 import { useForm } from 'react-hook-form'
 import { yupResolver } from '@hookform/resolvers/yup'
 import * as Yup from 'yup'
-import { productServices, categoryServices } from 'js/services'
+import { productServices, categoryServices, attachmentServices } from 'js/services'
 import { EditorComponent, FileUploadComponent, ImageSortable } from 'js/components/common'
 import classnames from 'classnames'
 import { history } from 'js/helpers/history'
@@ -27,6 +27,8 @@ export const CreateProduct = ({ match: { params } }) => {
   const [productVariants, setProductVariants] = useState('')
   const [loading, setLoading] = useState(false)
   const [categories, setCategories] = useState([])
+  const [fileUploadLoading, setFileUploadLoading] = useState(false)
+  const [selectedImages, setSelectedImages] = useState([])
 
   console.log('product variants++++++++++++', productVariants)
 
@@ -64,6 +66,7 @@ export const CreateProduct = ({ match: { params } }) => {
         .then(() => {
           toast.success('Updated Successfully')
           setLoading(false)
+          history.push('/admin/products')
         })
         .catch(() => {
           toast.error('Something went wrong!')
@@ -97,6 +100,10 @@ export const CreateProduct = ({ match: { params } }) => {
               setHasVariants(true)
             }
 
+            if (!isEmpty(product.images)) {
+              setSelectedImages(product.images)
+            }
+
             if (!isEmpty(product.productVariants)) {
               setProductVariants(product.productVariants)
 
@@ -112,21 +119,11 @@ export const CreateProduct = ({ match: { params } }) => {
     },
     getCategoryApi: productDetails => {
       categoryServices
-        .getCategories()
+        .getCategories({ tree: true })
         .then(response => {
           const { categories } = response
-          if (!isEmpty(categories)) {
-            const categoryOptions = categories.map(category => {
-              return {
-                id: category.id,
-                label: category.categoryName,
-                value: category.id,
-              }
-            })
-            setCategories(categoryOptions)
-          }
 
-          // history.push('/admin/products')
+          setCategories(categories)
         })
         .catch(() => {
           console.log('something went wrong while fetching categories')
@@ -188,13 +185,18 @@ export const CreateProduct = ({ match: { params } }) => {
         }
       })
 
+    let images = []
+    if (!isEmpty(selectedImages)) {
+      images = selectedImages.map(image => image.id)
+    }
+
     const productData = {
       ...productDetails,
       comparePrice: stringToIntParser(productDetails.comparePrice),
       costPerItem: stringToIntParser(productDetails.costPerItem),
       price: stringToIntParser(productDetails.price),
       quantity: stringToIntParser(productDetails.quantity),
-      images: [],
+      images,
       physicalQuantity: true,
       weight: 7,
       productOptions: formattedProductOptions,
@@ -294,6 +296,22 @@ export const CreateProduct = ({ match: { params } }) => {
     setProductVariants(currentProductVariants)
   }
 
+  const uploadImage = response => {
+    setSelectedImages(images => [...images, ...response])
+  }
+
+  const removeImage = (removedItem, reminingImages) => {
+    console.log('selected++++++++++++++')
+    // console.log('itesm++++++++++++++++++', items, reminingImages)
+    const selectedFile = removedItem[0]
+    // console.log('selectedFile++++++++++++++++++', selectedFile)
+
+    attachmentServices.removeImage(selectedFile?.id)
+    setSelectedImages([...reminingImages])
+  }
+
+  console.log('images++++++++++++++++', selectedImages)
+
   return (
     <section className="crearte-products-section">
       <div className="generic-page-header">
@@ -369,15 +387,14 @@ export const CreateProduct = ({ match: { params } }) => {
                     multiple={true}
                     max={10}
                     accepted={['image/*']}
-                    // onSuccess={props.onAddNewFiles}
+                    onSuccess={uploadImage}
+                    fileUploadLoading={loading => setFileUploadLoading(loading)}
                   />
                 </div>
                 <ImageSortable
-                  files={[
-                    { attachment_url: 'https://picsum.photos/200/300' },
-                    { attachment_url: 'https://picsum.photos/200/200' },
-                    { attachment_url: 'https://picsum.photos/200/204' },
-                  ]}
+                  files={selectedImages}
+                  onRemove={removeImage}
+                  lock_sortable={false}
                 />
                 <div className="drag-drop-text">
                   <h4>
@@ -694,7 +711,7 @@ export const CreateProduct = ({ match: { params } }) => {
         </Col>
         <Col xl={4}>
           <div className="dashboard-activity-card">
-            <h5 className="card-title">Organize Product</h5>
+            <h5 className="card-title">Category</h5>
             <hr className="MuiDivider-root" />
             <div className="card-data-wrapper">
               {/* <div className="custom-react-select w-100">
@@ -717,6 +734,8 @@ export const CreateProduct = ({ match: { params } }) => {
                   // placeholder="Category"
                   className="react-select-container is-invalid"
                   classNamePrefix="react-select"
+                  getOptionValue={({ id }) => id}
+                  getOptionLabel={({ name }) => name}
                   options={categories}
                   // defaultValue={selectDefaultValue}
                   value={find(categories, ['id', productDetails.productCategoryId])}
