@@ -160,40 +160,39 @@ export const Products = () => {
           </div>
         </div>
         <div className="cm-admin-card--data">
-          {loading ? (
-            <div className="h-vh-100 d-flex justify-content-center align-items-center">
-              <Spinner animation="grow" />
-            </div>
-          ) : (
-            <div className="table-wrap">
-              <Table
-                responsive
-                className="cm-admin-table-compact cm-admin-table-compact--checkbox "
-              >
-                <thead>
-                  <tr>
-                    <th>
-                      <div className="cm-admin-checkbox">
-                        <Form.Check
-                          type="checkbox"
-                          id="tt-check-lead-select-all"
-                          className="cc-checkbox"
-                          // onChange={(e) => selectAll(e.target.checked)}
-                          // checked={state.select_all ? state.select_all : false}
-                        />
-                      </div>
-                    </th>
-                    <th>Name</th>
-                    <th>Product Category</th>
-                    <th>weight</th>
-                    <th>Quantity</th>
-                    <th>Price</th>
-                    <th className="sortable" onClick={() => console.log('tets')}>
-                      Status
-                    </th>
-                    <th>Actions</th>
-                  </tr>
-                </thead>
+          <div className="table-wrap">
+            <Table responsive className="cm-admin-table-compact cm-admin-table-compact--checkbox ">
+              <thead>
+                <tr>
+                  <th>
+                    <div className="cm-admin-checkbox">
+                      <Form.Check
+                        type="checkbox"
+                        id="tt-check-lead-select-all"
+                        className="cc-checkbox"
+                        // onChange={(e) => selectAll(e.target.checked)}
+                        // checked={state.select_all ? state.select_all : false}
+                      />
+                    </div>
+                  </th>
+                  <th>Name</th>
+                  <th>Product Category</th>
+                  <th>weight</th>
+                  <th>Quantity</th>
+                  <th>Price</th>
+                  <th className="sortable" onClick={() => console.log('tets')}>
+                    Status
+                  </th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              {loading ? (
+                <div className="loader_wrapper">
+                  <div className="table__loader">
+                    <Spinner animation="grow" />
+                  </div>
+                </div>
+              ) : (
                 <tbody>
                   {!isEmpty(products.data) &&
                     products.data.map(product => (
@@ -248,9 +247,9 @@ export const Products = () => {
                       </tr>
                     ))}
                 </tbody>
-              </Table>
-            </div>
-          )}
+              )}
+            </Table>
+          </div>
         </div>
         {!isEmpty(products.meta) && (
           <PaginationComponent
