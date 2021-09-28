@@ -24,6 +24,7 @@ import { CreateEditAttribute } from 'js/components/admin/components/configuratio
 import { CreateEditProductType } from 'js/components/admin/components/configuration/product-type/create-edit-product-type'
 import { LevelTwoCategories } from 'js/components/admin/components/catalogs/categories/LevelTwoCategories'
 import { LevelThreeCategories } from 'js/components/admin/components/catalogs/categories/LevelThreeCategories'
+import Options from 'js/components/admin/components/catalogs/options/Options'
 
 export const portalRoutes = [
   {
@@ -49,6 +50,10 @@ export const portalRoutes = [
   {
     path: '/admin/categories/:levelTwoCategoryId/level-three/',
     component: LevelThreeCategories,
+  },
+  {
+    path: '/admin/options/',
+    component: Options,
   },
   {
     path: '/admin/create-variant',
