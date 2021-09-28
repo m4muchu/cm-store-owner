@@ -78,11 +78,11 @@
   justify-content: flex-end;
 }
 //   ACTIVITY CARD STYLES START------------------------------------------------------->
-.dash_activity_card,
+.dashboard-activity-card,
 .dash_topproduct_card,
 .minireport_container_main {
   box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
-  color: #3D3D3D;
+  color: #3d3d3d;
   background-color: #eaeaea;
   margin-bottom: 1.5rem;
   height: auto;
@@ -91,22 +91,22 @@
   background-color: $cm-white;
   padding-bottom: 1rem;
 }
-.dash_activity_card .card-body {
+.dashboard-activity-card .card-body {
   padding: 0rem !important;
 }
-.dash_activity_card-text {
+.dashboard-activity-card-text {
   margin-bottom: 0;
 }
-.dash_activity_card-text_time {
+.dashboard-activity-card-text_time {
   color: #616161;
 }
-.dash_activity_card-text {
+.dashboard-activity-card-text {
   padding-left: 1rem;
   padding-top: 1rem;
   padding-right: 0.3rem;
   font-size: 14px;
 }
-.dash_activity_card-text_time {
+.dashboard-activity-card-text_time {
   font-size: 13px;
   padding-left: 1rem;
 }
@@ -118,12 +118,11 @@
   line-height: 1;
 }
 
-.card-sub-title{
-  padding-left: 1.3rem;
+.card-sub-title {
+  // padding-left: 1rem !important;
   padding-bottom: 0.8rem;
   line-height: 1.5;
 }
-
 .card-title-right {
   color: $cm-primary;
   font-size: 14px;
@@ -185,6 +184,49 @@
 
 // TOP PRODUCT STYLE END---------------------------->
 
+// PRICE_CARD_STYLES---------------------------------->
+
+//common--start---->
+
+.card-custom-hr-line {
+  margin-left: -20px !important;
+  margin-right: -20px !important;
+}
+// common end--->
+.price-card-bottom-data {
+  margin-top: 1rem !important;
+  // display: flex;
+}
+.price-card-bottom-data-unit {
+  margin-top: -1rem !important;
+}
+.cm-dashboard-price-footer {
+  padding-bottom: 0px !important;
+}
+// INVENTORY_CARD_STYLES---------------------------------->
+
+.inventory-card-bottom-header {
+  font-weight: 800;
+}
+.cm-admin-checkbox {
+  padding-left: 0 !important;
+}
+
+// variants start----------->
+
+.variants-sub-heading {
+  font-size: 1rem;
+  font-weight: 800;
+}
+.variants-sub-input-container {
+  margin-bottom: 30px;
+}
+
+.variants-custom-label {
+  display: flex;
+  flex-direction: row-reverse;
+  cursor: pointer;
+}
 // MINI_REPORT STYLE START->
 
 .minireport_text {
@@ -223,14 +265,18 @@
 
 // MINI_REPORT STYLE END---------------------------->
 
-
-
-
-
 //   MEDIA QUERY START_____________________________________---->
 @media only screen and (max-width: 400px) and (min-width: 300px) {
   .topproduct_data_price {
     right: 1rem;
+  }
+}
+@media only screen and (max-width: 767px) and (min-width: 300px) {
+  .price-card-bottom-data {
+    padding-left: 1.3rem;
+  }
+  .inventory-card-bottom {
+    padding-left: 0px !important;
   }
 }
 @media only screen and (min-width: 992px) {
@@ -252,7 +298,7 @@
     width: 47.563vw;
     position: relative;
   }
-  .dash_activity_card {
+  .dashboard-activity-card {
     width: 23.625vw;
   }
   .dash_card {
@@ -265,7 +311,7 @@
   }
 }
 @media only screen and (max-width: 1174px) and (min-width: 993px) {
-  .dash_activity_card {
+  .dashboard-activity-card {
     margin-left: 2rem;
   }
 }

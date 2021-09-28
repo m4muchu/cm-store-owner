@@ -1,35 +1,33 @@
-
-
 .edit-customer-section {
-    .dash_activity_card {
-        width: auto;
-    }
+  .dashboard-activity-card {
+    width: auto;
+  }
 
-    .card-data-wrapper {
-        .MuiDivider-root {
-            margin: 1.4rem 0;
-        }
+  .card-data-wrapper {
+    .MuiDivider-root {
+      margin: 1.4rem 0;
     }
+  }
 
-    .card-title-info {
-        padding-left: 1.3rem;
-        padding-bottom: 1rem;
-        font-size: 12px;
-    }
-    
-    .card-title--create-cutomer {
-        font-size: 18px;
-        font-weight: 600;
-        padding: 1.3rem 0 0 1.3rem;
-        line-height: 1;
-    }
+  .card-title-info {
+    padding-left: 1.3rem;
+    padding-bottom: 1rem;
+    font-size: 12px;
+  }
 
-    .card-sub-title-user-log{
-        padding-left: 1.3rem;
-        font-size: 12px;
-    }
+  .card-title--create-cutomer {
+    font-size: 18px;
+    font-weight: 600;
+    padding: 1.3rem 0 0 1.3rem;
+    line-height: 1;
+  }
 
-    .personal-information-sub-head {
-        font-size: 1rem;
-    }
+  .card-sub-title-user-log {
+    padding-left: 1.3rem;
+    font-size: 12px;
+  }
+
+  .personal-information-sub-head {
+    font-size: 1rem;
+  }
 }

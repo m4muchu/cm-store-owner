@@ -69,7 +69,7 @@ export function requestOptions(
     url: full_url + url,
   };
   if (is_authenticated) {
-    let token = localStorage.getItem(configConstants.TOKEN_NAME);
+    let token = localStorage.getItem(configConstants.ADMIN_TOKEN);
     if (token) {
       requestOptions.headers.Authorization = 'Bearer ' + token;
     }

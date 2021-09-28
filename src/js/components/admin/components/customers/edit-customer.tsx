@@ -17,7 +17,7 @@ export const EditCustomer = () => {
             </div>
             <Row className="mt-5">
                 <Col xl={8}>
-                    <div className="dash_activity_card">
+                    <div className="dashboard-activity-card">
                         <h5 className="card-title--create-cutomer">admin@example.com</h5>
                         <span className="card-title-info">Active member since Dec 2019</span>
                         <hr className="MuiDivider-root" />
@@ -41,7 +41,7 @@ export const EditCustomer = () => {
                             </Form.Group>
                         </div>
                     </div>
-                    <div className="dash_activity_card mt-4">
+                    <div className="dashboard-activity-card mt-4">
                         <h5 className="card-title">Personal Informations</h5>
                         <hr className="MuiDivider-root" />
                         <div className="card-data-wrapper">
@@ -75,7 +75,7 @@ export const EditCustomer = () => {
                         </div>
                     </div>
 
-                    <div className="dash_activity_card mt-4">
+                    <div className="dashboard-activity-card mt-4">
                         <div className="d-flex justify-content-between">
                             <h5 className="card-title">Recent Orders</h5>
                             <span className="card-title-right text-uppercase" onClick={() => history.push('/admin/orders')}>View all orders</span>
@@ -137,7 +137,7 @@ export const EditCustomer = () => {
                     </div>
                 </Col>
                 <Col xl={4}>
-                    <div className="dash_activity_card">
+                    <div className="dashboard-activity-card">
                         <div className="d-flex justify-content-between">
                             <h5 className="card-title">Address Information</h5>
                             <span className="card-title-right text-uppercase">Manage</span>
@@ -147,7 +147,7 @@ export const EditCustomer = () => {
 
                         </div>
                     </div>
-                    <div className="dash_activity_card">
+                    <div className="dashboard-activity-card">
                         <h5 className="card-title">Customer History</h5>
                         <hr className="MuiDivider-root" />
                         <div className="card-data-wrapper">

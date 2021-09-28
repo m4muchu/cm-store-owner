@@ -20,7 +20,7 @@ export const CreateCollection = () => {
             </div>
             <Row className="mt-5">
                 <Col xl={8}>
-                    <div className="dash_activity_card">
+                    <div className="dashboard-activity-card">
                         <h5 className="card-title">General Informations</h5>
                         <hr className="MuiDivider-root" />
                         <div className="card-data-wrapper">
@@ -40,7 +40,7 @@ export const CreateCollection = () => {
                         </div>
                     </div>
 
-                    <div className="dash_activity_card mt-4">
+                    <div className="dashboard-activity-card mt-4">
                         <div className="d-flex justify-content-between">
                             <h5 className="card-title">Background Images (Optional)</h5>
                         </div>
@@ -72,7 +72,7 @@ export const CreateCollection = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="dash_activity_card mt-4">
+                    <div className="dashboard-activity-card mt-4">
                         <div className="d-flex justify-content-between">
                             <h5 className="card-title">Products in Summer collection</h5>
                             <span className="card-title-right text-uppercase" onClick={() => history.push('/admin/create-variant')}>Assign Products</span>
@@ -130,7 +130,7 @@ export const CreateCollection = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="dash_activity_card mt-4">
+                    <div className="dashboard-activity-card mt-4">
                         <h5 className="card-title">Search Engine Preview</h5>
                         <hr className="MuiDivider-root" />
                         <div className="card-data-wrapper">
@@ -153,7 +153,7 @@ export const CreateCollection = () => {
                     </div>
                 </Col>
                 <Col xl={4}>
-                    <div className="dash_activity_card">
+                    <div className="dashboard-activity-card">
                         <h5 className="card-title">Visibility</h5>
                         <hr className="MuiDivider-root" />
                         <div className="card-data-wrapper">

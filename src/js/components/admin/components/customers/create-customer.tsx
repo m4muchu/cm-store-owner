@@ -19,7 +19,7 @@ export const CreateCustomer = () => {
             </div>
             <Row className="mt-5">
                 <Col xl={8}>
-                    <div className="dash_activity_card">
+                    <div className="dashboard-activity-card">
                         <h5 className="card-title">Customer Overview</h5>
                         <hr className="MuiDivider-root" />
                         <div className="card-data-wrapper">
@@ -42,7 +42,7 @@ export const CreateCustomer = () => {
                             </Row>
                         </div>
                     </div>
-                    <div className="dash_activity_card mt-4">
+                    <div className="dashboard-activity-card mt-4">
                         <h5 className="card-title">Primary Address</h5>
                         <hr className="MuiDivider-root" />
                         <div className="card-data-wrapper">
@@ -114,7 +114,7 @@ export const CreateCustomer = () => {
                     </div>
                 </Col>
                 <Col xl={4}>
-                    <div className="dash_activity_card">
+                    <div className="dashboard-activity-card">
                         <h5 className="card-title">Notes</h5>
                         <hr className="MuiDivider-root" />
                         <div className="card-data-wrapper">
