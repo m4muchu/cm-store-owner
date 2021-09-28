@@ -84,7 +84,7 @@ export const Sidebar = () => {
                     </NavLink>
                   </Accordion.Collapse>
                   <Accordion.Collapse eventKey="1">
-                    <NavLink to="/admin/categories">
+                    <NavLink to="/admin/categories/level-one/">
                       {' '}
                       <Card.Body className="admin-sidebar-custom-accordion-dropdown">
                         CATEGORY
@@ -92,13 +92,13 @@ export const Sidebar = () => {
                     </NavLink>
                   </Accordion.Collapse>
 
-                  <Accordion.Collapse eventKey="1">
+                  {/* <Accordion.Collapse eventKey="1">
                     <NavLink to="/admin/collections">
                       <Card.Body className="admin-sidebar-custom-accordion-dropdown">
                         COLLECTION
                       </Card.Body>
                     </NavLink>
-                  </Accordion.Collapse>
+                  </Accordion.Collapse> */}
                 </Card>
               </NavLink>
             </li>
@@ -124,14 +124,14 @@ export const Sidebar = () => {
                       </Card.Body>
                     </NavLink>
                   </Accordion.Collapse>
-                  <Accordion.Collapse eventKey="2">
+                  {/* <Accordion.Collapse eventKey="2">
                     <NavLink to="/admin/drafts">
                       {' '}
                       <Card.Body className="admin-sidebar-custom-accordion-dropdown">
                         DRAFTS
                       </Card.Body>
                     </NavLink>
-                  </Accordion.Collapse>
+                  </Accordion.Collapse> */}
                 </Card>
               </NavLink>
             </li>

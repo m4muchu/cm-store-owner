@@ -10,7 +10,7 @@ import CategoryInterfaceModal from './CategoryInterfaceModal'
 import { BarLoader } from 'react-spinners'
 import { boolean } from 'yup'
 
-const Categories = () => {
+export const LevelTwoCategories = ({ match: { params } }) => {
   const [categories, setCategories] = useState({})
   const [loading, setLoading] = useState({
     categoryListLoading: boolean,
@@ -32,10 +32,10 @@ const Categories = () => {
   }
 
   const apiCalls = {
-    getCategoriesApi: param => {
+    getCategoriesApi: categoryId => {
       setLoader('categoryListLoading', true)
       categoryServices
-        .getLevelOneCategories(param)
+        .getLevelTwoCategories(categoryId)
         .then(response => {
           const { categories } = response
           setCategories({ data: categories })
@@ -53,7 +53,8 @@ const Categories = () => {
       categoryServices
         .addCategory(category)
         .then(() => {
-          apiCalls.getCategoriesApi({ root: true })
+          const { levelOneCategoryId } = params
+          apiCalls.getCategoriesApi(levelOneCategoryId)
           cancelModal()
         })
         .catch(() => {
@@ -68,7 +69,8 @@ const Categories = () => {
       categoryServices
         .updateCategory(categoryId, category)
         .then(() => {
-          apiCalls.getCategoriesApi({ root: true })
+          const { levelOneCategoryId } = params
+          apiCalls.getCategoriesApi(levelOneCategoryId)
           cancelModal()
         })
         .catch(() => {
@@ -83,7 +85,8 @@ const Categories = () => {
       categoryServices
         .deleteCategory(categoryId)
         .then(() => {
-          apiCalls.getCategoriesApi({ root: true })
+          const { levelOneCategoryId } = params
+          apiCalls.getCategoriesApi(levelOneCategoryId)
         })
         .catch(() => {
           console.log('something went wrong while deleting category')
@@ -92,10 +95,14 @@ const Categories = () => {
     },
   }
 
-  const [params, onParamsChange] = useParamChange(apiCalls.getCategoriesApi)
+  const [param, onParamsChange] = useParamChange(apiCalls.getCategoriesApi)
 
   useEffect(() => {
-    apiCalls.getCategoriesApi({ root: true })
+    if (params?.levelOneCategoryId) {
+      apiCalls.getCategoriesApi(params.levelOneCategoryId)
+    } else {
+      history.goBack()
+    }
   }, [])
 
   const submitAction = data => {
@@ -103,7 +110,8 @@ const Categories = () => {
       const { id } = selectedCategory
       apiCalls.updateCategoryApi(id, data)
     } else {
-      apiCalls.addCategoryApi(data)
+      const { levelOneCategoryId } = params
+      apiCalls.addCategoryApi({ ...data, parent_id: levelOneCategoryId })
     }
     cancelModal()
   }
@@ -111,7 +119,12 @@ const Categories = () => {
   return (
     <section className="products-section">
       <div className="generic-page-header">
-        <h2 className="page-head my-0">Categories</h2>
+        <div className="header-data-section">
+          <div onClick={() => history.goBack()} className="back-btn cursor-pointer">
+            <img src="/images/admin/global/back-button.svg" alt="" />
+          </div>
+          <h2 className="page-head my-0">level two categories</h2>
+        </div>
         <div className="header-data-section">
           <Button className="coloumn-btn mr-3 text-uppercase">
             <i>
@@ -199,7 +212,7 @@ const Categories = () => {
                         <td style={{ textAlign: 'center' }}>
                           {' '}
                           <div className="action-wrap" style={{ width: '10%' }}>
-                            <Link to={`/admin/categories/${category.id}/level-two/`}>
+                            <Link to={`/admin/categories/${category.id}/level-three/`}>
                               <img src="/images/admin/global/view.svg" alt="" />
                             </Link>
                             <Link
@@ -242,5 +255,3 @@ const Categories = () => {
     </section>
   )
 }
-
-export default Categories

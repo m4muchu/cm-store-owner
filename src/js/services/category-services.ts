@@ -1,13 +1,23 @@
 import { request } from 'js/helpers'
 
 export const categoryServices = {
-  getCategories,
+  getAllCategories,
+  getLevelOneCategories,
+  getLevelTwoCategories,
+  getLevelThreeCategories,
   addCategory,
   updateCategory,
   deleteCategory,
 }
 
-function getCategories(param: { tree: boolean; root: boolean }) {
+function getAllCategories() {
+  return request({
+    method: 'GET',
+    url: 'product-category',
+  })
+}
+
+function getLevelOneCategories(param: { tree: boolean; root: boolean }) {
   return request({
     method: 'GET',
     url: 'product-category',
@@ -15,8 +25,21 @@ function getCategories(param: { tree: boolean; root: boolean }) {
   })
 }
 
+function getLevelTwoCategories(categoryId: string) {
+  return request({
+    method: 'GET',
+    url: `product-category/${categoryId}`,
+  })
+}
+
+function getLevelThreeCategories(categoryId: string) {
+  return request({
+    method: 'GET',
+    url: `product-category/${categoryId}`,
+  })
+}
+
 function addCategory(category: { name: string }) {
-  console.log('reaced services++++++++++++++', category)
   return request({
     method: 'POST',
     url: 'product-category',

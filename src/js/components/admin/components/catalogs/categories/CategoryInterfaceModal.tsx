@@ -34,8 +34,6 @@ const CategoryInterfaceModal: React.FC<CustomSectionModalProps> = ({
     resolver: yupResolver(validationSchema),
   })
 
-  console.log('modal status++++++++', modalStatus)
-
   useEffect(() => {
     if (!isEmpty(selectedCategory)) {
       setState(selectedCategory)

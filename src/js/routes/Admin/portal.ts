@@ -22,6 +22,8 @@ import { Attributes } from 'js/components/admin/components/configuration/attribu
 import { ProductTypes } from 'js/components/admin/components/configuration/product-type/product-types'
 import { CreateEditAttribute } from 'js/components/admin/components/configuration/attribute/create-edit-attribute'
 import { CreateEditProductType } from 'js/components/admin/components/configuration/product-type/create-edit-product-type'
+import { LevelTwoCategories } from 'js/components/admin/components/catalogs/categories/LevelTwoCategories'
+import { LevelThreeCategories } from 'js/components/admin/components/catalogs/categories/LevelThreeCategories'
 
 export const portalRoutes = [
   {
@@ -37,12 +39,20 @@ export const portalRoutes = [
     component: CreateProduct,
   },
   {
-    path: '/admin/create-variant',
-    component: CreateVariant,
+    path: '/admin/categories/level-one/',
+    component: Categories,
   },
   {
-    path: '/admin/categories',
-    component: Categories,
+    path: '/admin/categories/:levelOneCategoryId/level-two/',
+    component: LevelTwoCategories,
+  },
+  {
+    path: '/admin/categories/:levelTwoCategoryId/level-three/',
+    component: LevelThreeCategories,
+  },
+  {
+    path: '/admin/create-variant',
+    component: CreateVariant,
   },
   {
     path: '/admin/create-category',

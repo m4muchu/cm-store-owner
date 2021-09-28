@@ -2,7 +2,6 @@ import React from 'react'
 import { Pagination } from 'react-bootstrap'
 
 export const PaginationComponent = props => {
-  console.log('enetered+++++++++++++')
   const onPageChange = item => {
     props.onChange(item)
   }

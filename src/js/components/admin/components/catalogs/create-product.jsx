@@ -30,8 +30,6 @@ export const CreateProduct = ({ match: { params } }) => {
   const [fileUploadLoading, setFileUploadLoading] = useState(false)
   const [selectedImages, setSelectedImages] = useState([])
 
-  console.log('product variants++++++++++++', productVariants)
-
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
     price: Yup.string().required('Price is required'),
@@ -114,12 +112,11 @@ export const CreateProduct = ({ match: { params } }) => {
         })
         .catch(() => {
           toast.error('Something went wrong!')
-          console.log('something went wrong while fetching product details')
         })
     },
     getCategoryApi: productDetails => {
       categoryServices
-        .getCategories({ tree: true })
+        .getAllCategories()
         .then(response => {
           const { categories } = response
 
@@ -258,15 +255,6 @@ export const CreateProduct = ({ match: { params } }) => {
         }
       })
 
-      // const clonedProductVariant = [...productVariants]
-
-      // productVariantData.map((variantItem, index) => {
-      //   console.log('variantItem222222222222222222222222', variantItem)
-      //   clonedProductVariant[index].variant = variantItem.variant
-      //   console.log('11111111111111111111111', productVariants[index])
-      //   return variantItem
-      // })
-      console.log('product variants inside generate++++++++++++', productVariantData)
       setProductVariants(productVariantData)
     }
   }
@@ -301,16 +289,10 @@ export const CreateProduct = ({ match: { params } }) => {
   }
 
   const removeImage = (removedItem, reminingImages) => {
-    console.log('selected++++++++++++++')
-    // console.log('itesm++++++++++++++++++', items, reminingImages)
     const selectedFile = removedItem[0]
-    // console.log('selectedFile++++++++++++++++++', selectedFile)
-
     attachmentServices.removeImage(selectedFile?.id)
     setSelectedImages([...reminingImages])
   }
-
-  console.log('images++++++++++++++++', selectedImages)
 
   return (
     <section className="crearte-products-section">
