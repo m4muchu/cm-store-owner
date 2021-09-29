@@ -36,8 +36,8 @@ const Options = () => {
       optionServices
         .getAllOptions()
         .then(response => {
-          const { productOptionsType } = response
-          setOptions({ data: productOptionsType })
+          const { productOptions } = response
+          setOptions({ data: productOptions })
           setLoading(false)
         })
         .catch(() => {
@@ -49,8 +49,8 @@ const Options = () => {
     },
     addOptionApi: optionData => {
       setLoader('optionsActionLoading', true)
-      categoryServices
-        .addCategory(optionData)
+      optionServices
+        .addOption(optionData)
         .then(() => {
           apiCalls.getOptionsApi()
           cancelModal()
@@ -64,8 +64,8 @@ const Options = () => {
     },
     updateOptionApi: (optionId, optionData) => {
       setLoader('optionsActionLoading', true)
-      categoryServices
-        .updateCategory(optionId, optionData)
+      optionServices
+        .updateOption(optionId, optionData)
         .then(() => {
           apiCalls.getOptionsApi()
           cancelModal()
@@ -79,8 +79,8 @@ const Options = () => {
         })
     },
     deleteCategoryApi: optionId => {
-      categoryServices
-        .deleteCategory(optionId)
+      optionServices
+        .deleteOption(optionId)
         .then(() => {
           apiCalls.getOptionsApi({ root: true })
         })
@@ -162,7 +162,7 @@ const Options = () => {
                         type="text"
                         name=""
                         id=""
-                        placeholder="Search Category"
+                        placeholder="Search Options"
                         onChange={e => onParamsChange('keyword', e.target.value)}
                       />
                     </div>

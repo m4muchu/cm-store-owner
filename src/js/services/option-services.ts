@@ -25,7 +25,7 @@ function addOption(option: { name: string }) {
 
 function updateOption(optionId: number, option: { name: string }) {
   return request({
-    method: 'POST',
+    method: 'PUT',
     url: `product-options-type/${optionId}/ `,
     param: option,
     content_type: 'json',
