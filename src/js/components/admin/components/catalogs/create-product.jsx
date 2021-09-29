@@ -13,6 +13,7 @@ import { EditorComponent, FileUploadComponent, ImageSortable } from 'js/componen
 import classnames from 'classnames'
 import { history } from 'js/helpers/history'
 import 'react-toastify/dist/ReactToastify.css'
+import { optionServices } from 'js/services/option-services'
 
 const variantOptionsData = [
   { value: 'size', label: 'Size' },
@@ -29,6 +30,7 @@ export const CreateProduct = ({ match: { params } }) => {
   const [categories, setCategories] = useState([])
   const [fileUploadLoading, setFileUploadLoading] = useState(false)
   const [selectedImages, setSelectedImages] = useState([])
+  const [optionsData, setOptionsData] = useState([])
 
   const validationSchema = Yup.object().shape({
     name: Yup.string().required('Name is required'),
@@ -80,16 +82,13 @@ export const CreateProduct = ({ match: { params } }) => {
           if (!isEmpty(product)) {
             if (!isEmpty(product.productOptions)) {
               const options = product.productOptions.map(option => {
-                let productOption = option.productOption
-                const capitilizedProductOption =
-                  productOption.charAt(0).toUpperCase() + productOption.slice(1)
+                let productOptionId = option.productOptionId
+
+                const selectedProductOption = find(optionsData, ['value', productOptionId])
 
                 return {
                   optionValues: option.optionValues,
-                  productOption: {
-                    label: capitilizedProductOption,
-                    value: productOption,
-                  },
+                  productOption: selectedProductOption,
                 }
               })
 
@@ -126,15 +125,40 @@ export const CreateProduct = ({ match: { params } }) => {
           console.log('something went wrong while fetching categories')
         })
     },
+    getAllOptionsApi: () => {
+      optionServices
+        .getAllOptions()
+        .then(response => {
+          const { productOptions } = response
+
+          if (!isEmpty(productOptions)) {
+            const parsedOptions = productOptions.map(option => ({
+              label: option.name,
+              value: option.id,
+            }))
+            setOptionsData(parsedOptions)
+          }
+          setLoading(false)
+        })
+        .catch(() => {
+          console.log('something went wrong while fetching options')
+        })
+    },
   }
 
   useEffect(() => {
-    const { productId } = params
-    if (productId) {
-      apiCalls.getProductApi(productId)
-    }
     apiCalls.getCategoryApi()
+    apiCalls.getAllOptionsApi()
   }, [])
+
+  useEffect(() => {
+    if (!isEmpty(optionsData)) {
+      const { productId } = params
+      if (productId) {
+        apiCalls.getProductApi(productId)
+      }
+    }
+  }, [optionsData])
 
   useEffect(() => {
     if (!isEmpty(categories) && !params.productId) {
@@ -165,7 +189,8 @@ export const CreateProduct = ({ match: { params } }) => {
       variantOptions.map(item => {
         return {
           ...item,
-          productOption: item.productOption.value,
+          productOption: item.productOption.label,
+          productOptionId: item.productOption.value,
         }
       })
 
@@ -301,7 +326,6 @@ export const CreateProduct = ({ match: { params } }) => {
           <Link
             to={{
               pathname: '/admin/products',
-              // state: { current_page }
             }}
             className="back-btn"
           >
@@ -612,7 +636,7 @@ export const CreateProduct = ({ match: { params } }) => {
                           <Col md={3}>
                             <Form.Label>Option {ind + 1}</Form.Label>
                             <Select
-                              options={variantOptionsData}
+                              options={optionsData}
                               onChange={e => onOptionSelectChange(e, ind, 'productOption')}
                               value={options.productOption}
                             />
@@ -720,7 +744,7 @@ export const CreateProduct = ({ match: { params } }) => {
                   getOptionLabel={({ name }) => name}
                   options={categories}
                   // defaultValue={selectDefaultValue}
-                  value={find(categories, ['id', productDetails.productCategoryId])}
+                  value={productDetails?.productCategory}
                   onChange={value => {
                     setProductDetails({
                       ...productDetails,
@@ -737,31 +761,11 @@ export const CreateProduct = ({ match: { params } }) => {
             <h5 className="card-title">Visibility</h5>
             <hr className="MuiDivider-root" />
             <div className="card-data-wrapper">
-              {/* <div className="custom-radio-button w-100"> */}
-              {/* <Form.Check
-                  type="radio"
-                  id={`default-1`}
-                  label="Visible"
-                  inline
-                  name="visibility"
-                  value={true}
-                  defaultChecked={productDetails.isVisible}
-                  onChange={e => {
-                    console.log('value radio+++++++++++=', e.target.checked)
-
-                    setProductDetails({
-                      ...productDetails,
-                      isVisible: e.target.checked,
-                    })
-                  }}
-                /> */}
               <Form.Group controlId="formHorizontalCheck">
                 <Form.Check
                   label="Visible to store front"
                   checked={productDetails.isVisible}
                   onChange={e => {
-                    console.log('value radio+++++++++++=', e.target.checked)
-
                     setProductDetails({
                       ...productDetails,
                       isVisible: e.target.checked,
@@ -769,26 +773,18 @@ export const CreateProduct = ({ match: { params } }) => {
                   }}
                 />
               </Form.Group>
-              {/* </div> */}
-              {/* <div className="custom-radio-button w-100 mt-3">
+              <Form.Group controlId="formFeaturedCheck">
                 <Form.Check
-                  type="radio"
-                  id={`default-2`}
-                  label="Hidden"
-                  inline
-                  value={false}
-                  name="visibility"
-                  defaultChecked={productDetails.isVisible}
+                  label="Featured"
+                  checked={productDetails.featured}
                   onChange={e => {
-                    console.log('value radio+++++++++++=', e.target.checked)
-
                     setProductDetails({
                       ...productDetails,
-                      isVisible: e.target.checked,
+                      featured: e.target.checked,
                     })
                   }}
                 />
-              </div> */}
+              </Form.Group>
             </div>
           </div>
         </Col>

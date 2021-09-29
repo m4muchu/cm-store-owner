@@ -83,7 +83,7 @@ export const Sidebar = () => {
                       </Card.Body>
                     </NavLink>
                   </Accordion.Collapse>
-                  <Accordion.Collapse eventKey="2">
+                  <Accordion.Collapse eventKey="1">
                     <NavLink to="/admin/categories/level-one/">
                       {' '}
                       <Card.Body className="admin-sidebar-custom-accordion-dropdown">
